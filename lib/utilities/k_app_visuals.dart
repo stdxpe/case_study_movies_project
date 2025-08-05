@@ -6,6 +6,8 @@ abstract class AppVisuals {
   static const String apple = 'assets/icons/apple.svg';
   static const String facebook = 'assets/icons/facebook.svg';
 
+  static const String lottieLike = "assets/lottie/like.json";
+
   static const String dummyProfilePic = 'assets/images/dummy_profile_pic.png';
   static const String dummyMoviePic = 'assets/images/dummy_movie_pic.png';
 
