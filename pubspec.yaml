@@ -40,4 +40,24 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - assets/fonts/
+
+  fonts:
+    - family: EuclidCircularA
+      fonts:
+        - asset: assets/fonts/Euclid-Circular-A-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Euclid-Circular-A-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Euclid-Circular-A-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Euclid-Circular-A-Bold.ttf
+          weight: 700
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/Montserrat-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Montserrat-Black.ttf
+          weight: 900
+
 
