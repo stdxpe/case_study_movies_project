@@ -1,3 +1,5 @@
+#############################################################################################################
+
 name: case_study_movies_project
 description: "Showcase project using Flutter, Bloc state management, API integration, authentication and custom UI with modular, reusable design."
 publish_to: 'none' 
@@ -7,36 +9,26 @@ version: 1.0.0+1
 environment:
   sdk: '>=3.4.1 <4.0.0'
 
+dev_dependencies:
+  flutter_lints: ^3.0.0
+  flutter_test:
+    sdk: flutter
+
 dependencies:
   flutter:
     sdk: flutter
 
-  cupertino_icons: ^1.0.6
-  flutter_native_splash: ^2.3.3
+#############################################################################################################
 
-flutter_native_splash:
-  color: "#030203"
-  color_dark: "#030203"
-  image: assets/images/splash_screen.png
-  branding: assets/images/splash_screen.png
-  image_dark: assets/images/splash_screen.png
-  branding_dark: assets/images/splash_screen.png
+  flutter_native_splash: ^2.3.3               # Native Splash Screen
+  flutter_svg: ^2.0.7                         # SVG Icon Viewer
+  flutter_inset_box_shadow:                   # Custom Gradients
+  cupertino_icons: ^1.0.6                     # UI Icons
 
-  android_12:
-    icon_background_color: "#030203"
-    icon_background_color_dark: "#030203"
-    image: assets/images/splash_screen.png
-    image_dark: assets/images/splash_screen.png
-
-dev_dependencies:
-  flutter_test:
-    sdk: flutter
-
-  flutter_lints: ^3.0.0
+#############################################################################################################
 
 flutter:
   uses-material-design: true
-
   assets:
     - assets/images/
     - assets/icons/
@@ -60,4 +52,20 @@ flutter:
         - asset: assets/fonts/Montserrat-Black.ttf
           weight: 900
 
+#############################################################################################################
 
+flutter_native_splash:
+  color: "#030203"
+  color_dark: "#030203"
+  image: assets/images/splash_screen.png
+  branding: assets/images/splash_screen.png
+  image_dark: assets/images/splash_screen.png
+  branding_dark: assets/images/splash_screen.png
+
+  android_12:
+    icon_background_color: "#030203"
+    icon_background_color_dark: "#030203"
+    image: assets/images/splash_screen.png
+    image_dark: assets/images/splash_screen.png
+
+#############################################################################################################
