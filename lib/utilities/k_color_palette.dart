@@ -49,5 +49,6 @@ abstract class ColorPalette {
 
   static const Color permaBlack = Color(0xFF000000);
   static const Color permaWhite = Color(0xFFFFFFFF);
+  static const Color permaRed = Color(0xFFFF0000);
   static const Color transparent = Color(0x00000000);
 }

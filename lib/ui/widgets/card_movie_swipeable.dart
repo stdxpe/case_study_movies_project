@@ -53,7 +53,7 @@ class CardMovieSwipeable extends StatelessWidget {
             alignment: Alignment.centerRight,
             padding: EdgeInsets.only(
                 right: AppConstants.paddings.favoriteButtonRight),
-            child: ButtonFavorite(onPressed: () {}),
+            child: ButtonFavorite(isLiked: false, onPressed: () {}),
           ),
         ),
         Positioned(
