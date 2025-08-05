@@ -26,6 +26,10 @@ abstract class AppStrings {
   static const hintConfirmPassword = 'Confirm Password';
   static const hintFullName = 'Full Name';
 
+  static const String textEllipsisDots = "...  ";
+  static const String seeMore = "See More";
+  static const String hide = "Hide";
+
   static const String termsAndConditions =
       "I confirm that I have carefully read and agree to the Privacy Policy and Terms and Conditions.";
   static const String termsAndConditionsFirst =
@@ -55,8 +59,6 @@ abstract class AppStrings {
   static const String tokenButton = "View All Tokens";
   static const String token = "Token";
   static const String perWeek = "Per Week";
-  static const String textEllipsisDots = "... ";
-  static const String seeMore = "See More";
 
   //TODO: HERE: PICK BETTER!
 

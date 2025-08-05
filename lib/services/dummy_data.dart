@@ -1,4 +1,5 @@
 import 'package:case_study_movies_project/models/user_model.dart';
+import 'package:case_study_movies_project/models/movie_model.dart';
 import 'package:case_study_movies_project/models/token_model.dart';
 
 final dummyUser = UserModel(
@@ -42,21 +43,7 @@ List<TokenModel> dummyTokenList = [
   ),
 ];
 
-class MovieModel {
-  final String id;
-  final String title;
-  final String description;
-  final String posterUrl;
-
-  const MovieModel({
-    required this.id,
-    required this.title,
-    required this.description,
-    required this.posterUrl,
-  });
-}
-
-const List<MovieModel> dummyMoviesList = [
+List<MovieModel> dummyMoviesList = [
   MovieModel(
     id: '1',
     title: 'The Matrix',

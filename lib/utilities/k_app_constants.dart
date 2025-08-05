@@ -30,6 +30,7 @@ class _AppPaddings {
   final double navButtonVertical = 6.46;
   final double navButtonHorizontal = 16.4;
   final double favoriteButtonRight = 16.49;
+  final double favoriteButtonBottom = 170;
   final double favoriteButtonVertical = 23.85;
   final double favoriteButtonHorizontal = 12.59;
   final double rewardCardTop = 22.25;
