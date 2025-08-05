@@ -25,7 +25,7 @@ class AppbarSliverProfile extends StatelessWidget {
       title: CardProfile(userModel: dummyUser),
       centerTitle: false,
       titleSpacing: 0,
-      toolbarHeight: 95.91,
+      toolbarHeight: 85,
       forceElevated: innerBoxIsScrolled,
     );
   }

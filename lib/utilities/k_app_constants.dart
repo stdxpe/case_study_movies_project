@@ -89,7 +89,7 @@ class _AppSizes {
   final double iconProfileHeight = 28;
   final double iconGemHeight = 18;
   final double iconDiamondHeight = 33.31;
-  final double appBarHeight = 55;
+  final double appBarHeight = 70;
   final double profilePicHeight = 61.91;
   final double rewardCardHeight = 55;
   final double gradientHeight = 200;
