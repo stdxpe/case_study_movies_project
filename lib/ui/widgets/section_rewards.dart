@@ -20,7 +20,7 @@ class SectionRewards extends StatelessWidget {
             borderRadius:
                 BorderRadius.circular(AppConstants.radius.bottomSheetGlass),
             border: Border.all(
-                color: ColorPalette.permaWhite.withOpacity(0.1), width: 1.5),
+                color: ColorPalette.permaWhite.withAlpha(26), width: 1.5),
             gradient: AppGradients.blurredWhiteGlassBackground(),
           ),
           padding: EdgeInsets.only(

@@ -109,7 +109,7 @@ class GlowEllipse extends StatelessWidget {
           height: diameter,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: const Color(0xFFE50914).withOpacity(opacity),
+            color: const Color(0xFFE50914).withAlpha(128),
           ),
         ),
       ),

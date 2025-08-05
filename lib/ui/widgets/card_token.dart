@@ -19,7 +19,7 @@ class CardToken extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppConstants.radius.tokenCard),
         gradient: gradient,
         border: Border.all(
-          color: ColorPalette.permaWhite.withOpacity(0.4),
+          color: ColorPalette.permaWhite.withAlpha(102),
           width: 1,
         ),
         boxShadow: const [

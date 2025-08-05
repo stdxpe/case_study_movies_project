@@ -28,7 +28,7 @@ class ProfileDetailsScreen extends StatelessWidget {
               showDragHandle: false,
               isScrollControlled: true,
               backgroundColor: context.colorPalette.bottomSheetBackground,
-              barrierColor: Colors.black.withOpacity(0.75),
+              barrierColor: Colors.black.withAlpha(191),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(
                       Radius.circular(AppConstants.radius.bottomSheet))),

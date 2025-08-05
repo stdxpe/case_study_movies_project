@@ -29,7 +29,7 @@ class ButtonFavorite extends StatelessWidget {
               horizontal: AppConstants.paddings.favoriteButtonHorizontal,
             ),
             backgroundColor:
-                context.colorPalette.scaffoldBackground.withOpacity(0.2),
+                context.colorPalette.scaffoldBackground.withAlpha(51),
             foregroundColor: context.colorPalette.text,
             elevation: 0,
             shape: RoundedRectangleBorder(
