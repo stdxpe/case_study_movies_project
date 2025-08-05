@@ -46,19 +46,19 @@ List<TokenModel> dummyTokenList = [
 List<MovieModel> dummyMoviesList = [
   MovieModel(
     id: '1',
-    title: 'The Matrix',
-    description:
-        'What if your world was just a simulation and the truth was hidden behind green code?',
-    posterUrl:
-        'https://64.media.tumblr.com/4070f9c9cfb82ef9e350bd9e3344a3ff/1b79f15d0c8bd69d-c2/s540x810/ec2abe35ce16c6e7c6368acc7ee3561db8ce455c.gif',
-  ),
-  MovieModel(
-    id: '2',
     title: 'Inception',
     description:
         'A mind-bending thriller where dreams collide with reality in a world of shared dreams and layered consciousness.',
     posterUrl:
         'https://i.pinimg.com/736x/d2/e0/3f/d2e03f91eef9e93d94084b054eb8dbe9.jpg',
+  ),
+  MovieModel(
+    id: '2',
+    title: 'The Matrix',
+    description:
+        'What if your world was just a simulation and the truth was hidden behind green code?',
+    posterUrl:
+        'https://64.media.tumblr.com/4070f9c9cfb82ef9e350bd9e3344a3ff/1b79f15d0c8bd69d-c2/s540x810/ec2abe35ce16c6e7c6368acc7ee3561db8ce455c.gif',
   ),
   MovieModel(
     id: '3',
