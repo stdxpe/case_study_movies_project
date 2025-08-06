@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:case_study_movies_project/models/user_model.dart';
+import 'package:case_study_movies_project/models/user_response_model.dart';
 import 'package:case_study_movies_project/services/abstract_classes/i_user_service.dart';
 import 'package:case_study_movies_project/services/global_services.dart/dependency_injection_service.dart';
 import 'package:case_study_movies_project/utilities/utilities_library_imports.dart';
@@ -15,7 +16,8 @@ class NodeLabsUserService extends IUserService {
       final response = await _dio.get(endPoint);
 
       if (response.statusCode == 200) {
-        return UserModel.fromMap(response.data);
+        final profileResponse = UserProfileResponseModel.fromMap(response.data);
+        return profileResponse.user;
       } else if (response.statusCode == 401) {
         throw Exception(
             '${AppStrings.errors.unauthorized401}: ${response.statusCode}');
@@ -38,9 +40,8 @@ class NodeLabsUserService extends IUserService {
       final response = await _dio.post(endPoint, data: formData);
 
       if (response.statusCode == 200) {
-        /// response.data['photoUrl']
-        /// Tek property için PhotoUploadResponseModel yazmak istemedim ama aklımda^
-        return response.data['photoUrl'];
+        final uploadResponse = UploadPhotoResponseModel.fromMap(response.data);
+        return uploadResponse.photoUrl;
       } else if (response.statusCode == 400) {
         throw Exception(
             '${AppStrings.errors.uploadPhotoInvalidFormat}: ${response.statusCode}');
