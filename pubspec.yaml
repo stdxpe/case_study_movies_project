@@ -22,6 +22,8 @@ dependencies:
 
   get_it: ^8.2.0                              # Dependency Injection Service
   dio: ^5.8.0+1                               # HTTP Networking Service
+  flutter_secure_storage: ^9.2.4              # Secure Token Management
+  
   lottie: ^3.3.1                              # Optimized JSON Animations
   flutter_animate: ^4.5.2                     # Advanced Animation Builder
   flutter_svg: ^2.0.7                         # SVG Icon Viewer
