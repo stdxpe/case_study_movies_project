@@ -27,7 +27,7 @@ class CardProfile extends StatelessWidget {
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               image: DecorationImage(
-                image: NetworkImage(userModel.photoUrl),
+                image: NetworkImage(userModel.photoUrl!),
                 fit: BoxFit.cover,
               ),
             ),

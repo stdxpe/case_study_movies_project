@@ -25,6 +25,8 @@ class RootApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       // home: const HomeWithCustomNavButtons(),
       home: TestScreen(),
+
+      /// TODO LOTTIE MOVIE CLIC ^*
     );
   }
 }

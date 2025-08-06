@@ -82,7 +82,11 @@ class _ErrorStrings {
   final String unauthorized401 = 'Unauthorized';
   final String movieNotFound404 = 'Movie not found';
   final String unknown = 'Unknown error occurred';
+  final String loginSuccessNoToken = 'Login succeeded, but token is missing.';
+  final String registerSuccessNoToken =
+      'Registration succeeded, but token is missing.';
   final String loginFailedWithCode = 'Login failed with status code: ';
+  final String loginFailedNoToken = 'Login failed, and no token';
   final String registerFailedWithCode = 'Register failed with status code: ';
   final String profileFail = 'Failed to load profile';
   final String uploadPhotoFail = 'Failed to upload photo';
