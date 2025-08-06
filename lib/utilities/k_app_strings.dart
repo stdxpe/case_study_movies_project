@@ -71,4 +71,17 @@ abstract class AppStrings {
 // Your story continues here. Sign in to proceed.
 // Join us and start your cinematic journey today.
 // New adventures await. Let’s get you on board.
+
+  static _ErrorStrings get errors => _ErrorStrings();
+}
+
+class _ErrorStrings {
+  final String invalidCredentials400 = 'Invalid credentials';
+  final String invalidInput = 'Invalid input or email already exists';
+  final String uploadPhotoInvalidFormat = 'Invalid file format';
+  final String unauthorized401 = 'Unauthorized';
+  final String movieNotFound = 'Movie not found';
+  final String unknown = 'Unknown error occurred';
+  final String loginFailedWithCode = 'Login failed with status code: ';
+  final String registerFailedWithCode = 'Register failed with status code: ';
 }
