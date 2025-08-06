@@ -10,11 +10,13 @@ class ButtonNavigationBarItem extends StatelessWidget {
     required this.onPressed,
     required this.text,
     required this.iconPath,
+    this.isSelected = false,
   });
 
   final VoidCallback onPressed;
   final String text;
   final String iconPath;
+  final bool isSelected;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,9 @@ class ButtonNavigationBarItem extends StatelessWidget {
           horizontal: AppConstants.paddings.navButtonHorizontal,
         ),
         backgroundColor: context.colorPalette.scaffoldBackground,
-        foregroundColor: context.colorPalette.navigationBar,
+        foregroundColor: isSelected
+            ? ColorPalette.permaRed
+            : context.colorPalette.navigationBar,
         elevation: 0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(

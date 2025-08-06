@@ -19,8 +19,10 @@ dependencies:
     sdk: flutter
 
 #############################################################################################################
-
+    
+  flutter_bloc: ^9.1.1                        # State Management Solution
   get_it: ^8.2.0                              # Dependency Injection Service
+  go_router: ^16.1.0                          # Advanced Navigation & Routing System
   dio: ^5.8.0+1                               # HTTP Networking Service
   flutter_secure_storage: ^9.2.4              # Secure Token Management
   
