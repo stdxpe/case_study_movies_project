@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:case_study_movies_project/services/dummy_data.dart';
+import 'package:case_study_movies_project/services/global_services.dart/dummy_data.dart';
 import 'package:case_study_movies_project/ui/screens/limited_offer_screen.dart';
 import 'package:case_study_movies_project/ui/widgets/appbar_custom.dart';
 import 'package:case_study_movies_project/ui/widgets/appbar_sliver_profile.dart';
