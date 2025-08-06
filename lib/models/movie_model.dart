@@ -14,10 +14,10 @@ class MovieModel {
   });
 
   factory MovieModel.fromMap(Map<String, dynamic> json) => MovieModel(
-        id: json["id"],
-        title: json["title"],
-        description: json["description"],
-        posterUrl: json["posterUrl"],
+        id: json["id"] ?? json["_id"] ?? '',
+        title: json["Title"] ?? json["title"] ?? '',
+        description: json["Plot"] ?? json["description"] ?? '',
+        posterUrl: json["Poster"] ?? json["posterUrl"] ?? '',
       );
 
   Map<String, dynamic> toMap() => {
