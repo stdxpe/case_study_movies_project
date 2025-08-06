@@ -13,12 +13,14 @@ class MoviesListResponseModel {
   });
 
   factory MoviesListResponseModel.fromMap(Map<String, dynamic> map) {
+    final data = map['data'] ?? {};
     return MoviesListResponseModel(
-      movies: List<MovieModel>.from(
-        (map['movies'] as List).map((x) => MovieModel.fromMap(x)),
-      ),
-      totalPages: map['totalPages'],
-      currentPage: map['currentPage'],
+      movies: (data['movies'] as List<dynamic>?)
+              ?.map((x) => MovieModel.fromMap(x))
+              .toList() ??
+          [],
+      totalPages: data['totalPages'] ?? 1,
+      currentPage: data['currentPage'] ?? 1,
     );
   }
 
@@ -37,15 +39,15 @@ class FavoriteMoviesResponseModel {
 
   factory FavoriteMoviesResponseModel.fromMap(Map<String, dynamic> map) {
     return FavoriteMoviesResponseModel(
-      movies: List<MovieModel>.from(
-        (map['movies'] as List).map((x) => MovieModel.fromMap(x)),
-      ),
+      movies: (map['data'] as List<dynamic>?)
+              ?.map((x) => MovieModel.fromMap(x))
+              .toList() ??
+          [],
     );
   }
 
-  Map<String, dynamic> toMap() => {
-        'movies': movies.map((x) => x.toMap()).toList(),
-      };
+  Map<String, dynamic> toMap() =>
+      {'movies': movies.map((x) => x.toMap()).toList()};
 }
 
 /// API JSON Response Model for Toggling Favorite Status of Movies
@@ -56,9 +58,10 @@ class ToggleFavoriteResponseModel {
   ToggleFavoriteResponseModel({required this.success, required this.message});
 
   factory ToggleFavoriteResponseModel.fromMap(Map<String, dynamic> map) {
+    final response = map['response'] ?? {};
     return ToggleFavoriteResponseModel(
-      success: map['success'],
-      message: map['message'],
+      success: (response['code'] ?? 0) == 200,
+      message: response['message'] ?? '',
     );
   }
 
