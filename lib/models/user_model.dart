@@ -4,48 +4,44 @@ class UserModel {
   final String id;
   final String name;
   final String email;
-  final String photoUrl;
+  final String? photoUrl;
 
   UserModel({
     required this.id,
     required this.name,
     required this.email,
-    required this.photoUrl,
+    this.photoUrl,
   });
 
-  factory UserModel.fromMap(Map<String, dynamic> json) => UserModel(
-        id: json["id"],
-        name: json["name"],
-        email: json["email"],
-        photoUrl: json["photoUrl"],
-      );
+  factory UserModel.fromMap(Map<String, dynamic> map) {
+    return UserModel(
+      id: map['_id'] ?? map['id'],
+      name: map['name'],
+      email: map['email'],
+      photoUrl: map['photoUrl'],
+    );
+  }
 
-  Map<String, dynamic> toMap() => {
-        "id": id,
-        "name": name,
-        "email": email,
-        "photoUrl": photoUrl,
-      };
+  Map<String, dynamic> toMap() {
+    return {'id': id, 'name': name, 'email': email, 'photoUrl': photoUrl};
+  }
 
-  factory UserModel.fromJson(String str) => UserModel.fromMap(json.decode(str));
+  factory UserModel.fromJson(String source) =>
+      UserModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   String toJson() => json.encode(toMap());
 
-  UserModel copyWith({
-    String? id,
-    String? name,
-    String? email,
-    String? photoUrl,
-  }) =>
-      UserModel(
-        id: id ?? this.id,
-        name: name ?? this.name,
-        email: email ?? this.email,
-        photoUrl: photoUrl ?? this.photoUrl,
-      );
+  UserModel copyWith(
+      {String? id, String? name, String? email, String? photoUrl}) {
+    return UserModel(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      email: email ?? this.email,
+      photoUrl: photoUrl ?? this.photoUrl,
+    );
+  }
 
   @override
-  String toString() {
-    return 'UserModel(id: $id, name: $name, email: $email, photoUrl: $photoUrl)';
-  }
+  String toString() =>
+      'UserModel(id: $id, name: $name, email: $email, photoUrl: $photoUrl)';
 }

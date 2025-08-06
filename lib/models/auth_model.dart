@@ -5,13 +5,25 @@ class AuthModel {
   final String token;
   final UserModel user;
 
-  AuthModel({required this.token, required this.user});
+  AuthModel({
+    required this.token,
+    required this.user,
+  });
 
   factory AuthModel.fromMap(Map<String, dynamic> map) {
-    return AuthModel(token: map['token'], user: UserModel.fromMap(map['user']));
+    final data = map['data'];
+    return AuthModel(
+      token: data['token'],
+      user: UserModel.fromMap(data),
+    );
   }
 
-  Map<String, dynamic> toMap() => {'token': token, 'user': user.toMap()};
+  Map<String, dynamic> toMap() {
+    return {
+      'token': token,
+      ...user.toMap(),
+    };
+  }
 
   factory AuthModel.fromJson(String source) {
     return AuthModel.fromMap(json.decode(source));
@@ -20,7 +32,10 @@ class AuthModel {
   String toJson() => json.encode(toMap());
 
   AuthModel copyWith({String? token, UserModel? user}) {
-    return AuthModel(token: token ?? this.token, user: user ?? this.user);
+    return AuthModel(
+      token: token ?? this.token,
+      user: user ?? this.user,
+    );
   }
 
   @override
