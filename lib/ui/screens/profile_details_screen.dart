@@ -5,11 +5,13 @@ import 'package:case_study_movies_project/ui/bloc/movie_bloc.dart';
 import 'package:case_study_movies_project/ui/bloc/movie_state.dart';
 import 'package:case_study_movies_project/ui/screens/limited_offer_screen.dart';
 import 'package:case_study_movies_project/ui/widgets/appbar_custom.dart';
+import 'package:case_study_movies_project/ui/bloc/navigation_bar_cubit.dart';
 import 'package:case_study_movies_project/ui/widgets/appbar_sliver_profile.dart';
 import 'package:case_study_movies_project/ui/widgets/button_profile.dart';
 import 'package:case_study_movies_project/ui/widgets/card_movie.dart';
 import 'package:case_study_movies_project/ui/widgets/text_custom.dart';
 import 'package:case_study_movies_project/utilities/utilities_library_imports.dart';
+import 'package:case_study_movies_project/services/global_services.dart/dependency_injection_service.dart';
 
 class ProfileDetailsScreen extends StatelessWidget {
   const ProfileDetailsScreen({super.key});
@@ -18,7 +20,7 @@ class ProfileDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarCustom(
-        onBackPressed: () {},
+        onBackPressed: () => locator<NavigationBarCubit>().goTab(0),
         titleText: AppStrings.profileDetails,
         rightWidget: ButtonProfile(
           text: AppStrings.limitedOffer,

@@ -36,7 +36,7 @@ class ScaffoldWithBottomNavBar extends StatelessWidget {
               },
               isSelected: navigationShell.currentIndex == 0,
             ),
-            SizedBox(width: 16),
+            SizedBox(width: AppConstants.spacings.space16),
             ButtonNavigationBarItem(
               text: AppStrings.profileButton,
               iconPath: AppVisuals.profile,

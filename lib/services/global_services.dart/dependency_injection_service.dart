@@ -16,6 +16,7 @@ import 'package:case_study_movies_project/services/nodelabs_user_service.dart';
 import 'package:case_study_movies_project/services/token_storage_service.dart';
 import 'package:case_study_movies_project/ui/bloc/auth_bloc.dart';
 import 'package:case_study_movies_project/ui/bloc/movie_bloc.dart';
+import 'package:case_study_movies_project/ui/bloc/navigation_bar_cubit.dart';
 import 'package:case_study_movies_project/ui/bloc/user_bloc.dart';
 
 var locator = GetIt.instance;
@@ -53,6 +54,7 @@ void initializeDependencyInjectionService() {
   locator.registerFactory<UserBloc>(() => UserBloc(userService: locator()));
   locator.registerFactory<MovieBloc>(() => MovieBloc(movieService: locator()));
 
-  /// GoRouter Registered as
+  /// GoRouter Registered as Advanced Navigation & Routing System
   locator.registerSingleton<NavigationService>(NavigationService(navigatorKey));
+  locator.registerSingleton<NavigationBarCubit>(NavigationBarCubit(null));
 }

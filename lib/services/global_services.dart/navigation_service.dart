@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:case_study_movies_project/services/global_services.dart/dependency_injection_service.dart';
+import 'package:case_study_movies_project/ui/bloc/navigation_bar_cubit.dart';
 import 'package:case_study_movies_project/ui/screens/discover_screen.dart';
-import 'package:case_study_movies_project/ui/widgets/scaffold_with_nav_bar.dart';
 import 'package:case_study_movies_project/ui/screens/profile_details_screen.dart';
 import 'package:case_study_movies_project/ui/screens/signin_screen.dart';
 import 'package:case_study_movies_project/ui/screens/signup_screen.dart';
 import 'package:case_study_movies_project/ui/screens/upload_photo_screen.dart';
+import 'package:case_study_movies_project/ui/widgets/scaffold_with_nav_bar.dart';
 import 'package:case_study_movies_project/utilities/utilities_library_imports.dart';
 
 class AppRouter {
@@ -35,6 +36,8 @@ class AppRouter {
       /// for Preserving States for Each Tab Screen
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) {
+          locator<NavigationBarCubit>().attach(navigationShell);
+
           return ScaffoldWithBottomNavBar(
             navigationShell: navigationShell,
             children: const [DiscoverScreen(), ProfileDetailsScreen()],
@@ -103,5 +106,13 @@ class NavigationService {
   String get currentLocation {
     final router = GoRouter.of(_context!);
     return router.state.uri.toString();
+  }
+
+  void goToBranch(int index, {bool initialLocation = false}) {
+    final context = navigatorKey.currentContext;
+    if (context != null) {
+      final shell = StatefulNavigationShell.of(context);
+      shell.goBranch(index, initialLocation: initialLocation);
+    }
   }
 }
