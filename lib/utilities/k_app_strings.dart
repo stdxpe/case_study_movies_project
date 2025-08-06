@@ -80,8 +80,10 @@ class _ErrorStrings {
   final String invalidInput = 'Invalid input or email already exists';
   final String uploadPhotoInvalidFormat = 'Invalid file format';
   final String unauthorized401 = 'Unauthorized';
-  final String movieNotFound = 'Movie not found';
+  final String movieNotFound404 = 'Movie not found';
   final String unknown = 'Unknown error occurred';
   final String loginFailedWithCode = 'Login failed with status code: ';
   final String registerFailedWithCode = 'Register failed with status code: ';
+  final String profileFail = 'Failed to load profile';
+  final String uploadPhotoFail = 'Failed to upload photo';
 }
