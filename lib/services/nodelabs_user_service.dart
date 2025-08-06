@@ -10,7 +10,7 @@ class NodeLabsUserService extends IUserService {
 
   @override
   Future<UserModel> getProfile() async {
-    const String endPoint = '/user/profile/';
+    const String endPoint = '/user/profile';
 
     try {
       final response = await _dio.get(endPoint);
@@ -32,7 +32,8 @@ class NodeLabsUserService extends IUserService {
 
   @override
   Future<String> uploadPhoto(String filePath) async {
-    const String endPoint = '/user/upload_photo/';
+    const String endPoint = '/user/upload_photo';
+
     try {
       final file = await MultipartFile.fromFile(filePath);
       final formData = FormData.fromMap({'file': file});
