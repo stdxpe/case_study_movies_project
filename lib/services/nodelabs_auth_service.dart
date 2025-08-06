@@ -88,4 +88,22 @@ class NodeLabsAuthService extends IAuthService {
       rethrow;
     }
   }
+
+  @override
+  Future<void> signOut() async {
+    final hasToken = await _tokenStorage.hasToken();
+
+    if (hasToken) {
+      await _tokenStorage.deleteToken();
+      _logger.logInfo('User signed out, token deleted.');
+    } else {
+      _logger.logInfo('SignOut called but no token found.');
+    }
+  }
+
+  @override
+  Future<bool> isAuthenticated() async {
+    final token = await _tokenStorage.getToken();
+    return token != null && token.isNotEmpty;
+  }
 }
