@@ -40,8 +40,6 @@ extension CustomTextStylesExtension on TextTheme {
 extension BuildContextExtensions on BuildContext {
   MediaQueryData get mediaQuery => MediaQuery.of(this);
 
-  DefaultTextStyle get defaultTextStyle => DefaultTextStyle.of(this);
-
   NavigatorState get navigator => Navigator.of(this);
 
   FocusScopeNode get focusScope => FocusScope.of(this);
@@ -49,6 +47,10 @@ extension BuildContextExtensions on BuildContext {
   ScaffoldState get scaffold => Scaffold.of(this);
 
   ScaffoldMessengerState get scaffoldMessenger => ScaffoldMessenger.of(this);
+}
+
+extension EnforceHttps on String {
+  String get withHttps => replaceFirst(RegExp(r'^https?:\/\/'), 'https://');
 }
 
 extension MovieCardHeightExtension on BuildContext {

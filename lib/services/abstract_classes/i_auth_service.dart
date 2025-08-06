@@ -11,4 +11,8 @@ abstract class IAuthService {
     required String name,
     required String password,
   });
+
+  Future<void> signOut();
+
+  Future<bool> isAuthenticated();
 }

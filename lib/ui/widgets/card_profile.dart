@@ -27,7 +27,10 @@ class CardProfile extends StatelessWidget {
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               image: DecorationImage(
-                image: NetworkImage(userModel.photoUrl!),
+                image:
+                    (userModel.photoUrl == null || userModel.photoUrl!.isEmpty)
+                        ? const AssetImage(AppVisuals.dummyProfilePic)
+                        : NetworkImage(userModel.photoUrl!),
                 fit: BoxFit.cover,
               ),
             ),
@@ -45,7 +48,7 @@ class CardProfile extends StatelessWidget {
                 ),
                 SizedBox(height: AppConstants.spacings.space8),
                 TextCustom(
-                  text: "ID: ${userModel.id}",
+                  text: "ID: ${userModel.id.substring(0, 7)}",
                   color: context.colorPalette.textFaded05,
                   textStyle: context.textTheme.infoLight,
                   overflow: TextOverflow.ellipsis,

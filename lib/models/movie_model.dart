@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:case_study_movies_project/utilities/utilities_library_imports.dart';
 
 class MovieModel {
   final String id;
@@ -17,7 +18,8 @@ class MovieModel {
         id: json["id"] ?? json["_id"] ?? '',
         title: json["Title"] ?? json["title"] ?? '',
         description: json["Plot"] ?? json["description"] ?? '',
-        posterUrl: json["Poster"] ?? json["posterUrl"] ?? '',
+        posterUrl:
+            (json["Poster"] ?? json["posterUrl"] ?? '').toString().withHttps,
       );
 
   Map<String, dynamic> toMap() => {
@@ -42,7 +44,7 @@ class MovieModel {
         id: id ?? this.id,
         title: title ?? this.title,
         description: description ?? this.description,
-        posterUrl: posterUrl ?? this.posterUrl,
+        posterUrl: posterUrl?.toString().withHttps ?? this.posterUrl,
       );
 
   @override
