@@ -1,5 +1,3 @@
-import 'package:case_study_movies_project/ui/bloc/movie_event.dart';
-import 'package:case_study_movies_project/ui/bloc/user_event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -7,8 +5,11 @@ import 'package:case_study_movies_project/services/global_services.dart/dependen
 import 'package:case_study_movies_project/services/global_services.dart/navigation_service.dart';
 import 'package:case_study_movies_project/ui/bloc/auth_bloc.dart';
 import 'package:case_study_movies_project/ui/bloc/auth_event.dart';
+import 'package:case_study_movies_project/ui/bloc/lottie_animation_cubit.dart';
 import 'package:case_study_movies_project/ui/bloc/movie_bloc.dart';
+import 'package:case_study_movies_project/ui/bloc/movie_event.dart';
 import 'package:case_study_movies_project/ui/bloc/user_bloc.dart';
+import 'package:case_study_movies_project/ui/bloc/user_event.dart';
 import 'package:case_study_movies_project/utilities/utilities_library_imports.dart';
 
 void main() {
@@ -31,8 +32,11 @@ class RootApp extends StatelessWidget {
             create: (_) => locator<AuthBloc>()..add(CheckAuthStatusEvent())),
         BlocProvider<UserBloc>(
             create: (_) => locator<UserBloc>()..add(GetUserProfileEvent())),
+        BlocProvider(create: (_) => LottieAnimationCubit()),
         BlocProvider<MovieBloc>(
-            create: (_) => locator<MovieBloc>()..add(GetMoviesEvent(page: 1))),
+            create: (_) => locator<MovieBloc>()
+              ..add(GetMoviesEvent(page: 1))
+              ..add(GetFavoriteMoviesEvent())),
       ],
       child: MaterialApp.router(
         title: AppStrings.appTitle,

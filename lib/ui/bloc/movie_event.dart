@@ -10,5 +10,5 @@ class GetFavoriteMoviesEvent extends MovieEvent {}
 class ToggleFavoriteMovieEvent extends MovieEvent {
   final String movieId;
 
-  ToggleFavoriteMovieEvent(this.movieId);
+  ToggleFavoriteMovieEvent({required this.movieId});
 }

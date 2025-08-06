@@ -4,40 +4,43 @@ enum MovieStatus {
   initial,
   loading,
   loaded,
-  favoriteToggled,
   error,
 }
 
 class MovieState {
   final MovieStatus status;
-  final List<MovieModel> movies;
+  final List<MovieModel> allMovies;
   final List<MovieModel> favoriteMovies;
   final String? errorMessage;
 
   const MovieState({
     required this.status,
-    required this.movies,
+    required this.allMovies,
     required this.favoriteMovies,
     this.errorMessage,
   });
 
   factory MovieState.initial() => const MovieState(
         status: MovieStatus.initial,
-        movies: [],
+        allMovies: [],
         favoriteMovies: [],
       );
 
   MovieState copyWith({
     MovieStatus? status,
-    List<MovieModel>? movies,
+    List<MovieModel>? allMovies,
     List<MovieModel>? favoriteMovies,
     String? errorMessage,
   }) {
     return MovieState(
       status: status ?? this.status,
-      movies: movies ?? this.movies,
+      allMovies: allMovies ?? this.allMovies,
       favoriteMovies: favoriteMovies ?? this.favoriteMovies,
       errorMessage: errorMessage,
     );
+  }
+
+  bool isLiked(String movieId) {
+    return favoriteMovies.any((fav) => fav.id == movieId);
   }
 }

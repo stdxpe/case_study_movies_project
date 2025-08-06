@@ -5,11 +5,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:case_study_movies_project/utilities/utilities_library_imports.dart';
 
 class ButtonFavorite extends StatelessWidget {
-  const ButtonFavorite({
-    super.key,
-    required this.onPressed,
-    required this.isLiked,
-  });
+  const ButtonFavorite(
+      {super.key, required this.onPressed, required this.isLiked});
 
   final VoidCallback onPressed;
   final bool isLiked;

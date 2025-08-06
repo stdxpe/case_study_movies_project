@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:case_study_movies_project/models/movie_model.dart';
+import 'package:case_study_movies_project/ui/bloc/lottie_animation_cubit.dart';
+import 'package:case_study_movies_project/ui/bloc/movie_bloc.dart';
+import 'package:case_study_movies_project/ui/bloc/movie_event.dart';
+import 'package:case_study_movies_project/ui/bloc/movie_state.dart';
 import 'package:case_study_movies_project/ui/widgets/button_favorite.dart';
 import 'package:case_study_movies_project/ui/widgets/card_movie_description.dart';
+import 'package:case_study_movies_project/ui/widgets/lottie_like_animation.dart';
 import 'package:case_study_movies_project/utilities/utilities_library_imports.dart';
 
 class CardMovieSwipeable extends StatelessWidget {
@@ -46,6 +52,7 @@ class CardMovieSwipeable extends StatelessWidget {
             ),
           ),
         ),
+        const LottieLikeAnimation(),
         Positioned(
           right: 0,
           bottom: AppConstants.paddings.favoriteButtonBottom,
@@ -53,7 +60,33 @@ class CardMovieSwipeable extends StatelessWidget {
             alignment: Alignment.centerRight,
             padding: EdgeInsets.only(
                 right: AppConstants.paddings.favoriteButtonRight),
-            child: ButtonFavorite(isLiked: false, onPressed: () {}),
+            child:
+                BlocBuilder<MovieBloc, MovieState>(builder: (context, state) {
+              if (state.status == MovieStatus.loading) {
+                return const Center(child: CircularProgressIndicator());
+              } else if (state.status == MovieStatus.loaded) {
+                return ButtonFavorite(
+                  isLiked: context.read<MovieBloc>().state.isLiked(movie.id),
+                  onPressed: () {
+                    final currentIsLiked =
+                        context.read<MovieBloc>().state.isLiked(movie.id);
+
+                    context
+                        .read<MovieBloc>()
+                        .add(ToggleFavoriteMovieEvent(movieId: movie.id));
+
+                    context.read<LottieAnimationCubit>().update(
+                          isLiked: !currentIsLiked,
+                          showAnimation: true,
+                        );
+                  },
+                );
+              } else if (state.status == MovieStatus.error) {
+                /// TODO: SNACKBAR
+                return Center(child: Text('Error: ${state.errorMessage}'));
+              }
+              return const SizedBox.shrink();
+            }),
           ),
         ),
         Positioned(
