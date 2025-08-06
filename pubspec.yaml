@@ -20,10 +20,12 @@ dependencies:
 
 #############################################################################################################
 
-  flutter_native_splash: ^2.3.3               # Native Splash Screen
+  get_it: ^8.2.0                              # Dependency Injection Service
+  dio: ^5.8.0+1                               # HTTP Networking Service
   lottie: ^3.3.1                              # Optimized JSON Animations
   flutter_animate: ^4.5.2                     # Advanced Animation Builder
   flutter_svg: ^2.0.7                         # SVG Icon Viewer
+  flutter_native_splash: ^2.3.3               # Native Splash Screen
   flutter_inset_box_shadow: ^1.0.8            # Custom Gradients
   cupertino_icons: ^1.0.6                     # UI Icons
   readmore: ^3.0.0                            # Expandable Text
