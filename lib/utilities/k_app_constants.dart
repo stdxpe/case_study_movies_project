@@ -8,6 +8,8 @@ abstract class AppConstants {
   static const sizes = _AppSizes();
   static const fontSizes = _FontSizes();
   static const fontNames = _FontNames();
+
+  static const baseUrl = 'https://caseapi.servicelabs.tech/';
 }
 
 class _AppPaddings {
