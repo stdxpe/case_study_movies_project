@@ -67,7 +67,7 @@ class ProfileDetailsScreen extends StatelessWidget {
                 if (state.status == MovieStatus.loading) {
                   return const Center(child: CircularProgressIndicator());
                 } else if (state.status == MovieStatus.loaded) {
-                  final movies = state.movies;
+                  final movies = state.favoriteMovies;
 
                   return GridView.builder(
                     itemCount: movies.length,

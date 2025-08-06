@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:case_study_movies_project/ui/widgets/button_main.dart';
 import 'package:case_study_movies_project/ui/widgets/button_text.dart';
@@ -79,7 +80,9 @@ class SignUpScreen extends StatelessWidget {
               SizedBox(height: AppConstants.spacings.space37),
               ButtonMain(
                 text: AppStrings.signUpButton,
-                onPressed: () {},
+                onPressed: () {
+                  context.push(Routes.uploadPhotos);
+                },
               ),
               SizedBox(height: AppConstants.spacings.space37),
               const SectionSocialLogin(),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:case_study_movies_project/ui/widgets/button_main.dart';
 import 'package:case_study_movies_project/ui/widgets/button_text.dart';
@@ -55,7 +56,7 @@ class SignInScreen extends StatelessWidget {
               SizedBox(height: AppConstants.spacings.space24),
               ButtonMain(
                 text: AppStrings.signInButton,
-                onPressed: () {},
+                onPressed: () => context.push(Routes.discover),
               ),
               SizedBox(height: AppConstants.spacings.space37),
               const SectionSocialLogin(),

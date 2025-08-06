@@ -70,7 +70,7 @@ class LimitedOfferScreen extends StatelessWidget {
                   ButtonMain(
                     text: AppStrings.tokenButton,
                     padding: EdgeInsets.zero,
-                    onPressed: () {},
+                    onPressed: () => context.navigator.pop(),
                   ),
                   SizedBox(height: AppConstants.spacings.space24),
                 ],

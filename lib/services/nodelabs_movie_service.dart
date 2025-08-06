@@ -11,7 +11,7 @@ class NodeLabsMovieService extends IMovieService {
 
   @override
   Future<List<MovieModel>> getFavoriteMovies() async {
-    const String endPoint = '/movie/favorites/';
+    const String endPoint = '/movie/favorites';
 
     try {
       final response = await _dio.get(endPoint);
@@ -33,7 +33,7 @@ class NodeLabsMovieService extends IMovieService {
 
   @override
   Future<List<MovieModel>> getMovies({int page = 1}) async {
-    const String endPoint = '/movie/list/';
+    const String endPoint = '/movie/list';
     try {
       final response =
           await _dio.get(endPoint, queryParameters: {'page': page});

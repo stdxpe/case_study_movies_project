@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:case_study_movies_project/ui/widgets/appbar_custom.dart';
 import 'package:case_study_movies_project/ui/widgets/button_lite.dart';
@@ -13,8 +14,8 @@ class UploadPhotosScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarCustom(
+        onBackPressed: () => context.pop(),
         titleText: AppStrings.profileDetails,
-        onBackPressed: () {},
       ),
       backgroundColor: context.theme.colorPalette.scaffoldBackground,
       resizeToAvoidBottomInset: false,
@@ -37,7 +38,9 @@ class UploadPhotosScreen extends StatelessWidget {
             const Spacer(),
             ButtonMain(
               text: AppStrings.continueButton,
-              onPressed: () {},
+              onPressed: () {
+                context.push(Routes.uploadPhotos);
+              },
             ),
           ],
         ),

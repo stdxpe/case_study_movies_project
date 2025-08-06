@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:case_study_movies_project/services/global_services.dart/dummy_data.dart';
+import 'package:case_study_movies_project/services/global_services.dart/dummy_datas.dart';
 import 'package:case_study_movies_project/ui/bloc/movie_bloc.dart';
 import 'package:case_study_movies_project/ui/bloc/movie_state.dart';
 import 'package:case_study_movies_project/ui/widgets/card_movie_swipeable.dart';
@@ -70,7 +70,7 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                     color: Colors.white,
                   ));
                 } else if (state.status == MovieStatus.loaded) {
-                  final movies = state.movies;
+                  final movies = state.allMovies;
                   return PageView.builder(
                     controller: _pageController,
                     scrollDirection: Axis.vertical,

@@ -4,6 +4,7 @@ import 'package:case_study_movies_project/models/user_model.dart';
 import 'package:case_study_movies_project/ui/widgets/button_profile.dart';
 import 'package:case_study_movies_project/ui/widgets/text_custom.dart';
 import 'package:case_study_movies_project/utilities/utilities_library_imports.dart';
+import 'package:go_router/go_router.dart';
 
 class CardProfile extends StatelessWidget {
   const CardProfile({super.key, required this.userModel});
@@ -63,7 +64,9 @@ class CardProfile extends StatelessWidget {
             fontSize: AppConstants.fontSizes.size13,
             paddingHorizontal: AppConstants.paddings.addPhotoHorizontal,
             paddingVertical: AppConstants.paddings.addPhotoVertical,
-            onPressed: () {},
+            onPressed: () {
+              context.push(Routes.uploadPhotos);
+            },
           ),
         ],
       ),
