@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:case_study_movies_project/services/global_services.dart/dummy_data.dart';
+import 'package:case_study_movies_project/ui/bloc/movie_bloc.dart';
+import 'package:case_study_movies_project/ui/bloc/movie_state.dart';
 import 'package:case_study_movies_project/ui/widgets/card_movie_swipeable.dart';
 
 class DiscoverScreen extends StatefulWidget {
@@ -59,14 +62,29 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
         onNotification: _handleScrollNotification,
         child: Stack(
           children: [
-            PageView.builder(
-              controller: _pageController,
-              scrollDirection: Axis.vertical,
-              physics: const _SnappyScrollPhysics(),
-              itemCount: moviesData.length,
-              itemBuilder: (context, index) {
-                final movie = moviesData[index];
-                return CardMovieSwipeable(movie: movie);
+            BlocBuilder<MovieBloc, MovieState>(
+              builder: (context, state) {
+                if (state.status == MovieStatus.loading) {
+                  return const Center(
+                      child: CircularProgressIndicator(
+                    color: Colors.white,
+                  ));
+                } else if (state.status == MovieStatus.loaded) {
+                  final movies = state.movies;
+                  return PageView.builder(
+                    controller: _pageController,
+                    scrollDirection: Axis.vertical,
+                    physics: const _SnappyScrollPhysics(),
+                    itemCount: moviesData.length,
+                    itemBuilder: (context, index) {
+                      return CardMovieSwipeable(movie: movies[index]);
+                    },
+                  );
+                } else if (state.status == MovieStatus.error) {
+                  /// TODO: SNACKBAR
+                  return Center(child: Text('Error: ${state.errorMessage}'));
+                }
+                return const SizedBox.shrink();
               },
             ),
             if (_isLoadingMore)

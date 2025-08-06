@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:case_study_movies_project/services/global_services.dart/dummy_data.dart';
+import 'package:case_study_movies_project/ui/bloc/user_bloc.dart';
+import 'package:case_study_movies_project/ui/bloc/user_state.dart';
 import 'package:case_study_movies_project/ui/widgets/card_profile.dart';
 import 'package:case_study_movies_project/utilities/utilities_library_imports.dart';
 
@@ -20,9 +22,19 @@ class AppbarSliverProfile extends StatelessWidget {
       snap: true,
       backgroundColor: context.colorPalette.scaffoldBackground,
       expandedHeight: AppConstants.sizes.profilePicHeight,
-
-      /// TODO: Get UserModel dynamic
-      title: CardProfile(userModel: dummyUser),
+      title: BlocBuilder<UserBloc, UserState>(
+        builder: (context, state) {
+          if (state is UserLoading) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (state is UserLoaded) {
+            return CardProfile(userModel: state.userEntity);
+          } else if (state is UserError) {
+            return Text('Error: ${state.message}');
+          } else {
+            return const SizedBox.shrink();
+          }
+        },
+      ),
       centerTitle: false,
       titleSpacing: 0,
       toolbarHeight: 85,

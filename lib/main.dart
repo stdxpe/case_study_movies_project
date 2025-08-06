@@ -1,12 +1,20 @@
+import 'package:case_study_movies_project/ui/bloc/movie_event.dart';
+import 'package:case_study_movies_project/ui/bloc/user_event.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:case_study_movies_project/services/global_services.dart/dependency_injection_service.dart';
-import 'package:case_study_movies_project/ui/screens/0test_screen.dart';
-import 'package:case_study_movies_project/ui/screens/main_screen_with_navbar.dart';
+import 'package:case_study_movies_project/services/global_services.dart/navigation_service.dart';
+import 'package:case_study_movies_project/ui/bloc/auth_bloc.dart';
+import 'package:case_study_movies_project/ui/bloc/auth_event.dart';
+import 'package:case_study_movies_project/ui/bloc/movie_bloc.dart';
+import 'package:case_study_movies_project/ui/bloc/user_bloc.dart';
 import 'package:case_study_movies_project/utilities/utilities_library_imports.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+
+  /// GetIt Implemented as Dependency Injection Solution
   initializeDependencyInjectionService();
   runApp(const RootApp());
 }
@@ -16,17 +24,26 @@ class RootApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: AppStrings.appTitle,
-      theme: AppThemes.light,
-      darkTheme: AppThemes.dark,
-      themeMode: ThemeMode.dark,
+    /// Bloc Implemented as State Management Solution
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<AuthBloc>(
+            create: (_) => locator<AuthBloc>()..add(CheckAuthStatusEvent())),
+        BlocProvider<UserBloc>(
+            create: (_) => locator<UserBloc>()..add(GetUserProfileEvent())),
+        BlocProvider<MovieBloc>(
+            create: (_) => locator<MovieBloc>()..add(GetMoviesEvent(page: 1))),
+      ],
+      child: MaterialApp.router(
+        title: AppStrings.appTitle,
+        themeMode: ThemeMode.dark,
+        darkTheme: AppThemes.dark,
+        theme: AppThemes.light,
 
-      debugShowCheckedModeBanner: false,
-      // home: const HomeWithCustomNavButtons(),
-      home: TestScreen(),
-
-      /// TODO LOTTIE MOVIE CLIC ^*
+        /// Go_Router Implemented as Advanced Navigation Solution
+        routerConfig: AppRouter.router,
+        debugShowCheckedModeBanner: false,
+      ),
     );
   }
 }

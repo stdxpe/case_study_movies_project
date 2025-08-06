@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:case_study_movies_project/services/global_services.dart/dummy_data.dart';
+import 'package:case_study_movies_project/ui/bloc/movie_bloc.dart';
+import 'package:case_study_movies_project/ui/bloc/movie_state.dart';
 import 'package:case_study_movies_project/ui/screens/limited_offer_screen.dart';
 import 'package:case_study_movies_project/ui/widgets/appbar_custom.dart';
 import 'package:case_study_movies_project/ui/widgets/appbar_sliver_profile.dart';
@@ -59,24 +61,35 @@ class ProfileDetailsScreen extends StatelessWidget {
                 alignment: Alignment.centerLeft,
               ),
               SizedBox(height: AppConstants.spacings.space24),
-              GridView.builder(
-                //TODO: GET DYNAMIC ITEMCOUNT from API
-                itemCount: 20,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: AppConstants.spacings.space16,
-                  crossAxisSpacing: AppConstants.spacings.space16,
-                  mainAxisExtent: context.movieCardTotalHeight,
-                ),
-                itemBuilder: (context, index) {
-                  return CardMovie(
-                      movieTitle: dummyMoviesList[(index % 5)].title,
-                      movieSubtitle: 'Fox Studios',
-                      imagePath: dummyMoviesList[(index % 5)].posterUrl);
-                },
-              ),
+              BlocBuilder<MovieBloc, MovieState>(builder: (context, state) {
+                if (state.status == MovieStatus.loading) {
+                  return const Center(child: CircularProgressIndicator());
+                } else if (state.status == MovieStatus.loaded) {
+                  final movies = state.movies;
+
+                  return GridView.builder(
+                    itemCount: movies.length,
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: AppConstants.spacings.space16,
+                      crossAxisSpacing: AppConstants.spacings.space16,
+                      mainAxisExtent: context.movieCardTotalHeight,
+                    ),
+                    itemBuilder: (context, index) {
+                      return CardMovie(
+                          movieTitle: movies[index].title,
+                          movieSubtitle: 'Fox Studios',
+                          imagePath: movies[index].posterUrl);
+                    },
+                  );
+                } else if (state.status == MovieStatus.error) {
+                  /// TODO: SNACKBAR
+                  return Center(child: Text('Error: ${state.errorMessage}'));
+                }
+                return const SizedBox.shrink();
+              }),
               SizedBox(height: AppConstants.paddings.screen),
             ],
           ),
