@@ -56,7 +56,7 @@ class SignInScreen extends StatelessWidget {
               SizedBox(height: AppConstants.spacings.space24),
               ButtonMain(
                 text: AppStrings.signInButton,
-                onPressed: () => context.push(Routes.discover),
+                onPressed: () => context.push(Routes.home),
               ),
               SizedBox(height: AppConstants.spacings.space37),
               const SectionSocialLogin(),

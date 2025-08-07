@@ -13,6 +13,25 @@ import 'package:case_study_movies_project/ui/widgets/text_custom.dart';
 import 'package:case_study_movies_project/utilities/utilities_library_imports.dart';
 import 'package:case_study_movies_project/services/global_services.dart/dependency_injection_service.dart';
 
+//  BlocBuilder<MovieBloc, MovieState>(builder: (context, state) {
+//               return switch (state.status) {
+//                 MovieStatus.loading => const Center(
+//                     child: CircularProgressIndicator(color: Colors.white)),
+//                 MovieStatus.loaded => PageView.builder(
+//                     controller: _pageController,
+//                     scrollDirection: Axis.vertical,
+//                     physics: const _SnappyScrollPhysics(),
+//                     itemCount: state.allMovies.length,
+//                     itemBuilder: (context, index) =>
+//                         CardMovieSwipeable(movie: state.allMovies[index])),
+//                 MovieStatus.error =>
+//                   Center(child: Text('Error: ${state.errorMessage}')),
+//                 _ => const SizedBox.shrink(),
+//               };
+//             }),
+
+// SpinKitCubeGrid(color: ColorPalette.permaWhite,size: 40),
+
 class ProfileDetailsScreen extends StatelessWidget {
   const ProfileDetailsScreen({super.key});
 
