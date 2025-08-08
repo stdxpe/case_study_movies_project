@@ -1,11 +1,12 @@
-// ignore_for_file: unnecessary_null_comparison
-
+import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:case_study_movies_project/models/auth_error_response.model.dart';
 import 'package:case_study_movies_project/models/auth_model.dart';
 import 'package:case_study_movies_project/services/abstract_classes/i_auth_service.dart';
 import 'package:case_study_movies_project/ui/bloc/auth_event.dart';
 import 'package:case_study_movies_project/ui/bloc/auth_state.dart';
+// ignore_for_file: unnecessary_null_comparison
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final IAuthService authService;
@@ -24,14 +25,22 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         email: event.email,
         password: event.password,
       );
-
+      print(authModel);
       if (authModel.token != null && authModel.token.isNotEmpty) {
         emit(AuthSuccess());
       } else {
         emit(AuthError('Login failed: empty token received'));
       }
     } catch (e) {
-      emit(AuthError('Login failed: ${e.toString()}'));
+      AuthErrorResponseModel? errorResponse;
+      try {
+        if (e is DioException && e.response?.data is Map<String, dynamic>) {
+          errorResponse = AuthErrorResponseModel.fromMap(
+              e.response!.data as Map<String, dynamic>);
+        }
+      } catch (_) {}
+      final errorMessage = errorResponse?.message ?? e.toString();
+      emit(AuthError(errorMessage));
     }
   }
 
@@ -43,14 +52,22 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         name: event.name,
         password: event.password,
       );
-
+      print(authModel);
       if (authModel.token != null && authModel.token.isNotEmpty) {
         emit(AuthSuccess());
       } else {
         emit(AuthError('Register failed: empty token received'));
       }
     } catch (e) {
-      emit(AuthError('Register failed: ${e.toString()}'));
+      AuthErrorResponseModel? errorResponse;
+      try {
+        if (e is DioException && e.response?.data is Map<String, dynamic>) {
+          errorResponse = AuthErrorResponseModel.fromMap(
+              e.response!.data as Map<String, dynamic>);
+        }
+      } catch (_) {}
+      final errorMessage = errorResponse?.message ?? e.toString();
+      emit(AuthError(errorMessage));
     }
   }
 
