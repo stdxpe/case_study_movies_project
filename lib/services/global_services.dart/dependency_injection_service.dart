@@ -8,7 +8,9 @@ import 'package:case_study_movies_project/services/abstract_classes/i_movie_serv
 import 'package:case_study_movies_project/services/abstract_classes/i_token_storage_service.dart';
 import 'package:case_study_movies_project/services/abstract_classes/i_user_service.dart';
 import 'package:case_study_movies_project/services/global_services.dart/api_client.dart';
+import 'package:case_study_movies_project/services/global_services.dart/navigation_redirect_service.dart';
 import 'package:case_study_movies_project/services/global_services.dart/navigation_service.dart';
+import 'package:case_study_movies_project/services/image_handler_service.dart';
 import 'package:case_study_movies_project/services/logger_service.dart';
 import 'package:case_study_movies_project/services/nodelabs_auth_service.dart';
 import 'package:case_study_movies_project/services/nodelabs_movie_service.dart';
@@ -26,12 +28,14 @@ final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 void initializeDependencyInjectionService() {
   /// Flutter Secure Storage Instance Implementation
-  locator.registerLazySingleton<FlutterSecureStorage>(
-      () => const FlutterSecureStorage());
+  locator.registerLazySingleton<FlutterSecureStorage>(() {
+    return const FlutterSecureStorage();
+  });
 
   /// Token Storage Service (Data Access Layer)
-  locator
-      .registerLazySingleton<ITokenStorageService>(() => TokenStorageService());
+  locator.registerLazySingleton<ITokenStorageService>(() {
+    return TokenStorageService();
+  });
 
   /// HTTP Client Registered as Dio
   locator.registerSingleton(ApiClient());
@@ -46,15 +50,23 @@ void initializeDependencyInjectionService() {
   /// Movie Service (Data Access Layer)
   locator.registerLazySingleton<IMovieService>(() => NodeLabsMovieService());
 
+  /// Image Picker Service (Data Access Layer)
+  locator.registerLazySingleton<ImageHandlerService>(() {
+    return ImageHandlerService();
+  });
+
   /// Logger Service (Global Service)
   locator.registerLazySingleton<ILoggerService>(() => LoggerService());
 
   /// All Bloc's Registered with Service Class Constructors via GetIt DI
-  locator.registerFactory<AuthBloc>(() => AuthBloc(authService: locator()));
+  locator.registerSingleton<AuthBloc>(
+      AuthBloc(authService: locator<IAuthService>()));
   locator.registerFactory<UserBloc>(() => UserBloc(userService: locator()));
   locator.registerFactory<MovieBloc>(() => MovieBloc(movieService: locator()));
 
   /// GoRouter Registered as Advanced Navigation & Routing System
+  locator.registerSingleton<NavigationRedirectService>(
+      NavigationRedirectService(authBloc: locator()));
   locator.registerSingleton<NavigationService>(NavigationService(navigatorKey));
   locator.registerSingleton<NavigationBarCubit>(NavigationBarCubit(null));
 }
