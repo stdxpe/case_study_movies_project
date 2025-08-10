@@ -1,17 +1,26 @@
 abstract class ILoggerService {
-  void logDebug(String message, {Map<String, dynamic>? extraData});
-  void logInfo(String message, {Map<String, dynamic>? extraData});
-  void logWarning(String message, {Map<String, dynamic>? extraData});
-  void logError(
-    String message, [
-    Exception? exception,
-    StackTrace? stackTrace,
-    Map<String, dynamic>? extraData,
-  ]);
-  void logFatal(
-    String message, [
-    Exception? exception,
-    StackTrace? stackTrace,
-    Map<String, dynamic>? extraData,
-  ]);
+  void logInfo(String message, {Map<String, dynamic>? params});
+
+  Future<void> logEvent(String name, {Map<String, dynamic>? params});
+
+  Future<void> logWarning(
+    String message, {
+    Object? error,
+    StackTrace? stack,
+    Map<String, dynamic>? params,
+  });
+
+  Future<void> logError(
+    String message, {
+    Object? error,
+    StackTrace? stack,
+    Map<String, dynamic>? params,
+  });
+
+  Future<void> logFatal(
+    String message, {
+    Object? error,
+    StackTrace? stack,
+    Map<String, dynamic>? params,
+  });
 }
