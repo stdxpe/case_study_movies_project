@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "976322486776",
+    "project_id": "case-study-movies-project-cs",
+    "storage_bucket": "case-study-movies-project-cs.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:976322486776:android:3e80ae0c2d1184cbc1f60d",
+        "android_client_info": {
+          "package_name": "com.yasinbilgin.case_study_movies_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxwq16LZqSiXjsndcjJ4O_LoN3T0hfc60"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
