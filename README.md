@@ -1,6 +1,7 @@
 # 🎬 Case Study: Movies Project
 
 A feature-rich Flutter application demonstrating clean architecture principles, BLoC state management, and modern Flutter development best practices.
+Showcase project using Flutter, Bloc state management, API integration, authentication and custom UI with modular, reusable design.
 
 ---
 
@@ -215,7 +216,70 @@ lib/
 * **Animations:** Smooth transitions controlled via Cubits.
 * **Extensibility:** Utilities for constants, colors, extensions, and asset management.
 
----
+
+## Dependencies (on pubspec.yaml)
+```yaml
+####################################################################################
+    
+  flutter_bloc: ^9.1.1                        # State Management Solution
+  get_it: ^8.2.0                              # Dependency Injection Service
+  go_router: ^16.1.0                          # Advanced Navigation & Routing System
+  dio: ^5.8.0+1                               # HTTP Networking Service
+  flutter_secure_storage: ^9.2.4              # Secure Token Management Service
+  image_picker: ^1.1.2                        # Upload from Device Gallery Functionality
+  easy_localization: ^3.0.8                   # Localization Service
+
+  firebase_core: ^4.0.0                       # Firebase Services | Root
+  firebase_analytics: ^12.0.0                 # Firebase Analytics Service
+  firebase_crashlytics: ^5.0.0                # Firebase Crashlytics Service        
+  
+  lottie: ^3.3.1                              # Optimized JSON Animations
+  flutter_dotenv: ^5.2.1                      # Environment Variable Service
+  flutter_animate: ^4.5.2                     # Advanced Animation Builder
+  flutter_svg: ^2.0.7                         # SVG Icon Viewer
+  image: ^4.5.4                               # Image Processor
+  readmore: ^3.0.0                            # Expandable Text
+  flutter_inset_box_shadow: ^1.0.8            # Custom Gradients
+  flutter_spinkit: ^5.2.1                     # ProgressBar Animations
+  cupertino_icons: ^1.0.6                     # UI Icons
+
+####################################################################################
+```
+## main.dart
+```dart 
+WidgetsFlutterBinding.ensureInitialized();
+
+  /// DotEnv Implemented as Environment Variable Solution
+  await dotenv.load(fileName: AppConstants.envPath);
+
+  /// Firebase Implemented as Cloud Solution
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  /// GetIt Implemented as Dependency Injection Solution
+  initializeDependencyInjectionService();
+
+  /// EasyLocalization Implemented as Localization Service
+  await EasyLocalization.ensureInitialized();
+
+  /// Firebase Crashlytics Implemented as Remote Logger Service
+  FlutterError.onError = (errorDetails) =>
+      FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
+  ...
+   /// Bloc Implemented as State Management Solution
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<AuthBloc>(
+          create: (_) => locator<AuthBloc>()..add(CheckAuthStatusEvent());
+  ...
+   /// Custom Dark/Light Mode Themes Implemented
+          themeMode: themeMode,
+          darkTheme: AppThemes.dark,
+  ...
+   /// Go_Router Implemented as Advanced Navigation Solution
+          routerConfig: AppRouter.router,
+          localizationsDelegates: context.localizationDelegates,
+  ...
+```
 
 ## 🔧 Example Service Implementation
 
