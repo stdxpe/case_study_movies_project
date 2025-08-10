@@ -219,7 +219,7 @@ lib/
 
 ## Dependencies (on pubspec.yaml)
 ```yaml
-############################################################################################
+#########################################################################################
     
   flutter_bloc: ^9.1.1                        # State Management Solution
   get_it: ^8.2.0                              # Dependency Injection Service
@@ -243,7 +243,7 @@ lib/
   flutter_spinkit: ^5.2.1                     # ProgressBar Animations
   cupertino_icons: ^1.0.6                     # UI Icons
 
-############################################################################################
+#########################################################################################
 ```
 ## main.dart
 ```dart 
@@ -265,26 +265,24 @@ WidgetsFlutterBinding.ensureInitialized();
   FlutterError.onError = (errorDetails) =>
       FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);  ...
 
-   /// Bloc Implemented as State Management Solution
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider<AuthBloc>(
-          create: (_) => locator<AuthBloc>()..add(CheckAuthStatusEvent());  ...
-   /// Go_Router Implemented as Advanced Navigation Solution
-          routerConfig: AppRouter.router,
-          localizationsDelegates: context.localizationDelegates,  ...
+  /// Bloc Implemented as State Management Solution
+  return MultiBlocProvider(
+    providers: [
+      BlocProvider<AuthBloc>(
+        create: (_) => locator<AuthBloc>()..add(CheckAuthStatusEvent());  ...
 
-   /// Custom Dark/Light Mode Themes Implemented
-          themeMode: themeMode,
-          theme: AppThemes.light,
-          darkTheme: AppThemes.dark,  ...
+  /// Go_Router Implemented as Advanced Navigation Solution
+  routerConfig: AppRouter.router,
+  localizationsDelegates: context.localizationDelegates,  ...
+
+  /// Custom Dark/Light Mode Themes Implemented
+  themeMode: themeMode,
+  theme: AppThemes.light,
+  darkTheme: AppThemes.dark,  ...
 ```
 
 ## Model Class Example
 ```dart
-import 'dart:convert';
-import 'package:case_study_movies_project/utilities/utilities_library_imports.dart';
-
 class MovieModel {
   final String id;
   final String title;
@@ -333,12 +331,12 @@ class MovieModel {
 
   @override
   String toString() {
-    return 'MovieModel(id: $id, title: $title, description: $description, posterUrl: $posterUrl)';
+    return 'MovieModel(id: $id, title: $title, description: $description ... )';
   }
 }
 ```
 
-## IAbstact Class Example
+## Abstract Class Example
 ```dart
 abstract class IMovieService {
   Future<List<MovieModel>> getMovies({int page = 1});
@@ -361,9 +359,7 @@ class NodeLabsMovieService extends IMovieService {
       final response = await _dio.get(endPoint);
 
       if (response.statusCode == 200) {
-        final favMoviesResponse =
-            FavoriteMoviesResponseModel.fromMap(response.data);
-
+        final favMoviesResponse = FavoriteMoviesResponseModel.fromMap(response.data);
         return favMoviesResponse.movies; ... }
 
     } on DioException catch (_) {
@@ -377,51 +373,138 @@ class NodeLabsMovieService extends IMovieService {
 
 ```dart
 class MovieBloc extends Bloc<MovieEvent, MovieState> {
+
   final IMovieService movieService;
-  final _logger = locator<ILoggerService>();
+  final logger = locator<ILoggerService>();
 
   MovieBloc({required this.movieService}) : super(MovieState.initial()) {
     on<GetFavoriteMoviesEvent>(_onGetFavoriteMovies); ... }
 
-Future<void> _onGetFavoriteMovies(
-    GetFavoriteMoviesEvent event,
-    Emitter<MovieState> emit
-  ) async {
-    
-    _logger.logInfo('GetFavoriteMovies started');
+Future<void> _onGetFavoriteMovies(GetFavoriteMoviesEvent event, Emitter<MovieState> emit) async {
+
     emit(state.copyWith(status: MovieStatus.loading));
+    _logger.logInfo( ...
 
     try {
-      final favorites = await movieService.getFavoriteMovies();
+      final favoriteMovies = await movieService.getFavoriteMovies();
 
-      emit(state.copyWith(status: MovieStatus.loaded, favoriteMovies: favorites));
-      _logger.logInfo(  ... 
+      emit(state.copyWith(status: MovieStatus.loaded, favoriteMovies: favoriteMovies));
+      logger.logInfo(  ... 
 
     } catch (e, stack) {
-      emit(state.copyWith(
-          status: MovieStatus.error, errorMessage: e.toString()));
-      _logger.logError(  ...
 
-class MovieBloc extends Bloc<MovieEvent, MovieState> {
-  final IMovieService movieService;
-
-  MovieBloc(this.movieService) : super(MovieInitial()) {
-    on<FetchMoviesEvent>(_onFetchMovies);
-  }
-
-  Future<void> _onFetchMovies(FetchMoviesEvent event, Emitter<MovieState> emit) async {
-    emit(MovieLoading());
-    try {
-      final movies = await movieService.getMovies(page: event.page);
-      emit(MovieLoaded(movies: movies));
-    } catch (e) {
-      emit(MovieError('Failed to load movies.'));
-    }
-  }
-}
+      emit(state.copyWith( status: MovieStatus.error, errorMessage: e.toString()));
+      logger.logError(  ...
 ```
 
----
+## UI BLoC Implementation Example
+```dart
+BlocBuilder<MovieBloc, MovieState> (builder: (context, state) {
+switch (state.status) {
+
+  case MovieStatus.loading:
+      return const LottieLoadingAnimation();
+
+  case MovieStatus.error:
+      return const LottieErrorAnimation();
+
+  case MovieStatus.loaded:
+      final movies = state.favoriteMovies;
+
+      return GridView.builder(
+                itemCount: movies.length, ...
+                itemBuilder: (context, index) {
+
+                    return CardMovie(
+                              movieTitle: movies[index].title,
+                              movieSubtitle:movies[index].description,
+                              imagePath: movies[index].posterUrl,
+                            );    ...
+```
+## UI Widget Example
+```dart
+class CardMovie extends StatelessWidget {
+  const CardMovie({required this.imagePath, required this.movieTitle, required this.movieSubtitle});
+
+  final String imagePath;
+  final String movieTitle;
+  final String movieSubtitle;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        ClipRRect(
+          borderRadius: BorderRadius.circular(AppConstants.radius.movieCard),
+          child: AspectRatio(
+            aspectRatio: AppConstants.sizes.movieCardAspectRatio,
+            child: Image.network(
+              imagePath,
+              height: AppConstants.sizes.movieCardHeight,
+              width: context.mediaQuery.size.width,
+              loadingBuilder: (context, child, loadingProgress) {
+                return const LottieLoadingAnimation();
+              },
+            ),
+          ),
+        ),
+        SizedBox(height: AppConstants.spacings.space16),
+
+        TextCustom(
+          text: movieTitle,
+          textStyle: context.textTheme.infoBold,
+          color: context.colorPalette.text,
+        ),
+        
+        TextCustom(
+          text: movieSubtitle,
+          textStyle: context.textTheme.infoLight,
+          color: context.colorPalette.textFaded05,
+        ),
+...
+```
+
+## UI General Example
+```dart
+Scaffold(
+  backgroundColor: context.colorPalette.scaffoldBackground,
+  body: SingleChildScrollView(
+  physics: const ClampingScrollPhysics(),
+  child: SizedBox(
+            height: context.mediaQuery.size.height,
+            child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        SectionTitleSubtitle(
+                          title: AppStrings.signInTitle,
+                          subtitle: AppStrings.signInSubtitle,
+                        ),
+                        SizedBox(height: AppConstants.spacings.space40),
+
+                        TextFieldCustom(
+                          onChanged: cubit.emailChanged,
+                          keyboardType: TextInputType.emailAddress,
+                          hintText: AppStrings.hintEmail,
+                          prefixIconPath: AppVisuals.mail,
+                          prefixIconSize: AppConstants.sizes.iconMailHeight,
+                        ),
+
+                        SizedBox(height: AppConstants.spacings.space13),
+
+                        TextFieldCustom(
+                          onChanged: cubit.passwordChanged,
+                          onToggle: cubit.togglePasswordVisibility,
+                          obscureText: state.isPasswordVisible,
+                          keyboardType: TextInputType.visiblePassword,
+                          hintText: AppStrings.hintPassword,
+                          prefixIconPath: AppVisuals.unlock,
+                          prefixIconSize: AppConstants.sizes.iconUnlockHeight,
+                          suffixIconPath: AppVisuals.hide,
+                          suffixIconSize: AppConstants.sizes.iconHideHeight,
+                        ),
+...
+```
+
 
 ## 📌 Completed Development Milestones
 
