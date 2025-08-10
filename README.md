@@ -339,37 +339,71 @@ class MovieModel {
 ## Abstract Class Example
 ```dart
 abstract class IMovieService {
-  Future<List<MovieModel>> getMovies({int page = 1});
+  
+  Future<List<MovieModel>> getMovies(int page);
   Future<List<MovieModel>> getFavoriteMovies();
   Future<bool> toggleFavorite(String favoriteId);
 }
+```
+
+## Dependency Injection Example
+```dart
+...
+/// Auth Service (Data Access Layer)
+locator.registerLazySingleton<IAuthService>(() => NodeLabsAuthService());
+
+/// User Service (Data Access Layer)
+locator.registerLazySingleton<IUserService>(() => NodeLabsUserService());
+
+/// Movie Service (Data Access Layer)
+locator.registerLazySingleton<IMovieService>(() => NodeLabsMovieService());
+
+/// All Bloc's Registered with Service Class Constructors via GetIt DI
+locator.registerSingleton<AuthBloc>( => AuthBloc(authService: locator));
+locator.registerFactory<UserBloc>(() => UserBloc(userService: locator));
+locator.registerFactory<MovieBloc>(() => MovieBloc(movieService: locator));
+...
 ```
 
 ## Service Class Example
 
 ```dart
 class NodeLabsMovieService extends IMovieService {
-  final Dio _dio = locator<Dio>();
+  final _dio = locator<Dio>();
 
   @override
   Future<List<MovieModel>> getFavoriteMovies() async {
     const String endPoint = '/movie/favorites';
 
     try {
+      _logger.logInfo('GET $endPoint → Fetching items');
       final response = await _dio.get(endPoint);
 
       if (response.statusCode == 200) {
         final favMoviesResponse = FavoriteMoviesResponseModel.fromMap(response.data);
-        return favMoviesResponse.movies; ... }
+        _logger.logInfo('Successfully fetched ${favMoviesResponse.movies.length} items from $endPoint');
 
-    } on DioException catch (_) {
+        return favMoviesResponse.movies;
+
+      } else if (response.statusCode == 401) {
+        _logger.logError('GET $endPoint → ${AppStrings.errors.unauthorized401}: ${response.statusCode}');
+        throw Exception('${AppStrings.errors.unauthorized401}: ${response.statusCode}');
+
+      } else {
+        _logger.logError('GET $endPoint → ${AppStrings.errors.unknown}: ${response.statusCode}');
+        throw Exception('${AppStrings.errors.unknown}: ${response.statusCode}');
+      }
+
+    } on DioException catch (error, stacktrace) {
+      _logger.logError('GET $endPoint → Exception: $error $stacktrace');
       rethrow; 
     }
+  }
 ```
 
 ---
 
-## BLoC Usage Example
+## BLoC Example
 
 ```dart
 class MovieBloc extends Bloc<MovieEvent, MovieState> {
@@ -380,12 +414,14 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
   MovieBloc({required this.movieService}) : super(MovieState.initial()) {
     on<GetFavoriteMoviesEvent>(_onGetFavoriteMovies); ... }
 
-Future<void> _onGetFavoriteMovies(GetFavoriteMoviesEvent event, Emitter<MovieState> emit) async {
+...
+Future<void> _onGetFavoriteMovies(event, emit) async {
 
     emit(state.copyWith(status: MovieStatus.loading));
     _logger.logInfo( ...
 
     try {
+
       final favoriteMovies = await movieService.getFavoriteMovies();
 
       emit(state.copyWith(status: MovieStatus.loaded, favoriteMovies: favoriteMovies));
@@ -396,6 +432,8 @@ Future<void> _onGetFavoriteMovies(GetFavoriteMoviesEvent event, Emitter<MovieSta
       emit(state.copyWith( status: MovieStatus.error, errorMessage: e.toString()));
       logger.logError(  ...
 ```
+Note: Three Different Bloc Writing Alternative Implemented
+
 
 ## UI BLoC Implementation Example
 ```dart
@@ -419,12 +457,16 @@ switch (state.status) {
                               movieTitle: movies[index].title,
                               movieSubtitle:movies[index].description,
                               imagePath: movies[index].posterUrl,
-                            );    ...
+                            );
+...
 ```
 ## UI Widget Example
 ```dart
 class CardMovie extends StatelessWidget {
-  const CardMovie({required this.imagePath, required this.movieTitle, required this.movieSubtitle});
+  const CardMovie({required this.imagePath, 
+  required this.movieTitle, 
+  required this.movieSubtitle,
+  });
 
   final String imagePath;
   final String movieTitle;
@@ -436,14 +478,16 @@ class CardMovie extends StatelessWidget {
       children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(AppConstants.radius.movieCard),
+
           child: AspectRatio(
             aspectRatio: AppConstants.sizes.movieCardAspectRatio,
+
             child: Image.network(
               imagePath,
               height: AppConstants.sizes.movieCardHeight,
               width: context.mediaQuery.size.width,
               loadingBuilder: (context, child, loadingProgress) {
-                return const LottieLoadingAnimation();
+                              return const LottieLoadingAnimation();
               },
             ),
           ),
@@ -455,7 +499,7 @@ class CardMovie extends StatelessWidget {
           textStyle: context.textTheme.infoBold,
           color: context.colorPalette.text,
         ),
-        
+
         TextCustom(
           text: movieSubtitle,
           textStyle: context.textTheme.infoLight,
