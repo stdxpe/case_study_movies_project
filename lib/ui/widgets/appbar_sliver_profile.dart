@@ -12,33 +12,29 @@ class AppbarSliverProfile extends StatelessWidget {
   final bool innerBoxIsScrolled;
 
   @override
-  Widget build(BuildContext context) {
-    return SliverAppBar(
-      shadowColor: context.colorPalette.scaffoldBackground,
-      surfaceTintColor: context.colorPalette.scaffoldBackground,
-      foregroundColor: context.colorPalette.scaffoldBackground,
-      pinned: false,
-      floating: true,
-      snap: true,
-      backgroundColor: context.colorPalette.scaffoldBackground,
-      expandedHeight: AppConstants.sizes.profilePicHeight,
-      title: BlocBuilder<UserBloc, UserState>(
-        builder: (context, state) {
-          if (state is UserLoading) {
-            return const Center(child: CircularProgressIndicator());
-          } else if (state is UserLoaded) {
-            return CardProfile(userModel: state.userEntity);
-          } else if (state is UserError) {
-            return Text('Error: ${state.message}');
-          } else {
+  Widget build(BuildContext context) => SliverAppBar(
+        shadowColor: context.colorPalette.scaffoldBackground,
+        surfaceTintColor: context.colorPalette.scaffoldBackground,
+        foregroundColor: context.colorPalette.scaffoldBackground,
+        pinned: false,
+        floating: true,
+        snap: true,
+        backgroundColor: context.colorPalette.scaffoldBackground,
+        expandedHeight: AppConstants.sizes.profilePicHeight,
+        title: BlocBuilder<UserBloc, UserState>(
+          builder: (context, state) {
+            if (state.isLoading) {
+              return const Center(child: CircularProgressIndicator());
+            }
+            if (state.user != null) {
+              return CardProfile(userModel: state.user!);
+            }
             return const SizedBox.shrink();
-          }
-        },
-      ),
-      centerTitle: false,
-      titleSpacing: 0,
-      toolbarHeight: 85,
-      forceElevated: innerBoxIsScrolled,
-    );
-  }
+          },
+        ),
+        centerTitle: false,
+        titleSpacing: 0,
+        toolbarHeight: 85,
+        forceElevated: innerBoxIsScrolled,
+      );
 }

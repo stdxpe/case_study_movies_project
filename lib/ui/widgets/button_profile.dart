@@ -12,6 +12,8 @@ class ButtonProfile extends StatelessWidget {
   final double? paddingVertical;
   final double? paddingHorizontal;
   final double? fontSize;
+  final Color? backgroundColor;
+  final Color? foregroundColor;
 
   const ButtonProfile({
     super.key,
@@ -22,6 +24,8 @@ class ButtonProfile extends StatelessWidget {
     this.paddingVertical,
     this.paddingHorizontal,
     this.fontSize,
+    this.backgroundColor,
+    this.foregroundColor,
   });
 
   @override
@@ -29,8 +33,10 @@ class ButtonProfile extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        backgroundColor: context.colorPalette.buttonMainBackground,
-        foregroundColor: context.colorPalette.buttonMainForeground,
+        backgroundColor:
+            backgroundColor ?? context.colorPalette.buttonMainBackground,
+        foregroundColor:
+            foregroundColor ?? context.colorPalette.buttonMainForeground,
         padding: EdgeInsets.symmetric(
           horizontal:
               paddingHorizontal ?? AppConstants.paddings.limitedOfferHorizontal,
@@ -45,15 +51,16 @@ class ButtonProfile extends StatelessWidget {
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           if (iconPath != null) ...[
             SvgPicture.asset(
               iconPath!,
               width: AppConstants.sizes.iconGemHeight,
               height: AppConstants.sizes.iconGemHeight,
+              alignment: Alignment.centerRight,
               colorFilter: ColorFilter.mode(
-                context.colorPalette.buttonMainForeground,
+                foregroundColor ?? context.colorPalette.buttonMainForeground,
                 BlendMode.srcIn,
               ),
             ),
@@ -61,10 +68,12 @@ class ButtonProfile extends StatelessWidget {
           ],
           TextCustom(
             text: text,
-            color: context.colorPalette.buttonMainForeground,
+            color: foregroundColor ?? context.colorPalette.buttonMainForeground,
             textStyle: context.textTheme.infoLight,
             fontSizeCustom: fontSize,
             fontWeightCustom: FontWeight.w600,
+            alignment: Alignment.centerRight,
+            textAlignCustom: TextAlign.start,
           ),
         ],
       ),
