@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 import 'package:case_study_movies_project/ui/widgets/text_custom.dart';
 import 'package:case_study_movies_project/utilities/utilities_library_imports.dart';
@@ -22,24 +23,29 @@ class ButtonNavigationBarItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: onPressed,
-      style: ElevatedButton.styleFrom(
-        padding: EdgeInsets.symmetric(
-          vertical: AppConstants.paddings.navButtonVertical,
-          horizontal: AppConstants.paddings.navButtonHorizontal,
-        ),
-        backgroundColor: context.colorPalette.scaffoldBackground,
-        foregroundColor: isSelected
-            ? ColorPalette.permaRed
-            : context.colorPalette.navigationBar,
-        elevation: 0,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(
-            AppConstants.radius.navBarItem,
+      style: ButtonStyle(
+        foregroundColor:
+            WidgetStateProperty.all(context.colorPalette.navigationBar),
+        backgroundColor:
+            WidgetStateProperty.all(context.colorPalette.scaffoldBackground),
+        padding: WidgetStateProperty.all(
+          EdgeInsets.symmetric(
+            vertical: AppConstants.paddings.navButtonVertical,
+            horizontal: AppConstants.paddings.navButtonHorizontal,
           ),
         ),
-        side: BorderSide(
-          width: AppConstants.sizes.borderWidth,
-          color: context.colorPalette.buttonLiteBorder,
+        elevation: WidgetStateProperty.all(0),
+        shape: WidgetStateProperty.all(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(AppConstants.radius.navBarItem),
+          ),
+        ),
+        side: WidgetStateProperty.all(
+          BorderSide(
+            color: isSelected
+                ? context.colorPalette.text.withAlpha(200)
+                : context.colorPalette.buttonLiteBorder,
+          ),
         ),
       ),
       child: Row(
@@ -65,6 +71,6 @@ class ButtonNavigationBarItem extends StatelessWidget {
           ),
         ],
       ),
-    );
+    ).animate().fadeIn(duration: 600.ms);
   }
 }
