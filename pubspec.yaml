@@ -3,7 +3,6 @@
 name: case_study_movies_project
 description: "Showcase project using Flutter, Bloc state management, API integration, authentication and custom UI with modular, reusable design."
 publish_to: 'none' 
-
 version: 1.0.0+1
 
 environment:
@@ -14,7 +13,7 @@ dev_dependencies:
   flutter_native_splash: ^2.4.6
   flutter_test:
     sdk: flutter
-
+    
 dependencies:
   flutter:
     sdk: flutter
@@ -25,7 +24,7 @@ dependencies:
   get_it: ^8.2.0                              # Dependency Injection Service
   go_router: ^16.1.0                          # Advanced Navigation & Routing System
   dio: ^5.8.0+1                               # HTTP Networking Service
-  flutter_secure_storage: ^9.2.4              # Secure Token Management
+  flutter_secure_storage: ^9.2.4              # Secure Token Management Service
   image_picker: ^1.1.2                        # Upload from Device Gallery Functionality
   easy_localization: ^3.0.8                   # Localization Service
 
@@ -40,7 +39,7 @@ dependencies:
   image: ^4.5.4                               # Image Processor
   readmore: ^3.0.0                            # Expandable Text
   flutter_inset_box_shadow: ^1.0.8            # Custom Gradients
-  flutter_spinkit: ^5.2.1                     # Progress Animations
+  flutter_spinkit: ^5.2.1                     # ProgressBar Animations
   cupertino_icons: ^1.0.6                     # UI Icons
 
 #############################################################################################################
