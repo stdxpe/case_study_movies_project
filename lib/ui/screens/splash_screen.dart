@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
-import 'package:case_study_movies_project/services/abstract_classes/i_logger_service.dart';
-import 'package:case_study_movies_project/services/global_services.dart/dependency_injection_service.dart';
 import 'package:case_study_movies_project/ui/bloc/auth_bloc.dart';
 import 'package:case_study_movies_project/ui/bloc/auth_event.dart';
 import 'package:case_study_movies_project/ui/bloc/auth_state.dart';
-import 'package:case_study_movies_project/ui/widgets/lottie_loading_animation.dart';
 import 'package:case_study_movies_project/ui/widgets/text_custom.dart';
+import 'package:case_study_movies_project/ui/widgets/lottie_splash_animation.dart';
 import 'package:case_study_movies_project/utilities/utilities_library_imports.dart';
+import 'package:case_study_movies_project/services/abstract_classes/i_logger_service.dart';
+import 'package:case_study_movies_project/services/global_services.dart/dependency_injection_service.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key, this.message});
@@ -28,10 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const LottieLoadingAnimation(
-              lottie: AppVisuals.lottieCamera,
-              size: 200,
-            ),
+            const LottieSplashAnimation(),
             if (widget.message != null) ...[
               SizedBox(height: AppConstants.spacings.space30),
               Padding(
@@ -83,11 +80,12 @@ class _SplashScreenState extends State<SplashScreen> {
       return await authBloc.stream
           .firstWhere((state) => state is! AuthLoading)
           .timeout(timeout, onTimeout: () {
-        logger.logDebug('Auth state timeout, fallback to last known state.');
+        logger.logInfo('Auth state timeout, fallback to last known state.');
         return authBloc.state;
       });
     } catch (e, stack) {
-      logger.logError('Error waiting auth state:', e as Exception?, stack);
+      logger.logError('Error waiting auth state:',
+          error: e as Exception?, stack: stack);
       return authBloc.state;
     }
   }

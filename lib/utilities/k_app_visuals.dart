@@ -7,6 +7,10 @@ abstract class AppVisuals {
   static const String facebook = 'assets/icons/facebook.svg';
 
   static const String lottieLike = "assets/lottie/like.json";
+  static const String lottieLoading = "assets/lottie/loading.json";
+  static const String lottieCamera = "assets/lottie/camera.json";
+  static const String lottieCameraDark = "assets/lottie/camera_dark.json";
+  static const String lottieMovie = "assets/lottie/movie.json";
 
   static const String dummyProfilePic = 'assets/images/dummy_profile_pic.png';
   static const String dummyMoviePic = 'assets/images/dummy_movie_pic.png';
