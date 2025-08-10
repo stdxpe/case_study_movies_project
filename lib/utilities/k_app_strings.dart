@@ -1,95 +1,92 @@
 part of 'utilities_library_imports.dart';
 
-/// [APP WIDE GLOBAL VARIABLE]
-/// ALL STATIC STRINGS - EN
 abstract class AppStrings {
-  static const String appTitle = "SinFlix";
+  static String get appTitle => 'appTitle'.tr();
 
-  static const String homeButton = "Home";
-  static const String profileButton = "Profile";
-  static const String signInTitle = "Welcome";
-  static const String signInSubtitle =
-      "Let's get you started.\nPlease sign in to continue.";
-  static const String signUpButton = "Sign Up";
-  static const String signUpTitle = "Welcome";
-  static const String signUpSubtitle =
-      "A new story begins here.\nCreate your account to join the cast.";
-  static const String signInButton = "Sign In";
-  static const String dontHaveAnAccount = "Don't have an account?";
-  static const String dontHaveAnAccountButton = "Sign up!";
-  static const String alreadyHaveAnAccount = "Already have an account?";
-  static const String alreadyHaveAnAccountButton = "Sign in!";
-  static const String forgotPassword = "Forgot password?";
+  static String get homeButton => 'homeButton'.tr();
+  static String get profileButton => 'profileButton'.tr();
 
-  static const hintEmail = 'Email';
-  static const hintPassword = 'Password';
-  static const hintConfirmPassword = 'Confirm Password';
-  static const hintFullName = 'Full Name';
+  static String get signInTitle => 'signInTitle'.tr();
+  static String get signInSubtitle => 'signInSubtitle'.tr();
+  static String get signUpButton => 'signUpButton'.tr();
+  static String get signUpTitle => 'signUpTitle'.tr();
+  static String get signUpSubtitle => 'signUpSubtitle'.tr();
+  static String get signOutButton => 'signOutButton'.tr();
+  static String get signInButton => 'signInButton'.tr();
+  static String get forgotPassword => 'forgotPassword'.tr();
+  static String get dontHaveAnAccount => 'dontHaveAnAccount'.tr();
+  static String get dontHaveAnAccountButton => 'dontHaveAnAccountButton'.tr();
+  static String get alreadyHaveAnAccount => 'alreadyHaveAnAccount'.tr();
+  static String get alreadyHaveAnAccountButton =>
+      'alreadyHaveAnAccountButton'.tr();
 
-  static const String textEllipsisDots = "...  ";
-  static const String seeMore = "See More";
-  static const String hide = "Hide";
+  static String get hintEmail => 'hintEmail'.tr();
+  static String get hintPassword => 'hintPassword'.tr();
+  static String get hintConfirmPassword => 'hintConfirmPassword'.tr();
+  static String get hintFullName => 'hintFullName'.tr();
 
-  static const String termsAndConditions =
-      "I confirm that I have carefully read and agree to the Privacy Policy and Terms and Conditions.";
-  static const String termsAndConditionsFirst =
-      "I confirm that I have carefully";
-  static const String termsAndConditionsSecond = "read and agree";
-  static const String termsAndConditionsThird =
-      "to the Privacy Policy and Terms and Conditions.";
-  static const String profileDetails = "Profile";
-  static const String addPhotoButton = "Add Photo";
-  static const String uploadPhotosTitle = "Upload Photos";
-  static const String uploadPhotosSubtitle =
-      "Choose your photos that\nhighlight your best moments.";
-  static const String continueButton = "Continue";
-  static const String moreButton = "More";
-  static const String favoriteMovies = "Favorite Movies";
-  static const String limitedOffer = "Limited Offer";
-  static const String limitedOfferSubtitle =
-      // "Unlock new features and extra bonus rewards by picking your premium token pack!";
-      // "Unlock new features and exclusive\npremium mode by picking your token pack!";
-      "Unlock exclusive premium mode and\nnew features and by picking your token pack!";
-  static const String bonus = "Bonus Rewards";
-  static const String premium = "Premium\nAccount";
-  static const String moreMatches = "More\nMatches";
-  static const String boostProfile = "Boost\nProfile";
-  static const String moreLikes = "More\nLikes";
-  static const String tokenPackTitle = "Select a token pack to unlock";
-  static const String tokenButton = "View All Tokens";
-  static const String token = "Token";
-  static const String perWeek = "Per Week";
+  static String get textEllipsisDots => 'textEllipsisDots'.tr();
+  static String get seeMore => 'seeMore'.tr();
+  static String get hide => 'hide'.tr();
+  static String get empty => 'empty'.tr();
 
-  //TODO: HERE: PICK BETTER!
+  static String get termsAndConditions => 'termsAndConditions'.tr();
+  static String get termsAndConditionsFirst => 'termsAndConditionsFirst'.tr();
+  static String get termsAndConditionsSecond => 'termsAndConditionsSecond'.tr();
+  static String get termsAndConditionsThird => 'termsAndConditionsThird'.tr();
+  static String get profileDetails => 'profileDetails'.tr();
+  static String get addPhotoButton => 'addPhotoButton'.tr();
+  static String get uploadPhotosTitle => 'uploadPhotosTitle'.tr();
+  static String get uploadPhotosSubtitle => 'uploadPhotosSubtitle'.tr();
+  static String get continueButton => 'continueButton'.tr();
+  static String get moreButton => 'moreButton'.tr();
+  static String get favoriteMovies => 'favoriteMovies'.tr();
+  static String get limitedOffer => 'limitedOffer'.tr();
+  static String get limitedOfferSubtitle => 'limitedOfferSubtitle'.tr();
+  static String get bonus => 'bonus'.tr();
+  static String get premium => 'premium'.tr();
+  static String get moreMatches => 'moreMatches'.tr();
+  static String get boostProfile => 'boostProfile'.tr();
+  static String get moreLikes => 'moreLikes'.tr();
+  static String get tokenPackTitle => 'tokenPackTitle'.tr();
+  static String get tokenButton => 'tokenButton'.tr();
+  static String get token => 'token'.tr();
+  static String get perWeek => 'perWeek'.tr();
 
-  // Let’s get you started. Please sign in to continue.
-// Create your account and unlock a brand new chapter.
-// This could be the beginning of something great.
-// The scene is set. All we need is you.
-// Your favorite kind of story begins here.
-// We’ve saved your seat. Log in to join.
-// Your story continues here. Sign in to proceed.
-// Join us and start your cinematic journey today.
-// New adventures await. Let’s get you on board.
+  static String get termsAndConditionsTitle => 'termsAndConditionsTitle'.tr();
+  static String get termsAndConditionsMainText =>
+      'termsAndConditionsMainText'.tr();
+  static String get termsAndConditionsClosingText =>
+      'termsAndConditionsClosingText'.tr();
+  static String get termsAndConditionsButton => 'termsAndConditionsButton'.tr();
 
-  static const errors = _ErrorStrings();
+  static final errors = _ErrorStrings();
 }
 
 class _ErrorStrings {
-  const _ErrorStrings();
-
-  final String invalidCredentials400 = 'Invalid credentials';
-  final String invalidInput = 'Invalid input or email already exists';
-  final String uploadPhotoInvalidFormat = 'Invalid file format';
-  final String unauthorized401 = 'Unauthorized';
-  final String movieNotFound404 = 'Movie not found';
-  final String unknown = 'Unknown error occurred';
-  final String loginSuccessNoToken = 'Login succeeded, but token is missing.';
-  final String registerSuccessNoToken =
-      'Registration succeeded, but token is missing.';
-  final String loginFailedWithCode = 'Login failed with status code: ';
-  final String loginFailedNoToken = 'Login failed, and no token';
-  final String registerFailedWithCode = 'Register failed with status code: ';
-  final String profileFail = 'Failed to load profile';
-  final String uploadPhotoFail = 'Failed to upload photo';
+  String get invalidCredentials400 => 'invalidCredentials400'.tr();
+  String get invalidInput => 'invalidInput'.tr();
+  String get uploadPhotoInvalidFormat => 'uploadPhotoInvalidFormat'.tr();
+  String get unauthorized401 => 'unauthorized401'.tr();
+  String get movieNotFound404 => 'movieNotFound404'.tr();
+  String get unknown => 'unknown'.tr();
+  String get loginSuccessNoToken => 'loginSuccessNoToken'.tr();
+  String get registerSuccessNoToken => 'registerSuccessNoToken'.tr();
+  String get loginFailedWithCode => 'loginFailedWithCode'.tr();
+  String get loginFailedNoToken => 'loginFailedNoToken'.tr();
+  String get registerFailedWithCode => 'registerFailedWithCode'.tr();
+  String get profileFail => 'profileFail'.tr();
+  String get photoServerUploadFail => 'photoServerUploadFail'.tr();
+  String get photoUploadFail => 'photoUploadFail'.tr();
+  String get photoPickFail => 'photoPickFail'.tr();
+  String get photoUploadSuccess => 'photoUploadSuccess'.tr();
+  String get photoUploadWarning => 'photoUploadWarning'.tr();
+  String get emailEmpty => 'emailEmpty'.tr();
+  String get emailInvalid => 'emailInvalid'.tr();
+  String get passwordEmpty => 'passwordEmpty'.tr();
+  String get passwordTooShort => 'passwordTooShort'.tr();
+  String get nameEmpty => 'nameEmpty'.tr();
+  String get nameTooShort => 'nameTooShort'.tr();
+  String get confirmPasswordEmpty => 'confirmPasswordEmpty'.tr();
+  String get passwordsNotMatch => 'passwordsNotMatch'.tr();
 }
