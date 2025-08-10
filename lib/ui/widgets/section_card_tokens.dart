@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:case_study_movies_project/services/global_services.dart/dummy_datas.dart';
+import 'package:case_study_movies_project/services/global_services/dummy_datas.dart';
 import 'package:case_study_movies_project/ui/widgets/card_token.dart';
 import 'package:case_study_movies_project/utilities/utilities_library_imports.dart';
 

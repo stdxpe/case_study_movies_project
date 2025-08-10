@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:case_study_movies_project/models/movie_model.dart';
 import 'package:case_study_movies_project/models/movie_response_model.dart';
 import 'package:case_study_movies_project/services/abstract_classes/i_movie_service.dart';
-import 'package:case_study_movies_project/services/global_services.dart/dependency_injection_service.dart';
+import 'package:case_study_movies_project/services/global_services/dependency_injection_service.dart';
 import 'package:case_study_movies_project/utilities/utilities_library_imports.dart';
 
 class NodeLabsMovieService extends IMovieService {

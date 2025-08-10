@@ -2,8 +2,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:case_study_movies_project/services/global_services.dart/dependency_injection_service.dart';
-import 'package:case_study_movies_project/services/global_services.dart/navigation_redirect_service.dart';
+import 'package:case_study_movies_project/services/global_services/dependency_injection_service.dart';
+import 'package:case_study_movies_project/services/global_services/navigation_redirect_service.dart';
 import 'package:case_study_movies_project/ui/bloc/auth_bloc.dart';
 import 'package:case_study_movies_project/ui/bloc/navigation_bar_cubit.dart';
 import 'package:case_study_movies_project/ui/screens/home_screen.dart';

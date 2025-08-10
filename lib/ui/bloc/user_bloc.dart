@@ -4,7 +4,7 @@ import 'package:case_study_movies_project/ui/bloc/user_event.dart';
 import 'package:case_study_movies_project/ui/bloc/user_state.dart';
 import 'package:case_study_movies_project/services/abstract_classes/i_logger_service.dart';
 import 'package:case_study_movies_project/services/abstract_classes/i_user_service.dart';
-import 'package:case_study_movies_project/services/global_services.dart/dependency_injection_service.dart';
+import 'package:case_study_movies_project/services/global_services/dependency_injection_service.dart';
 import 'package:case_study_movies_project/services/image_handler_service.dart';
 import 'package:case_study_movies_project/utilities/utilities_library_imports.dart';
 

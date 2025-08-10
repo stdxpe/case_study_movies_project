@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import 'package:case_study_movies_project/ui/bloc/movie_bloc.dart';
 import 'package:case_study_movies_project/ui/bloc/movie_event.dart';
 import 'package:case_study_movies_project/ui/bloc/movie_state.dart';
 import 'package:case_study_movies_project/ui/widgets/card_movie_swipeable.dart';
-import 'package:case_study_movies_project/utilities/utilities_library_imports.dart';
+import 'package:case_study_movies_project/ui/widgets/lottie_loading_animation.dart';
 
+/// TODO: Refactor
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -36,33 +37,36 @@ class _HomeScreenState extends State<HomeScreen> {
 
         return Scaffold(
           backgroundColor: Colors.black,
-          body: PageView.builder(
-            controller: _pageController,
-            scrollDirection: Axis.vertical,
-            physics: const _SnappyScrollPhysics(),
-            itemCount: movies.length + (isLoadingMore ? 1 : 0),
-            onPageChanged: (index) {
-              final bloc = context.read<MovieBloc>();
-              final lastPage = state.allMovies.length - 1;
+          body: Stack(
+            children: [
+              PageView.builder(
+                controller: _pageController,
+                scrollDirection: Axis.vertical,
+                physics: const _SnappyScrollPhysics(),
+                itemCount: movies.length + (isLoadingMore ? 1 : 0),
+                itemBuilder: (context, index) {
+                  if (index < movies.length) {
+                    return CardMovieSwipeable(
+                      movie: movies[index],
+                    ).animate().fade(duration: 350.ms);
+                  } else {
+                    return const Center(child: LottieLoadingAnimation());
+                  }
+                },
+                onPageChanged: (index) {
+                  final bloc = context.read<MovieBloc>();
+                  final lastPage = state.allMovies.length - 1;
 
-              if (index == lastPage &&
-                  state.status != MovieStatus.loadingMore &&
-                  state.status != MovieStatus.error &&
-                  !_isLoadingNextPage) {
-                _isLoadingNextPage = true;
-                bloc.add(GetMoviesEvent(page: state.currentPage + 1));
-              }
-            },
-            itemBuilder: (context, index) {
-              if (index < movies.length) {
-                return CardMovieSwipeable(movie: movies[index]);
-              } else {
-                return const Center(
-                  child:
-                      SpinKitCubeGrid(color: ColorPalette.permaWhite, size: 40),
-                );
-              }
-            },
+                  if (index == lastPage &&
+                      state.status != MovieStatus.loadingMore &&
+                      state.status != MovieStatus.error &&
+                      !_isLoadingNextPage) {
+                    _isLoadingNextPage = true;
+                    bloc.add(GetMoviesEvent(page: state.currentPage + 1));
+                  }
+                },
+              ),
+            ],
           ),
         );
       },

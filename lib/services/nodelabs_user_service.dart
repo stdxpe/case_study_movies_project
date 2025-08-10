@@ -4,7 +4,7 @@ import 'package:case_study_movies_project/models/user_model.dart';
 import 'package:case_study_movies_project/models/user_response_model.dart';
 import 'package:case_study_movies_project/services/abstract_classes/i_logger_service.dart';
 import 'package:case_study_movies_project/services/abstract_classes/i_user_service.dart';
-import 'package:case_study_movies_project/services/global_services.dart/dependency_injection_service.dart';
+import 'package:case_study_movies_project/services/global_services/dependency_injection_service.dart';
 import 'package:case_study_movies_project/utilities/utilities_library_imports.dart';
 
 class NodeLabsUserService extends IUserService {

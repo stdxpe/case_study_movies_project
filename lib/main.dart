@@ -16,8 +16,8 @@ import 'package:case_study_movies_project/ui/bloc/movie_event.dart';
 import 'package:case_study_movies_project/ui/bloc/theme_cubit.dart';
 import 'package:case_study_movies_project/ui/bloc/lottie_animation_cubit.dart';
 import 'package:case_study_movies_project/utilities/utilities_library_imports.dart';
-import 'package:case_study_movies_project/services/global_services.dart/dependency_injection_service.dart';
-import 'package:case_study_movies_project/services/global_services.dart/navigation_service.dart';
+import 'package:case_study_movies_project/services/global_services/dependency_injection_service.dart';
+import 'package:case_study_movies_project/services/global_services/navigation_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

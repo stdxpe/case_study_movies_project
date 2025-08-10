@@ -9,7 +9,7 @@ import 'package:case_study_movies_project/ui/widgets/text_custom.dart';
 import 'package:case_study_movies_project/ui/widgets/lottie_splash_animation.dart';
 import 'package:case_study_movies_project/utilities/utilities_library_imports.dart';
 import 'package:case_study_movies_project/services/abstract_classes/i_logger_service.dart';
-import 'package:case_study_movies_project/services/global_services.dart/dependency_injection_service.dart';
+import 'package:case_study_movies_project/services/global_services/dependency_injection_service.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key, this.message});

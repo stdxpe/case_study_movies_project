@@ -14,7 +14,7 @@ import 'package:case_study_movies_project/ui/widgets/appbar_sliver_profile.dart'
 import 'package:case_study_movies_project/ui/widgets/section_settings_panel.dart';
 import 'package:case_study_movies_project/ui/widgets/lottie_loading_animation.dart';
 import 'package:case_study_movies_project/utilities/utilities_library_imports.dart';
-import 'package:case_study_movies_project/services/global_services.dart/dependency_injection_service.dart';
+import 'package:case_study_movies_project/services/global_services/dependency_injection_service.dart';
 
 class ProfileDetailsScreen extends StatelessWidget {
   const ProfileDetailsScreen({super.key});

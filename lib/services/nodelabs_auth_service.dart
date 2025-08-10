@@ -5,7 +5,7 @@ import 'package:case_study_movies_project/models/auth_error_response.model.dart'
 import 'package:case_study_movies_project/services/abstract_classes/i_auth_service.dart';
 import 'package:case_study_movies_project/services/abstract_classes/i_logger_service.dart';
 import 'package:case_study_movies_project/services/abstract_classes/i_token_storage_service.dart';
-import 'package:case_study_movies_project/services/global_services.dart/dependency_injection_service.dart';
+import 'package:case_study_movies_project/services/global_services/dependency_injection_service.dart';
 import 'package:case_study_movies_project/utilities/utilities_library_imports.dart';
 // ignore_for_file: unnecessary_null_comparison
 

@@ -1,7 +1,7 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import 'package:case_study_movies_project/services/abstract_classes/i_token_storage_service.dart';
-import 'package:case_study_movies_project/services/global_services.dart/dependency_injection_service.dart';
+import 'package:case_study_movies_project/services/global_services/dependency_injection_service.dart';
 
 class TokenStorageService implements ITokenStorageService {
   final FlutterSecureStorage _storage = locator<FlutterSecureStorage>();
