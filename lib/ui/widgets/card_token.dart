@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart'
     as inset;
-
 import 'package:case_study_movies_project/models/token_model.dart';
 import 'package:case_study_movies_project/ui/widgets/text_custom.dart';
 import 'package:case_study_movies_project/utilities/utilities_library_imports.dart';
@@ -35,7 +34,8 @@ class CardToken extends StatelessWidget {
         clipBehavior: Clip.none,
         children: [
           Positioned(
-            top: -20,
+            top: -25,
+            // top: 0,
             left: 0,
             right: 0,
             child: Center(
@@ -66,20 +66,20 @@ class CardToken extends StatelessWidget {
                 children: [
                   TextCustom(
                     text: '${token.formerTokenCount}',
-                    color: context.theme.colorPalette.text,
+                    color: ColorPalette.permaWhite,
                     textStyle: context.textTheme.action,
                     isLineThrough: true,
                   ),
                   SizedBox(height: AppConstants.spacings.space2),
                   TextCustom(
                     text: '${token.tokenCount}',
-                    color: context.theme.colorPalette.text,
+                    color: ColorPalette.permaWhite,
                     textStyle: context.textTheme.tokenMontserrat,
                   ),
                   SizedBox(height: AppConstants.spacings.space2),
                   TextCustom(
                     text: AppStrings.token,
-                    color: context.theme.colorPalette.text,
+                    color: ColorPalette.permaWhite,
                     textStyle: context.textTheme.action,
                   ),
                 ],
@@ -95,16 +95,19 @@ class CardToken extends StatelessWidget {
               children: [
                 TextCustom(
                   text: '${token.currency}${token.price}',
-                  color: context.theme.colorPalette.text,
+                  color: ColorPalette.permaWhite,
                   textStyle: context.textTheme.tokenMontserrat,
                   fontSizeCustom: 15,
                 ),
-                const SizedBox(height: 2),
+                SizedBox(height: AppConstants.spacings.space4),
                 TextCustom(
                   text: AppStrings.perWeek,
-                  color: context.theme.colorPalette.text,
+                  color: ColorPalette.permaWhite,
                   textStyle: context.textTheme.infoLight,
+                  fontSizeCustom: 11,
+                  fontHeightCustom: 1,
                 ),
+                SizedBox(height: AppConstants.spacings.space6),
               ],
             ),
           ),
@@ -113,50 +116,3 @@ class CardToken extends StatelessWidget {
     );
   }
 }
-
-
-
-
-// import 'package:flutter/material.dart';
-// import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart'
-//     as inset;
-// import 'package:nodelabs_test/utilities/utilities_library_imports.dart';
-
-// class CardToken extends StatelessWidget {
-//   const CardToken({super.key, required this.gradient});
-
-//   final RadialGradient gradient;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       decoration: inset.BoxDecoration(
-//         borderRadius: BorderRadius.circular(AppConstants.radius.tokenCard),
-//         gradient: gradient,
-//         border: Border.all(
-//           color: ColorPalette.permaWhite.withOpacity(0.4),
-//           width: 1,
-//         ),
-//         boxShadow: const [
-//           inset.BoxShadow(
-//             color: Color.fromRGBO(255, 255, 255, 0.3),
-//             offset: Offset(4, 4),
-//             blurRadius: 15,
-//             inset: true,
-//           ),
-//         ],
-//       ),
-//       child: Center(
-//         child: Padding(
-//           padding: const EdgeInsets.all(8.0),
-//           child: Text(
-//             'Content alanı burada',
-//             style: TextStyle(color: Colors.white),
-//             textAlign: TextAlign.center,
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
-

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:readmore/readmore.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 import 'package:case_study_movies_project/ui/widgets/text_custom.dart';
 import 'package:case_study_movies_project/utilities/utilities_library_imports.dart';
@@ -42,26 +43,27 @@ class CardMovieDescription extends StatelessWidget {
               children: [
                 TextCustom(
                   text: title,
-                  color: context.theme.colorPalette.text,
+                  color: ColorPalette.permaWhite,
                   textStyle: context.textTheme.title,
                 ),
                 SizedBox(height: AppConstants.spacings.space4),
                 ReadMoreText(
-                  description,
+                  description.tr(),
                   trimLines: 2,
                   trimMode: TrimMode.Line,
                   delimiter: AppStrings.textEllipsisDots,
                   trimCollapsedText: AppStrings.seeMore,
                   trimExpandedText: AppStrings.hide,
-                  postDataTextStyle:
-                      TextStyle(color: context.colorPalette.textFaded075),
+                  postDataTextStyle: TextStyle(
+                    color: ColorPalette.permaWhite.withAlpha(150),
+                  ),
                   moreStyle: context.textTheme.infoBold
-                      .copyWith(color: context.colorPalette.text),
+                      .copyWith(color: ColorPalette.permaWhite),
                   lessStyle: context.textTheme.infoBold
-                      .copyWith(color: context.colorPalette.text),
-                  colorClickableText: context.colorPalette.text,
+                      .copyWith(color: ColorPalette.permaWhite),
+                  colorClickableText: ColorPalette.permaWhite,
                   style: TextStyle(
-                    color: context.colorPalette.textFaded075,
+                    color: ColorPalette.permaWhite.withAlpha(200),
                     height: 1.2,
                     fontSize: 13,
                     fontWeight: FontWeight.w400,
