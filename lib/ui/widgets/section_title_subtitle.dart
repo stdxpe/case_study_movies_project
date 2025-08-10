@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 import 'package:case_study_movies_project/ui/widgets/text_custom.dart';
 import 'package:case_study_movies_project/utilities/utilities_library_imports.dart';
@@ -19,14 +20,15 @@ class SectionTitleSubtitle extends StatelessWidget {
           text: title,
           color: context.theme.colorPalette.text,
           textStyle: context.textTheme.title,
-        ),
-        SizedBox(height: AppConstants.spacings.space8),
+        ).animate().fadeIn(delay: 350.ms, duration: 400.ms),
+        SizedBox(height: AppConstants.spacings.space16),
         TextCustom(
           text: subtitle,
           color: context.theme.colorPalette.text,
           textStyle: context.textTheme.subtitle,
           maxLines: 2,
-        ),
+          fontHeightCustom: 1.25,
+        ).animate().fadeIn(delay: 400.ms, duration: 450.ms),
       ],
     );
   }

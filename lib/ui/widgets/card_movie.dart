@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:case_study_movies_project/ui/widgets/lottie_loading_animation.dart';
 import 'package:case_study_movies_project/ui/widgets/text_custom.dart';
 import 'package:case_study_movies_project/utilities/utilities_library_imports.dart';
 
@@ -32,14 +33,7 @@ class CardMovie extends StatelessWidget {
               width: double.infinity,
               loadingBuilder: (context, child, loadingProgress) {
                 if (loadingProgress == null) return child;
-                return Center(
-                  child: CircularProgressIndicator(
-                    value: loadingProgress.expectedTotalBytes != null
-                        ? loadingProgress.cumulativeBytesLoaded /
-                            loadingProgress.expectedTotalBytes!
-                        : null,
-                  ),
-                );
+                return const Center(child: LottieLoadingAnimation(size: 50));
               },
               errorBuilder: (context, error, stackTrace) => const Center(
                 child: Icon(Icons.broken_image, size: 40, color: Colors.grey),

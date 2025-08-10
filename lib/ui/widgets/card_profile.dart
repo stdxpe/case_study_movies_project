@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:case_study_movies_project/models/user_model.dart';
 import 'package:case_study_movies_project/ui/widgets/button_profile.dart';
 import 'package:case_study_movies_project/ui/widgets/text_custom.dart';
 import 'package:case_study_movies_project/utilities/utilities_library_imports.dart';
-import 'package:go_router/go_router.dart';
 
 class CardProfile extends StatelessWidget {
   const CardProfile({super.key, required this.userModel});
@@ -35,7 +36,7 @@ class CardProfile extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-          ),
+          ).animate().fadeIn(delay: 100.ms, duration: 300.ms),
           SizedBox(width: AppConstants.spacings.space12),
           Expanded(
             child: Column(
@@ -46,14 +47,14 @@ class CardProfile extends StatelessWidget {
                   color: context.colorPalette.text,
                   textStyle: context.textTheme.action,
                   overflow: TextOverflow.ellipsis,
-                ),
+                ).animate().fadeIn(delay: 300.ms, duration: 300.ms),
                 SizedBox(height: AppConstants.spacings.space8),
                 TextCustom(
                   text: "ID: ${userModel.id.substring(0, 7)}",
                   color: context.colorPalette.textFaded05,
                   textStyle: context.textTheme.infoLight,
                   overflow: TextOverflow.ellipsis,
-                ),
+                ).animate().fadeIn(delay: 500.ms, duration: 300.ms),
               ],
             ),
           ),
@@ -67,7 +68,7 @@ class CardProfile extends StatelessWidget {
             onPressed: () {
               context.push(Routes.uploadPhotos);
             },
-          ),
+          ).animate().fadeIn(delay: 600.ms, duration: 300.ms),
         ],
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:case_study_movies_project/models/movie_model.dart';
@@ -9,6 +10,7 @@ import 'package:case_study_movies_project/ui/bloc/movie_state.dart';
 import 'package:case_study_movies_project/ui/widgets/button_favorite.dart';
 import 'package:case_study_movies_project/ui/widgets/card_movie_description.dart';
 import 'package:case_study_movies_project/ui/widgets/lottie_like_animation.dart';
+import 'package:case_study_movies_project/ui/widgets/lottie_loading_animation.dart';
 import 'package:case_study_movies_project/utilities/utilities_library_imports.dart';
 
 class CardMovieSwipeable extends StatelessWidget {
@@ -27,10 +29,11 @@ class CardMovieSwipeable extends StatelessWidget {
           loadingBuilder: (context, child, loadingProgress) {
             if (loadingProgress == null) return child;
             return const Center(
-              child: CircularProgressIndicator(
-                color: Colors.white,
-                strokeWidth: 2,
-              ),
+              child: LottieLoadingAnimation(),
+              // child: CircularProgressIndicator(
+              //   color: Colors.white,
+              //   strokeWidth: 2,
+              // ),
             );
           },
         ),
@@ -54,7 +57,18 @@ class CardMovieSwipeable extends StatelessWidget {
         ),
         const LottieLikeAnimation(),
         Positioned(
+          left: 0,
           right: 0,
+          bottom: 0,
+          child: CardMovieDescription(
+            title: movie.title,
+            description: movie.description,
+            iconPath: AppVisuals.logo,
+            onPressed: () {},
+          ).animate(delay: 475.ms).fade(duration: 350.ms),
+        ),
+        Positioned(
+          right: 000,
           bottom: AppConstants.paddings.favoriteButtonBottom,
           child: Container(
             alignment: Alignment.centerRight,
@@ -70,11 +84,9 @@ class CardMovieSwipeable extends StatelessWidget {
                   onPressed: () {
                     final currentIsLiked =
                         context.read<MovieBloc>().state.isLiked(movie.id);
-
                     context
                         .read<MovieBloc>()
                         .add(ToggleFavoriteMovieEvent(movieId: movie.id));
-
                     context.read<LottieAnimationCubit>().update(
                           isLiked: !currentIsLiked,
                           showAnimation: true,
@@ -82,22 +94,10 @@ class CardMovieSwipeable extends StatelessWidget {
                   },
                 );
               } else if (state.status == MovieStatus.error) {
-                /// TODO: SNACKBAR
                 return Center(child: Text('Error: ${state.errorMessage}'));
               }
               return const SizedBox.shrink();
             }),
-          ),
-        ),
-        Positioned(
-          left: 0,
-          right: 0,
-          bottom: 0,
-          child: CardMovieDescription(
-            title: movie.title,
-            description: movie.description,
-            iconPath: AppVisuals.logo,
-            onPressed: () {},
           ),
         ),
       ],
