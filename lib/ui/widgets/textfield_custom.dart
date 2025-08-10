@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:case_study_movies_project/utilities/utilities_library_imports.dart';
@@ -11,6 +12,12 @@ class TextFieldCustom extends StatelessWidget {
     this.suffixIconPath,
     this.suffixIconSize,
     this.hintText,
+    this.onChanged,
+    this.controller,
+    this.validator,
+    this.obscureText = false,
+    this.keyboardType,
+    this.onToggle,
   });
 
   final String prefixIconPath;
@@ -18,6 +25,12 @@ class TextFieldCustom extends StatelessWidget {
   final String? suffixIconPath;
   final double? suffixIconSize;
   final String? hintText;
+  final void Function(String)? onChanged;
+  final TextEditingController? controller;
+  final String? Function(String?)? validator;
+  final bool obscureText;
+  final TextInputType? keyboardType;
+  final Function()? onToggle;
 
   @override
   Widget build(BuildContext context) {
@@ -28,19 +41,26 @@ class TextFieldCustom extends StatelessWidget {
       ),
       alignment: Alignment.center,
       child: TextFormField(
+        onChanged: onChanged,
+        controller: controller,
+        validator: validator,
+        obscureText: obscureText,
+        keyboardType: keyboardType,
         style: context.textTheme.infoLight.copyWith(
           color: context.colorPalette.textFieldForeground,
           fontWeight: FontWeight.w500,
         ),
         cursorColor: context.colorPalette.textFieldForeground,
         textAlignVertical: TextAlignVertical.center,
-        expands: true,
-        minLines: null,
-        maxLines: null,
+        expands: false,
+        minLines: 1,
+        maxLines: 1,
         decoration: InputDecoration(
           filled: true,
           fillColor: context.colorPalette.textFieldBackground,
           contentPadding: EdgeInsets.zero,
+          // isDense: true,
+
           hintText: hintText,
           hintStyle: context.textTheme.infoLight.copyWith(
             color: context.colorPalette.textFieldForegroundFaded,
@@ -82,18 +102,21 @@ class TextFieldCustom extends StatelessWidget {
             ),
           ),
           suffixIcon: suffixIconPath != null && suffixIconSize != null
-              ? Padding(
-                  padding: EdgeInsets.only(
-                    right: AppConstants.paddings.textFieldSuffixtoBorderW,
-                    left: AppConstants.paddings.textFieldTextHorizontal,
-                  ),
-                  child: SvgPicture.asset(
-                    suffixIconPath!,
-                    width: suffixIconSize!,
-                    height: suffixIconSize!,
-                    colorFilter: ColorFilter.mode(
-                      context.colorPalette.textFieldForeground,
-                      BlendMode.srcIn,
+              ? GestureDetector(
+                  onTap: onToggle,
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                      right: AppConstants.paddings.textFieldSuffixtoBorderW,
+                      left: AppConstants.paddings.textFieldTextHorizontal,
+                    ),
+                    child: SvgPicture.asset(
+                      suffixIconPath!,
+                      width: suffixIconSize!,
+                      height: suffixIconSize!,
+                      colorFilter: ColorFilter.mode(
+                        context.colorPalette.textFieldForeground,
+                        BlendMode.srcIn,
+                      ),
                     ),
                   ),
                 )
@@ -108,6 +131,6 @@ class TextFieldCustom extends StatelessWidget {
           ),
         ),
       ),
-    );
+    ).animate(delay: 650.ms).fadeIn(duration: 400.ms);
   }
 }
