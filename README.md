@@ -340,9 +340,9 @@ class MovieModel {
 ```dart
 abstract class IMovieService {
   
-  Future<List<MovieModel>> getMovies(int page);
+  Future<List<MovieModel>> getMovies({int page});
   Future<List<MovieModel>> getFavoriteMovies();
-  Future<bool> toggleFavorite(String favoriteId);
+  Future<bool> toggleFavorite({String favoriteId});
 }
 ```
 
@@ -370,6 +370,7 @@ locator.registerFactory<MovieBloc>(() => MovieBloc(movieService: locator));
 ```dart
 class NodeLabsMovieService extends IMovieService {
   final _dio = locator<Dio>();
+  final _logger = locator<ILoggerService>();
 
   @override
   Future<List<MovieModel>> getFavoriteMovies() async {
@@ -399,6 +400,7 @@ class NodeLabsMovieService extends IMovieService {
       rethrow; 
     }
   }
+}
 ```
 
 ---
@@ -453,24 +455,16 @@ switch (state.status) {
                 itemCount: movies.length, ...
                 itemBuilder: (context, index) {
 
-                    return CardMovie(
-                              movieTitle: movies[index].title,
-                              movieSubtitle:movies[index].description,
-                              imagePath: movies[index].posterUrl,
-                            );
+                    return CardMovie(movie: movies[index]);
 ...
 ```
+
 ## UI Widget Example
 ```dart
 class CardMovie extends StatelessWidget {
-  const CardMovie({required this.imagePath, 
-  required this.movieTitle, 
-  required this.movieSubtitle,
-  });
+  const CardMovie({super.key, required this.movie});
 
-  final String imagePath;
-  final String movieTitle;
-  final String movieSubtitle;
+  final MovieModel movie;
 
   @override
   Widget build(BuildContext context) {
@@ -483,11 +477,11 @@ class CardMovie extends StatelessWidget {
             aspectRatio: AppConstants.sizes.movieCardAspectRatio,
 
             child: Image.network(
-              imagePath,
+              movie.posterUrl,
+              fit: BoxFit.cover,
               height: AppConstants.sizes.movieCardHeight,
-              width: context.mediaQuery.size.width,
               loadingBuilder: (context, child, loadingProgress) {
-                              return const LottieLoadingAnimation();
+                  return const LottieLoadingAnimation();
               },
             ),
           ),
@@ -495,17 +489,126 @@ class CardMovie extends StatelessWidget {
         SizedBox(height: AppConstants.spacings.space16),
 
         TextCustom(
-          text: movieTitle,
+          text: movie.title,
           textStyle: context.textTheme.infoBold,
           color: context.colorPalette.text,
         ),
 
         TextCustom(
-          text: movieSubtitle,
+          text: movie.description,
           textStyle: context.textTheme.infoLight,
           color: context.colorPalette.textFaded05,
         ),
 ...
+```
+
+## UI General Example
+```dart
+ @override
+  Widget build(BuildContext context) {
+    return BlocProvider<AuthFormCubit>(
+      create: (context) => AuthFormCubit(authBloc: context.read<AuthBloc>()),
+
+      child: BlocBuilder<AuthFormCubit, AuthFormState>(
+        builder: (context, state) {
+          final cubit = context.read<AuthFormCubit>();
+
+          return Scaffold(
+            backgroundColor: context.colorPalette.scaffoldBackground,
+            
+            body: SingleChildScrollView(
+              physics: const ClampingScrollPhysics(),
+              child: SizedBox(
+                height: context.mediaQuery.size.height,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+
+                    SectionTitleSubtitle(
+                      title: AppStrings.signInTitle,
+                      subtitle: AppStrings.signInSubtitle,
+                    ),
+
+                    SizedBox(height: AppConstants.spacings.space40),
+
+                    TextFieldCustom(
+                      onChanged: cubit.emailChanged,
+                      keyboardType: TextInputType.emailAddress,
+                      hintText: AppStrings.hintEmail,
+                      prefixIconPath: AppVisuals.mail,
+                      prefixIconSize: AppConstants.sizes.iconMailHeight,
+                    ),
+
+                    SizedBox(height: AppConstants.spacings.space13),
+                    
+                    TextFieldCustom(
+                      onChanged: cubit.passwordChanged,
+                      onToggle: cubit.togglePasswordVisibility,
+                      obscureText: state.isPasswordVisible,
+                      keyboardType: TextInputType.visiblePassword,
+                      hintText: AppStrings.hintPassword,
+                      prefixIconPath: AppVisuals.unlock,
+                      prefixIconSize: AppConstants.sizes.iconUnlockHeight,
+                      suffixIconPath: AppVisuals.hide,
+                      suffixIconSize: AppConstants.sizes.iconHideHeight,
+                    ),
+                    Align(
+                      alignment: Alignment.topRight,
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                          right: AppConstants.paddings.screen + 10,
+                        ),
+                        child: SizedBox(
+                          height: AppConstants.spacings.space20,
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                              left: AppConstants.paddings.screen,
+                              top: 6,
+                            ),
+                            child: TextCustom(
+                              text: errorMessage ?? '',
+                              textStyle: context.textTheme.infoLight,
+                              color: context.colorPalette.error,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    ButtonText(padding: EdgeInsets.symmetric(horizontal: AppConstants.paddings.screen),
+                      buttonText: AppStrings.forgotPassword,
+                      isUnderlinedButton: true,
+                      onPressed: () => context.push(Routes.forgotPassword),
+                    ),
+                     
+                    SizedBox(height: AppConstants.spacings.space24),
+
+                    ButtonMain(
+                      text: AppStrings.signInButton,
+                      loading: state.isSubmitting,
+                      onPressed: () => cubit.signIn(state.isValid, state.isSubmitting),
+                    )
+
+                    SizedBox(height: AppConstants.spacings.space37),
+
+                    const SectionSocialLogin(),
+
+                    SizedBox(height: AppConstants.spacings.space32),
+
+                    ButtonText(
+                      leadingText: AppStrings.dontHaveAnAccount,
+                      buttonText: AppStrings.dontHaveAnAccountButton,
+                      onPressed: () => context.pushReplacement(Routes.signUp),
+                    ),
+
+                    SizedBox(height: AppConstants.paddings.screen),
+                  ],
+                ),
+              ),
+            ),
+          );
+        },
+      ),
+    );
 ```
 
 ## UI General Example
