@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
+
 import 'package:case_study_movies_project/models/auth_model.dart';
+import 'package:case_study_movies_project/models/auth_error_response.model.dart';
 import 'package:case_study_movies_project/services/abstract_classes/i_auth_service.dart';
 import 'package:case_study_movies_project/services/abstract_classes/i_logger_service.dart';
 import 'package:case_study_movies_project/services/abstract_classes/i_token_storage_service.dart';
@@ -42,8 +44,13 @@ class NodeLabsAuthService extends IAuthService {
             '${AppStrings.errors.loginFailedWithCode}: ${response.statusCode}');
       }
     } on DioException catch (e) {
-      _logger.logError(
-          'Login failed: ${e.message}, Backend response: ${e.response?.data}');
+      if (e.response?.data != null) {
+        final errorModel = AuthErrorResponseModel.fromMap(e.response!.data);
+        _logger.logError(
+            'Login failed: ${e.message}, Backend response: $errorModel');
+      } else {
+        _logger.logError('Login failed: ${e.message}');
+      }
       rethrow;
     }
   }
@@ -83,8 +90,13 @@ class NodeLabsAuthService extends IAuthService {
             '${AppStrings.errors.loginFailedWithCode}: ${response.statusCode}');
       }
     } on DioException catch (e) {
-      _logger.logError(
-          'Register failed: ${e.message}, backend response: ${e.response?.data}');
+      if (e.response?.data != null) {
+        final errorModel = AuthErrorResponseModel.fromMap(e.response!.data);
+        _logger.logError(
+            'Login failed: ${e.message}, Backend response: $errorModel');
+      } else {
+        _logger.logError('Login failed: ${e.message}');
+      }
       rethrow;
     }
   }
