@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:case_study_movies_project/utilities/utilities_library_imports.dart';
@@ -14,6 +15,7 @@ class ButtonLite extends StatelessWidget {
     this.backgroundColor,
     this.foregroundColor,
     this.borderEnabled = true,
+    this.loading = false,
   });
 
   final VoidCallback onPressed;
@@ -24,6 +26,7 @@ class ButtonLite extends StatelessWidget {
   final Color? backgroundColor;
   final Color? foregroundColor;
   final bool borderEnabled;
+  final bool loading;
 
   @override
   Widget build(BuildContext context) {
@@ -54,21 +57,24 @@ class ButtonLite extends StatelessWidget {
             ),
           ),
           child: Center(
-            child: SizedBox(
-              height: iconSize,
-              width: iconSize,
-              child: SvgPicture.asset(
-                iconPath,
-                width: iconSize,
-                height: iconSize,
-                fit: BoxFit.contain,
-                alignment: Alignment.center,
-                colorFilter: ColorFilter.mode(
-                  foregroundColor ?? context.colorPalette.buttonLiteForeground,
-                  BlendMode.srcIn,
-                ),
-              ),
-            ),
+            child: loading
+                ? const SpinKitRing(color: ColorPalette.permaWhite, size: 40)
+                : SizedBox(
+                    height: iconSize,
+                    width: iconSize,
+                    child: SvgPicture.asset(
+                      iconPath,
+                      width: iconSize,
+                      height: iconSize,
+                      fit: BoxFit.contain,
+                      alignment: Alignment.center,
+                      colorFilter: ColorFilter.mode(
+                        foregroundColor ??
+                            context.colorPalette.buttonLiteForeground,
+                        BlendMode.srcIn,
+                      ),
+                    ),
+                  ),
           ),
         ),
       ),

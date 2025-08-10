@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:case_study_movies_project/ui/widgets/text_custom.dart';
 import 'package:case_study_movies_project/utilities/utilities_library_imports.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class ButtonMain extends StatelessWidget {
   const ButtonMain({
@@ -13,6 +14,7 @@ class ButtonMain extends StatelessWidget {
     this.padding,
     this.textStyle,
     super.key,
+    this.loading = false,
   });
 
   final VoidCallback onPressed;
@@ -22,6 +24,7 @@ class ButtonMain extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
   final TextStyle? textStyle;
   final double? height;
+  final bool? loading;
 
   @override
   Widget build(BuildContext context) {
@@ -32,21 +35,29 @@ class ButtonMain extends StatelessWidget {
         height: height ?? AppConstants.sizes.buttonHeight,
         width: context.mediaQuery.size.width,
         child: ElevatedButton(
-          onPressed: onPressed,
-          style: ElevatedButton.styleFrom(
-            foregroundColor:
-                foregroundColor ?? context.colorPalette.buttonMainForeground,
-            backgroundColor:
-                backgroundColor ?? context.colorPalette.buttonMainBackground,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(AppConstants.radius.main),
+          onPressed: loading! ? null : onPressed,
+          style: ButtonStyle(
+            foregroundColor: WidgetStateProperty.all(
+              foregroundColor ?? context.colorPalette.buttonMainForeground,
+            ),
+            backgroundColor: WidgetStateProperty.all(
+              backgroundColor ?? context.colorPalette.buttonMainBackground,
+            ),
+            shape: WidgetStateProperty.all(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(AppConstants.radius.main),
+              ),
             ),
           ),
-          child: TextCustom(
-            text: text,
-            textStyle: textStyle ?? context.textTheme.action,
-            color: foregroundColor ?? context.colorPalette.buttonMainForeground,
-          ),
+          child: loading!
+              ? const SpinKitRing(
+                  color: ColorPalette.permaWhite, size: 20, lineWidth: 3)
+              : TextCustom(
+                  text: text,
+                  textStyle: textStyle ?? context.textTheme.action,
+                  color: foregroundColor ??
+                      context.colorPalette.buttonMainForeground,
+                ),
         ),
       ),
     );
