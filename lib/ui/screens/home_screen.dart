@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 import 'package:case_study_movies_project/ui/bloc/movie_bloc.dart';
 import 'package:case_study_movies_project/ui/bloc/movie_event.dart';
@@ -8,18 +8,14 @@ import 'package:case_study_movies_project/ui/bloc/movie_state.dart';
 import 'package:case_study_movies_project/ui/widgets/card_movie_swipeable.dart';
 import 'package:case_study_movies_project/ui/widgets/lottie_loading_animation.dart';
 
-/// TODO: Refactor
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
-
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
   final PageController _pageController = PageController();
-  int _previousMovieCount = 0;
-  bool _isLoadingNextPage = false;
 
   @override
   Widget build(BuildContext context) {
@@ -73,6 +69,9 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  int _previousMovieCount = 0;
+  bool _isLoadingNextPage = false;
+
   @override
   void dispose() {
     _pageController.dispose();
@@ -88,6 +87,7 @@ class _SnappyScrollPhysics extends ClampingScrollPhysics {
       _SnappyScrollPhysics(parent: buildParent(ancestor));
 
   @override
-  double applyPhysicsToUserOffset(ScrollMetrics position, double offset) =>
-      offset * 1.4;
+  double applyPhysicsToUserOffset(ScrollMetrics position, double offset) {
+    return offset * 1.4;
+  }
 }
