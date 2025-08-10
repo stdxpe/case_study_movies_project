@@ -1,11 +1,14 @@
-# 🎬 Case Study: Movies Project
 
-A feature-rich Flutter application demonstrating clean architecture principles, BLoC state management, and modern Flutter development best practices.
-Showcase project using Flutter, Bloc state management, API integration, authentication and custom UI with modular, reusable design.
+# Case Study: Movies Project
+
+<!-- A feature-rich Flutter application demonstrating clean architecture principles, BLoC state management, and modern Flutter development best practices. -->
+Fully functional showcase project, using Flutter, BLoC State Management, Firebase Crashlytics and Analytics, GetIt Dependency Injection, GoRouter Navigation, JWT Authentication with secure token management, Dio API Client, and custom UI with modular, reusable design with Lottie animations.
+<!-- Fully functional e-commerce application for portfolio, using Flutter, Riverpod, Firebase, Hive and Stripe. -->
 
 ---
 
-![Movies App Preview](assets/images/dummy_movie_pic.png)
+<!-- ![Movies App Preview](assets/images/dummy_movie_pic.png) -->
+![](https://github.com/stdxpe/ecommerce_shopping_project/blob/dev/readme_doc/dark_mode.jpg)
 
 ---
 
@@ -348,7 +351,6 @@ abstract class IMovieService {
 
 ## Dependency Injection Example
 ```dart
-...
 /// Auth Service (Data Access Layer)
 locator.registerLazySingleton<IAuthService>(() => NodeLabsAuthService());
 
@@ -552,30 +554,12 @@ class CardMovie extends StatelessWidget {
                       suffixIconPath: AppVisuals.hide,
                       suffixIconSize: AppConstants.sizes.iconHideHeight,
                     ),
-                    Align(
-                      alignment: Alignment.topRight,
-                      child: Padding(
-                        padding: EdgeInsets.only(
-                          right: AppConstants.paddings.screen + 10,
-                        ),
-                        child: SizedBox(
-                          height: AppConstants.spacings.space20,
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                              left: AppConstants.paddings.screen,
-                              top: 6,
-                            ),
-                            child: TextCustom(
-                              text: errorMessage ?? '',
-                              textStyle: context.textTheme.infoLight,
-                              color: context.colorPalette.error,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    ButtonText(padding: EdgeInsets.symmetric(horizontal: AppConstants.paddings.screen),
+
+                    SizedBox(height: AppConstants.spacings.space30),
+                    
+                    ButtonText(
                       buttonText: AppStrings.forgotPassword,
+                      padding: EdgeInsets.symmetric(horizontal: AppConstants.paddings.screen),
                       isUnderlinedButton: true,
                       onPressed: () => context.push(Routes.forgotPassword),
                     ),
@@ -586,7 +570,7 @@ class CardMovie extends StatelessWidget {
                       text: AppStrings.signInButton,
                       loading: state.isSubmitting,
                       onPressed: () => cubit.signIn(state.isValid, state.isSubmitting),
-                    )
+                    ),
 
                     SizedBox(height: AppConstants.spacings.space37),
 
@@ -609,49 +593,8 @@ class CardMovie extends StatelessWidget {
         },
       ),
     );
+  }
 ```
-
-## UI General Example
-```dart
-Scaffold(
-  backgroundColor: context.colorPalette.scaffoldBackground,
-  body: SingleChildScrollView(
-  physics: const ClampingScrollPhysics(),
-  child: SizedBox(
-            height: context.mediaQuery.size.height,
-            child: Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        SectionTitleSubtitle(
-                          title: AppStrings.signInTitle,
-                          subtitle: AppStrings.signInSubtitle,
-                        ),
-                        SizedBox(height: AppConstants.spacings.space40),
-
-                        TextFieldCustom(
-                          onChanged: cubit.emailChanged,
-                          keyboardType: TextInputType.emailAddress,
-                          hintText: AppStrings.hintEmail,
-                          prefixIconPath: AppVisuals.mail,
-                          prefixIconSize: AppConstants.sizes.iconMailHeight,
-                        ),
-
-                        SizedBox(height: AppConstants.spacings.space13),
-
-                        TextFieldCustom(
-                          onChanged: cubit.passwordChanged,
-                          onToggle: cubit.togglePasswordVisibility,
-                          obscureText: state.isPasswordVisible,
-                          keyboardType: TextInputType.visiblePassword,
-                          hintText: AppStrings.hintPassword,
-                          prefixIconPath: AppVisuals.unlock,
-                          prefixIconSize: AppConstants.sizes.iconUnlockHeight,
-                          suffixIconPath: AppVisuals.hide,
-                          suffixIconSize: AppConstants.sizes.iconHideHeight,
-                        ),
-...
-```
-
 
 ## 📌 Completed Development Milestones
 
