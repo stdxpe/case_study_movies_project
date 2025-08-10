@@ -29,7 +29,7 @@ abstract class ColorPalette {
   static const Color lightModeScaffoldBackground = Color(0xFFFFFFFF);
   static const Color lightModeButtonMainBackground = Color(0xFFE50914);
   static const Color lightModeButtonMainForeground = Color(0xFFFFFFFF);
-  static const Color lightModeButtonLiteBackground = Color(0x09000000);
+  static const Color lightModeButtonLiteBackground = Color(0xFFEBEAEA);
   static const Color lightModeButtonLiteForeground = Color(0xFF000000);
   static const Color lightModeButtonLiteBorder = Color(0x33000000);
   static const Color lightModeTextFieldBackground = Color(0x1A000000);

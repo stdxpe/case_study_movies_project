@@ -59,8 +59,6 @@ class TextFieldCustom extends StatelessWidget {
           filled: true,
           fillColor: context.colorPalette.textFieldBackground,
           contentPadding: EdgeInsets.zero,
-          // isDense: true,
-
           hintText: hintText,
           hintStyle: context.textTheme.infoLight.copyWith(
             color: context.colorPalette.textFieldForegroundFaded,
