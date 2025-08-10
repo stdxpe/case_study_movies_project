@@ -53,6 +53,13 @@ extension EnforceHttps on String {
   String get withHttps => replaceFirst(RegExp(r'^https?:\/\/'), 'https://');
 }
 
+extension FirstWordsExtension on String {
+  String firstWords(int count) {
+    final words = trim().split(RegExp(r'\s+'));
+    return words.take(count).join(' ');
+  }
+}
+
 extension MovieCardHeightExtension on BuildContext {
   double get movieCardTotalHeight {
     final screenWidth = mediaQuery.size.width;
