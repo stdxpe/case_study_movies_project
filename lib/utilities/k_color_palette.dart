@@ -42,7 +42,7 @@ abstract class ColorPalette {
   static const Color lightModeTextFaded075 = Color(0xBF000000);
   static const Color lightModeShadows = Color(0xFF000000);
   static const Color lightModeNavigationBar = Color(0xFF000000);
-  static const Color lightModeBottomSheetBackground = Color(0xFF090909);
+  static const Color lightModeBottomSheetBackground = Color(0x32FFFFFF);
   static const Color lightModeBottomSheetGradientPrimary = Color(0xFFE50914);
   static const Color lightModeBottomSheetGradientSecondary = Color(0xFF6F060B);
   static const Color lightModeBottomSheetGradientTertiary = Color(0xFF5949E6);

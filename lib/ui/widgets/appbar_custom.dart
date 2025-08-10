@@ -18,17 +18,16 @@ class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    final sidePadding = AppConstants.paddings.appBar;
-
     return SafeArea(
       child: Container(
         height: preferredSize.height,
-        padding: EdgeInsets.symmetric(horizontal: sidePadding),
+        padding: EdgeInsets.symmetric(horizontal: AppConstants.paddings.size17),
         color: Colors.transparent,
         child: Stack(
           alignment: Alignment.center,
           children: [
-            Center(
+            Align(
+              alignment: Alignment.center,
               child: TextCustom(
                 text: titleText,
                 color: context.theme.colorPalette.text,

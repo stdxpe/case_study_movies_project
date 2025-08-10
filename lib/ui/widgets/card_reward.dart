@@ -23,7 +23,7 @@ class CardReward extends StatelessWidget {
         SizedBox(height: AppConstants.spacings.space13),
         TextCustom(
           text: text,
-          color: ColorPalette.permaWhite,
+          color: context.colorPalette.text,
           textStyle: context.textTheme.infoLight,
           textAlignCustom: TextAlign.center,
           maxLines: 2,

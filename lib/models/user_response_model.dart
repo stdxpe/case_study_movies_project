@@ -35,7 +35,8 @@ class UploadPhotoResponseModel {
   UploadPhotoResponseModel({required this.photoUrl});
 
   factory UploadPhotoResponseModel.fromMap(Map<String, dynamic> map) {
-    return UploadPhotoResponseModel(photoUrl: map['photoUrl']);
+    return UploadPhotoResponseModel(
+        photoUrl: map['photoUrl'] != null ? map['photoUrl'] as String : '');
   }
 
   Map<String, dynamic> toMap() => {'photoUrl': photoUrl};

@@ -1,6 +1,7 @@
 library utilities;
 
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 /// All imports are utilized by the following sections
 part 'k_app_constants.dart';

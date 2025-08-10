@@ -20,7 +20,7 @@ class SectionRewards extends StatelessWidget {
             borderRadius:
                 BorderRadius.circular(AppConstants.radius.bottomSheetGlass),
             border: Border.all(
-                color: ColorPalette.permaWhite.withAlpha(26), width: 1.5),
+                color: context.colorPalette.text.withAlpha(26), width: 1.5),
             gradient: AppGradients.blurredWhiteGlassBackground(),
           ),
           padding: EdgeInsets.only(
@@ -38,7 +38,7 @@ class SectionRewards extends StatelessWidget {
                 textStyle: context.textTheme.action,
               ),
               SizedBox(height: AppConstants.spacings.space16),
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   CardReward(

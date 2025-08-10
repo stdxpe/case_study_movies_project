@@ -9,6 +9,9 @@ abstract class AppConstants {
   static const fontSizes = _FontSizes();
   static const fontNames = _FontNames();
 
+  static String get appTitle => "SinFlix";
+  static String get envPath => ".env";
+
   static const baseUrl = "https://caseapi.servicelabs.tech/";
 }
 
@@ -28,11 +31,12 @@ class _AppPaddings {
   final double cardMovieDesc = 30;
   final double appBar = 24;
   final double size17 = 17;
+  final double size20 = 20;
   final double size26 = 25.69;
   final double navButtonVertical = 6.46;
   final double navButtonHorizontal = 16.4;
   final double favoriteButtonRight = 16.49;
-  final double favoriteButtonBottom = 170;
+  final double favoriteButtonBottom = 130;
   final double favoriteButtonVertical = 23.85;
   final double favoriteButtonHorizontal = 12.59;
   final double rewardCardTop = 22.25;
@@ -94,7 +98,7 @@ class _AppSizes {
   final double appBarHeight = 70;
   final double profilePicHeight = 61.91;
   final double rewardCardHeight = 55;
-  final double gradientHeight = 200;
+  final double gradientHeight = 225;
 }
 
 class _AppSpacings {
@@ -102,6 +106,7 @@ class _AppSpacings {
 
   final double space2 = 2;
   final double space4 = 4;
+  final double space6 = 6;
   final double space8 = 8;
   final double space12 = 12;
   final double space13 = 13.63;
@@ -133,6 +138,12 @@ class _FontNames {
 
   final String euclid = 'EuclidCircularA';
   final String montserrat = 'Montserrat';
+}
+
+abstract class Localization {
+  static const String path = 'assets/translations';
+  static const String english = 'en';
+  static const String turkish = 'tr';
 }
 
 abstract class AppGradients {
