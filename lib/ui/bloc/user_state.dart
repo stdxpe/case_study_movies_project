@@ -1,23 +1,31 @@
 import 'package:case_study_movies_project/models/user_model.dart';
 
-abstract class UserState {}
+class UserState {
+  final UserModel? user;
+  final bool isLoading;
+  final String? errorMessage;
+  final String? selectedPhotoPath;
 
-class UserInitial extends UserState {}
+  const UserState({
+    this.user,
+    this.isLoading = false,
+    this.errorMessage,
+    this.selectedPhotoPath,
+  });
 
-class UserLoading extends UserState {}
+  UserState copyWith({
+    UserModel? user,
+    bool? isLoading,
+    String? errorMessage,
+    String? selectedPhotoPath,
+  }) {
+    return UserState(
+      user: user ?? this.user,
+      isLoading: isLoading ?? this.isLoading,
+      errorMessage: errorMessage ?? this.errorMessage,
+      selectedPhotoPath: selectedPhotoPath ?? this.selectedPhotoPath,
+    );
+  }
 
-class UserLoaded extends UserState {
-  final UserModel userEntity;
-
-  UserLoaded({required this.userEntity});
-}
-
-class UserPhotoUploaded extends UserState {
-  final String photoUrl;
-  UserPhotoUploaded(this.photoUrl);
-}
-
-class UserError extends UserState {
-  final String message;
-  UserError(this.message);
+  static UserState get initial => const UserState();
 }
