@@ -1,4 +1,4 @@
-.env
+
 *.class
 *.log
 *.pyc
@@ -16,8 +16,8 @@ migrate_working_dir/
 *.ipr
 *.iws
 .idea/
-.crashlytics
-.vscode
+.crashlytics/
+.vscode/
 
 **/doc/api/
 **/ios/Flutter/.last_build_id
