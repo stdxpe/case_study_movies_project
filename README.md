@@ -5,6 +5,9 @@ Clean structured Flutter showcase project, with **BLoC** State Management, **Get
 
 <!-- ![Movies App Preview](assets/images/dummy_movie_pic.png) -->
 ![](https://github.com/stdxpe/ecommerce_shopping_project/blob/dev/readme_doc/dark_mode.jpg)
+
+> Clean structured Flutter showcase project, with **BLoC** State Management, **GetIt** Dependency Injection, **GoRouter** Navigation, JWT Authentication, Firebase Crashlytics & Analytics, localization, theming and modular UI with Lottie.
+
 ## Project Structure
 ```rust
 ❗ This project strictly follows CLEAN ARCHITECTURE dependency principles, but uses a different folder structure.
@@ -145,6 +148,8 @@ lib/
 ```
 <details>
 <summary>🔽  <b>Click to view the detailed Clean Architecture folder structure</b>  🔽</summary>
+
+&nbsp;
 
 > Some files and classes might differ from standard Clean Architecture naming conventions due to my background in C# and .NET traditions (and Uncle Tom, of course ^^)
 
