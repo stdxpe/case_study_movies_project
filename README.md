@@ -220,21 +220,21 @@ lib
 
 ```bash
 lib/
-├── domain/
-│   ├── models/
-│   │   ├── auth_model.dart
-│   │   ├── user_model.dart
-│   │   ├── movie_model.dart
-│   │   └── token_model.dart
-│   │
-│   ├── repositories/   [ABSTRACT]
-│   │   ├── i_auth_service.dart
-│   │   ├── i_user_service.dart
-│   │   └── i_movie_service.dart
-│   │
-│   └── services/   (abstract)
-│       ├── i_logger_service.dart
-│       └── i_token_storage_service.dart.dart
+├── > domain/
+│     ├── > models/
+│     │    ├── auth_model.dart
+│     │    ├── user_model.dart
+│     │    ├── movie_model.dart
+│     │    └── token_model.dart
+│     │
+│     ├── >repositories/ [ABSTRACT]
+│     │    ├── i_auth_service.dart
+│     │    ├── i_user_service.dart
+│     │    └── i_movie_service.dart
+│     │
+│     └── >services/  [ABSTRACT]
+│          ├── i_logger_service.dart
+│          └── i_token_storage_service.dart.dart
 │
 ├── data/
 │   ├── datasources/
@@ -242,7 +242,7 @@ lib/
 │   │       ├── api_client.dart
 │   │       └── auth_interceptor.dart
 │   │
-│   ├── repositories/   (concrete)
+│   ├── repositories/  [CONCRETE]
 │   │   ├── nodelabs_auth_service.dart
 │   │   ├── nodelabs_user_service.dart
 │   │   └── nodelabs_movie_service.dart
@@ -252,7 +252,7 @@ lib/
 │   │   ├── user_response_model.dart
 │   │   └── movie_response_model.dart
 │   │
-│   └── services/   [CONCRETE]
+│   └── services/  [CONCRETE]
 │       ├── image_handler_service.dart
 │       ├── token_storage_service.dart
 │       └── firebase_logger_service.dart
