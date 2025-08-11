@@ -21,35 +21,47 @@ class NodeLabsAuthService extends IAuthService {
     final data = {'email': email, 'password': password};
 
     try {
+      _logger.logInfo('POST $endPoint → Signing in with $email');
       final response = await _dio.post(endPoint, data: data);
 
       if (response.statusCode == 200) {
+        _logger.logInfo('Successfully signed in $endPoint with $email');
         final authModel = AuthModel.fromMap(response.data);
         final token = authModel.token;
 
         if (token != null && token.isNotEmpty) {
           await _tokenStorage.saveToken(token);
         } else {
+          _logger.logError(
+              'POST $endPoint → ${AppStrings.errors.loginFailedWithCode} for $email: ${response.statusCode}');
           throw Exception(AppStrings.errors.loginFailedWithCode);
         }
         return authModel;
       } else if (response.statusCode == 400) {
+        _logger.logError(
+            'POST $endPoint → ${AppStrings.errors.invalidCredentials400} for $email ${response.statusCode}');
+
         throw Exception(
             '${AppStrings.errors.invalidCredentials400}: ${response.statusCode}');
       } else if (response.statusCode == 401) {
+        _logger.logError(
+            'POST $endPoint → ${AppStrings.errors.unauthorized401} for $email ${response.statusCode}');
+
         throw Exception(
             '${AppStrings.errors.unauthorized401}: ${response.statusCode}');
       } else {
+        _logger.logError(
+            'POST $endPoint → ${AppStrings.errors.unknown} for $email: ${response.statusCode}');
         throw Exception(
             '${AppStrings.errors.loginFailedWithCode}: ${response.statusCode}');
       }
-    } on DioException catch (e) {
-      if (e.response?.data != null) {
-        final errorModel = AuthErrorResponseModel.fromMap(e.response!.data);
+    } on DioException catch (error, stacktrace) {
+      if (error.response?.data != null) {
+        final errorModel = AuthErrorResponseModel.fromMap(error.response!.data);
         _logger.logError(
-            'Login failed: ${e.message}, Backend response: $errorModel');
+            'POST $endPoint → Login Failed with ${error.message} Backend response: $errorModel');
       } else {
-        _logger.logError('Login failed: ${e.message}');
+        _logger.logError('POST $endPoint → Exception: $error $stacktrace');
       }
       rethrow;
     }
@@ -65,6 +77,7 @@ class NodeLabsAuthService extends IAuthService {
     final data = {'email': email, 'name': name, 'password': password};
 
     try {
+      _logger.logInfo('POST $endPoint → Registering in with $email');
       final response = await _dio.post(endPoint, data: data);
 
       if (response.statusCode == 200 || response.statusCode == 201) {
@@ -73,29 +86,39 @@ class NodeLabsAuthService extends IAuthService {
 
         if (token != null && token.isNotEmpty) {
           await _tokenStorage.saveToken(token);
-          _logger.logInfo('Token saved from register');
+          _logger.logError('POST $endPoint → Token saved from register');
         } else {
+          _logger.logError(
+              'POST $endPoint → ${AppStrings.errors.registerSuccessNoToken} for $email: ${response.statusCode}');
           throw Exception(AppStrings.errors.registerSuccessNoToken);
         }
 
         return authModel;
       } else if (response.statusCode == 400) {
+        _logger.logError(
+            'POST $endPoint → ${AppStrings.errors.invalidCredentials400} for $email ${response.statusCode}');
         throw Exception(
             '${AppStrings.errors.invalidCredentials400}: ${response.statusCode}');
       } else if (response.statusCode == 401) {
+        _logger.logError(
+            'POST $endPoint → ${AppStrings.errors.unauthorized401} for $email ${response.statusCode}');
+
         throw Exception(
             '${AppStrings.errors.unauthorized401}: ${response.statusCode}');
       } else {
+        _logger.logError(
+            'POST $endPoint → ${AppStrings.errors.unknown} for $email: ${response.statusCode}');
+
         throw Exception(
             '${AppStrings.errors.loginFailedWithCode}: ${response.statusCode}');
       }
-    } on DioException catch (e) {
-      if (e.response?.data != null) {
-        final errorModel = AuthErrorResponseModel.fromMap(e.response!.data);
+    } on DioException catch (error, stacktrace) {
+      if (error.response?.data != null) {
+        final errorModel = AuthErrorResponseModel.fromMap(error.response!.data);
         _logger.logError(
-            'Login failed: ${e.message}, Backend response: $errorModel');
+            'POST $endPoint → Register Failed with ${error.message} Backend response: $errorModel');
       } else {
-        _logger.logError('Login failed: ${e.message}');
+        _logger.logError('POST $endPoint → Exception: $error $stacktrace');
       }
       rethrow;
     }
