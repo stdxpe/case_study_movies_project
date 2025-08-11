@@ -1,82 +1,7 @@
 
 # Case Study: Movies Project
 
-Clean Architecture Flutter case study project, showcasing BLoC State Management, GetIt Dependency Injection, GoRouter Navigation, secure JWT Authentication, Language Localization, Custom Theming, Firebase Crashlytics & Analytics, and modular UI with Lottie.
-
-Clean Architecture Flutter case study project, showcasing BLoC State Management, Firebase Crashlytics & Analytics, GetIt Dependency Injection, GoRouter Navigation, secure JWT Authentication, localization, theming and modular UI with Lottie.
-
-Clean Architecture Flutter case study project, showcasing BLoC State Management, GetIt Dependency Injection, GoRouter Navigation, secure JWT Authentication, localization, Firebase Crashlytics & Analytics, theming and modular UI with Lottie.
-
-Fully functional showcase project, showcasing BLoC State Management, GetIt Dependency Injection, GoRouter Navigation, secure JWT Authentication, localization, Firebase Crashlytics & Analytics, theming and modular UI with Lottie.
-
-Fully functional showcase project, showcasing BLoC State Management, GetIt Dependency Injection, GoRouter Navigation, secure JWT Authentication, localization, Firebase Crashlytics & Analytics, theming and modular UI with Lottie.
-
-Fully functional Flutter showcase project, with BLoC State Management, Firebase Crashlytics and Analytics, GetIt Dependency Injection, GoRouter Navigation, secure JWT Authentication, localization, theming, and custom UI with Lottie.
-
-
-Fully functional Flutter showcase project, with BLoC State Management, GetIt Dependency Injection, GoRouter Navigation, secure JWT Authentication, Firebase Crashlytics and Analytics, localization, theming, and custom UI with Lottie.
-
-
-Fully functional Flutter showcase project, with BLoC State Management, GetIt Dependency Injection, GoRouter Navigation, JWT Authentication, Firebase Crashlytics & Analytics, localization, theming, and modular UI with Lottie.
-
-//
-
-Fully functional Flutter showcase project, with BLoC State Management, GetIt Dependency Injection, GoRouter Navigation, JWT Authentication, Firebase Crashlytics & Analytics, localization, theming, and custom UI with Lottie.
-
-//
-
-A complete Flutter showcase project, with BLoC State Management, GetIt Dependency Injection, GoRouter Navigation, JWT Authentication, Firebase Crashlytics & Analytics, localization, theming, and custom UI with Lottie.
-
-//
-
-Clean structured Flutter showcase project, with BLoC State Management, GetIt Dependency Injection, GoRouter Navigation, JWT Authentication, Firebase Crashlytics & Analytics, localization, theming, and custom UI with Lottie.
-
-//
-
-Clean Architectured Flutter project, with BLoC State Management, GetIt Dependency Injection, GoRouter Navigation, JWT Authentication, Firebase Crashlytics & Analytics, localization, theming, and custom UI with Lottie.
-
-//
-
-Clean Architectured Flutter showcase project, with BLoC State Management, GetIt Dependency Injection, GoRouter Navigation, JWT Authentication, Firebase Crashlytics & Analytics, localization, theming, and custom UI with Lottie.
-
-//
-
-Clean architectured Flutter showcase project, with BLoC State Management, GetIt Dependency Injection, GoRouter Navigation, JWT Authentication, Firebase Crashlytics & Analytics, localization, theming, and modular UI with Lottie.
-
-/////
-
 Clean structured Flutter showcase project, with BLoC State Management, GetIt Dependency Injection, GoRouter Navigation, JWT Authentication, Firebase Crashlytics & Analytics, localization, theming and modular UI with Lottie.
-
-/////
-
-Clean structured Flutter showcase project, with BLoC State Management, GetIt Dependency Injection, GoRouter Navigation, JWT Authentication, Firebase Crashlytics & Analytics, localization, theming, and custom UI with Lottie.
-
-/////
-
-Clean structured Flutter showcase project, with BLoC State Management, GetIt Dependency Injection, GoRouter Navigation, JWT Authentication, Firebase Crashlytics & Analytics, localization, theming and modular UI with Lottie.
-
-/////
-
-
-Fully functional showcase project, using Flutter, BLoC State Management, Firebase Crashlytics and Analytics, GetIt Dependency Injection, GoRouter Navigation, secure JWT Authentication, and custom UI with Lottie.
-
-Fully functional showcase project, using Flutter, BLoC State Management, Firebase Crashlytics and Analytics, GetIt Dependency Injection, GoRouter Navigation, secure JWT Authentication, localization, theming, and custom UI with Lottie.
-
-A feature-rich Flutter application demonstrating clean architecture principles, BLoC state management, and modern Flutter development best practices.
-
-Fully functional showcase project, using Flutter, BLoC State Management, Firebase Crashlytics and Analytics, GetIt Dependency Injection, GoRouter Navigation, JWT Authentication with secure token management, Dio API Client, and custom UI with modular, reusable design with Lottie animations.
-
-Fully functional e-commerce application for portfolio, using Flutter, Riverpod, Firebase, Hive and Stripe.
-
-Cleanly architected Flutter app with BLoC pattern, Firebase services, JWT-based authentication, and modular UI design.
-
-Clean Architecture Flutter case study project, showcasing BLoC, GoRouter, GetIt, secure JWT Auth, Firebase Crashlytics & Analytics, and modular UI with Lottie.
-
-Flutter application built with BLoC architecture, GetIt DI pattern, GoRouter integration, JWT-secured communication, animated Lottie elements, and Firebase’s full suite of Crashlytics & Analytics.
-
-Flutter project with BLoC state logic, GoRouter page routing, JWT-secured access, service injection through GetIt, animated feedback with Lottie, and Firebase tools for crash and user analytics.
-
----
 
 <!-- ![Movies App Preview](assets/images/dummy_movie_pic.png) -->
 ![](https://github.com/stdxpe/ecommerce_shopping_project/blob/dev/readme_doc/dark_mode.jpg)
@@ -210,14 +135,10 @@ lib/
 └── main.dart
 
 ```
-</details>
-
-### Clean Architecture — Long Form
 
 <details>
-<summary>Click to view alternative Clean Architecture foldering structure</summary>
-
-
+<summary>### Click to view alternative Clean Architecture foldering structure 
+</summary>
 ```plaintext
 lib/
 ├── core/
@@ -269,6 +190,7 @@ lib/
 │       └── profile_avatar.dart
 │
 └── main.dart
+
 ```
 </details>
 
