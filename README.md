@@ -614,7 +614,7 @@ extension EnforceHttps on String {
 ...
 ```
 
-## Color Palette | [Utilities]
+### Color Palette | [Utilities]
 ```dart
 /// [COLOR PALETTE] [APP WIDE GLOBAL VARIABLE] 
 /// Implemented into Flutter's Theming System through Extensions 
@@ -635,7 +635,7 @@ abstract class AppVisuals {
   static const String lottieLoading = "assets/lottie/loading.json"; ...
 ```
 
-## AppStrings | [Utilities]
+### AppStrings | [Utilities]
 ```dart
 /// [APP STRINGS] [APP WIDE GLOBAL VARIABLE] 
 /// Implemented into Language Localization System through JSON's
@@ -645,16 +645,17 @@ abstract class AppStrings {
   String get photoServerUploadFail => 'photoServerUploadFail'.tr(); ...
 ```
 
-## AppConstants | [Utilities]
+#### AppConstants | [Utilities]
 ```dart
-/// Usage example:  `AppVisuals.padding.screen`
+/// [APP CONSTANTS] [APP WIDE GLOBAL VARIABLE] 
+/// Usage example:  `AppConstants.paddings.screen`
 abstract class AppConstants {
   final double screen = 39;
   final double textFieldHorizontal = 30; ...
 ```
 
 
-## Color Palette | AppVisuals | AppStrings | AppConstants | [Utilities]
+### Color Palette | AppVisuals | AppStrings | AppConstants | Utility Classes Example
 ```dart
 /// [COLOR PALETTE] [APP WIDE GLOBAL VARIABLE] 
 /// Implemented into Flutter's Theming System through Extensions 
@@ -679,7 +680,7 @@ abstract class AppStrings {
   String get photoServerUploadFail => 'photoServerUploadFail'.tr(); ...
 
 /// [APP CONSTANTS] [APP WIDE GLOBAL VARIABLE] 
-/// Usage example:  `AppVisuals.padding.screen`
+/// Usage example:  `AppConstants.paddings.screen`
 abstract class AppConstants {
   final double screen = 39;
   final double textFieldHorizontal = 30; ...
