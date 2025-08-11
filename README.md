@@ -53,6 +53,9 @@ Clean structured Flutter showcase project, with BLoC State Management, GetIt Dep
 
 /////
 
+Clean structured Flutter showcase project, with BLoC State Management, GetIt Dependency Injection, GoRouter Navigation, JWT Authentication, Firebase Crashlytics & Analytics, localization, theming and modular UI with Lottie.
+
+/////
 
 
 Fully functional showcase project, using Flutter, BLoC State Management, Firebase Crashlytics and Analytics, GetIt Dependency Injection, GoRouter Navigation, secure JWT Authentication, and custom UI with Lottie.
