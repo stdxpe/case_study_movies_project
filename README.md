@@ -6,8 +6,6 @@ Clean structured Flutter showcase project, with BLoC State Management, GetIt Dep
 <!-- ![Movies App Preview](assets/images/dummy_movie_pic.png) -->
 ![](https://github.com/stdxpe/ecommerce_shopping_project/blob/dev/readme_doc/dark_mode.jpg)
 
----
-
 ## Project Structure
 
 ```bash
@@ -136,9 +134,9 @@ lib/
 
 ```
 
-<details>
-<summary>### Click to view alternative Clean Architecture foldering structure 
-</summary>
+TEST
+
+<details> <summary>### Click to view alternative Clean Architecture foldering structure </summary>
 ```plaintext
 lib/
 ├── core/
@@ -195,7 +193,6 @@ lib/
 </details>
 
 
----
 
 ## ✨ Key Features & Highlights
 
