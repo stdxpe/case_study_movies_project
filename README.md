@@ -16,9 +16,33 @@ Fully functional Flutter showcase project, with BLoC State Management, Firebase 
 
 Fully functional Flutter showcase project, with BLoC State Management, GetIt Dependency Injection, GoRouter Navigation, secure JWT Authentication, Firebase Crashlytics and Analytics, localization, theming, and custom UI with Lottie.
 
+
+Fully functional Flutter showcase project, with BLoC State Management, GetIt Dependency Injection, GoRouter Navigation, JWT Authentication, Firebase Crashlytics & Analytics, localization, theming, and modular UI with Lottie.
+
+//
+
 Fully functional Flutter showcase project, with BLoC State Management, GetIt Dependency Injection, GoRouter Navigation, JWT Authentication, Firebase Crashlytics & Analytics, localization, theming, and custom UI with Lottie.
 
 //
+
+A complete Flutter showcase project, with BLoC State Management, GetIt Dependency Injection, GoRouter Navigation, JWT Authentication, Firebase Crashlytics & Analytics, localization, theming, and custom UI with Lottie.
+
+//
+
+Clean structured Flutter showcase project, with BLoC State Management, GetIt Dependency Injection, GoRouter Navigation, JWT Authentication, Firebase Crashlytics & Analytics, localization, theming, and custom UI with Lottie.
+
+//
+
+Clean Architectured Flutter project, with BLoC State Management, GetIt Dependency Injection, GoRouter Navigation, JWT Authentication, Firebase Crashlytics & Analytics, localization, theming, and custom UI with Lottie.
+
+//
+
+Clean Architectured Flutter showcase project, with BLoC State Management, GetIt Dependency Injection, GoRouter Navigation, JWT Authentication, Firebase Crashlytics & Analytics, localization, theming, and custom UI with Lottie.
+
+//
+
+
+
 
 
 Fully functional showcase project, using Flutter, BLoC State Management, Firebase Crashlytics and Analytics, GetIt Dependency Injection, GoRouter Navigation, secure JWT Authentication, and custom UI with Lottie.
