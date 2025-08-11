@@ -1,6 +1,12 @@
 
 # Case Study: Movies Project
 
+Clean Architecture Flutter case study project, showcasing BLoC State Management, GetIt Dependency Injection, GoRouter Navigation, secure JWT Authentication, Language Localization, Custom Theming, Firebase Crashlytics & Analytics, and modular UI with Lottie.
+
+Fully functional showcase project, using Flutter, BLoC State Management, Firebase Crashlytics and Analytics, GetIt Dependency Injection, GoRouter Navigation, secure JWT Authentication, and custom UI with Lottie.
+
+Fully functional showcase project, using Flutter, BLoC State Management, Firebase Crashlytics and Analytics, GetIt Dependency Injection, GoRouter Navigation, secure JWT Authentication, localization, theming, and custom UI with Lottie.
+
 A feature-rich Flutter application demonstrating clean architecture principles, BLoC state management, and modern Flutter development best practices.
 
 Fully functional showcase project, using Flutter, BLoC State Management, Firebase Crashlytics and Analytics, GetIt Dependency Injection, GoRouter Navigation, JWT Authentication with secure token management, Dio API Client, and custom UI with modular, reusable design with Lottie animations.
@@ -14,6 +20,7 @@ Clean Architecture Flutter case study project, showcasing BLoC, GoRouter, GetIt,
 Flutter application built with BLoC architecture, GetIt DI pattern, GoRouter integration, JWT-secured communication, animated Lottie elements, and Firebase’s full suite of Crashlytics & Analytics.
 
 Flutter project with BLoC state logic, GoRouter page routing, JWT-secured access, service injection through GetIt, animated feedback with Lottie, and Firebase tools for crash and user analytics.
+
 ---
 
 <!-- ![Movies App Preview](assets/images/dummy_movie_pic.png) -->
@@ -603,7 +610,7 @@ class CardMovie extends StatelessWidget {
   }
 ```
 
-## Extensions | Utility Classes Example
+## Extensions | Utility Classes Sample
 ```dart
 /// [EASY ACCESS to THEME DATA in UI]
 /// Usage example:  `context.theme` --instead of `Theme.of(context)`
