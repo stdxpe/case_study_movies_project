@@ -6,16 +6,8 @@ Clean structured Flutter showcase project, with **BLoC** State Management, **Get
 <!-- ![Movies App Preview](assets/images/dummy_movie_pic.png) -->
 ![](https://github.com/stdxpe/ecommerce_shopping_project/blob/dev/readme_doc/dark_mode.jpg)
 ## Project Structure
-`This project strictly follows **CLEAN ARCHITECTURE** dependency principles, but uses a different folder structure.`
-`This project strictly follows CLEAN ARCHITECTURE dependency principles, but uses a different folder structure.`
 ```rust
 ❗ This project strictly follows CLEAN ARCHITECTURE dependency principles, but uses a different folder structure.
-```
-```rust
-❗ this project strictly follows CLEAN ARCHITECTURE dependency principles, but uses a different folder structure.
-```
-```rust
-This project strictly follows CLEAN ARCHITECTURE dependency principles, but uses a different folder structure.
 ```
 
 ```bash
@@ -154,8 +146,8 @@ lib/
 <details>
 <summary>🔽  <b>Click to view the detailed Clean Architecture folder structure</b>  🔽</summary>
 
-`Some file namings might not be standart.`
-> Some file namings might not be standart. convenient?
+> Some files and classes might differ from standard Clean Architecture naming conventions due to my background in C# and .NET traditions (and Uncle Tom, of course ^^)
+
 ```bash
 
 lib/
@@ -176,123 +168,123 @@ lib/
 │         └── i_token_storage_service.dart.dart
 │
 ├── >data/
-│   ├── >datasources/
-│   │   └── >remote/
-│   │       ├── api_client.dart
-│   │       └── auth_interceptor.dart
-│   │
-│   ├── >repositories/  [CONCRETE]
-│   │   ├── nodelabs_auth_service.dart
-│   │   ├── nodelabs_user_service.dart
-│   │   └── nodelabs_movie_service.dart
-│   │
-│   ├── >models/
-│   │   ├── auth_response_model.dart
-│   │   ├── user_response_model.dart
-│   │   └── movie_response_model.dart
-│   │
-│   └── >services/  [CONCRETE]
-│       ├── image_handler_service.dart
-│       ├── token_storage_service.dart
-│       └── firebase_logger_service.dart
+│    ├── >datasources/
+│    │    └── >remote/
+│    │         ├── api_client.dart
+│    │         └── auth_interceptor.dart
+│    │
+│    ├── >repositories/  [CONCRETE]
+│    │    ├── nodelabs_auth_service.dart
+│    │    ├── nodelabs_user_service.dart
+│    │    └── nodelabs_movie_service.dart
+│    │
+│    ├── >models/
+│    │    ├── auth_response_model.dart
+│    │    ├── user_response_model.dart
+│    │    └── movie_response_model.dart
+│    │
+│    └── >services/  [CONCRETE]
+│         ├── image_handler_service.dart
+│         ├── token_storage_service.dart
+│         └── firebase_logger_service.dart
 │
 ├── >presentation/
-│   ├── >blocs/
-│   │   ├── auth_bloc.dart
-│   │   ├── auth_event.dart
-│   │   ├── auth_state.dart
-│   │   ├── user_bloc.dart
-│   │   ├── user_event.dart
-│   │   ├── user_state.dart
-│   │   ├── movie_bloc.dart
-│   │   ├── movie_event.dart
-│   │   └── movie_state.dart
-│   │
-│   ├── >cubits/
-│   │   ├── auth_form_cubit.dart
-│   │   ├── lottie_animation_cubit.dart
-│   │   ├── navigation_bar_cubit.dart
-│   │   └── theme_cubit.dart
-│   │
-│   ├── >pages/
-│   │   ├── home_screen.dart
-│   │   ├── profile_details_screen.dart
-│   │   ├── limited_offer_screen.dart
-│   │   ├── signin_screen.dart
-│   │   ├── signup_screen.dart
-│   │   ├── splash_screen.dart
-│   │   ├── upload_photo_screen.dart
-│   │   └── terms_and_conditions_screen.dart
-│   │
-│   ├── >widgets/
-│   │   ├── >appbars/
-│   │   │   ├── appbar_custom.dart
-│   │   │   └── appbar_sliver_profile.dart
-│   │   │
-│   │   ├── >buttons/
-│   │   │   ├── button_main.dart
-│   │   │   ├── button_favorite.dart
-│   │   │   ├── button_lite.dart
-│   │   │   ├── button_navigation_bar.dart
-│   │   │   ├── button_profile.dart
-│   │   │   └── button_text.dart
-│   │   │
-│   │   ├── >cards/
-│   │   │   ├── card_movie.dart
-│   │   │   ├── card_movie_description.dart
-│   │   │   ├── card_movie_swipeable.dart
-│   │   │   ├── card_profile.dart
-│   │   │   ├── card_reward.dart
-│   │   │   └── card_token.dart
-│   │   │
-│   │   ├── >lotties/
-│   │   │   ├── lottie_like_animation.dart
-│   │   │   ├── lottie_loading_animation.dart
-│   │   │   └── lottie_splash_animation.dart
-│   │   │
-│   │   ├── >sections/
-│   │   │   ├── section_card_tokens.dart
-│   │   │   ├── section_rewards.dart
-│   │   │   ├── section_settings_panel.dart
-│   │   │   ├── section_social_login.dart
-│   │   │   └── section_title_subtitle.dart
-│   │   │
-│   │   ├── switch_cupertino_custom.dart
-│   │   ├── scaffold_with_nav_bar.dart
-│   │   ├── text_custom.dart
-│   │   └── textfield_custom.dart
-│   │
-│   └── >navigation/
-│       ├── navigation_service.dart
-│       ├── navigation_redirect_service.dart
-│       └── k_routes.dart
+│    ├── >blocs/
+│    │    ├── auth_bloc.dart
+│    │    ├── auth_event.dart
+│    │    ├── auth_state.dart
+│    │    ├── user_bloc.dart
+│    │    ├── user_event.dart
+│    │    ├── user_state.dart
+│    │    ├── movie_bloc.dart
+│    │    ├── movie_event.dart
+│    │    └── movie_state.dart
+│    │
+│    ├── >cubits/
+│    │    ├── auth_form_cubit.dart
+│    │    ├── lottie_animation_cubit.dart
+│    │    ├── navigation_bar_cubit.dart
+│    │    └── theme_cubit.dart
+│    │
+│    ├── >pages/
+│    │    ├── home_screen.dart
+│    │    ├── profile_details_screen.dart
+│    │    ├── limited_offer_screen.dart
+│    │    ├── signin_screen.dart
+│    │    ├── signup_screen.dart
+│    │    ├── splash_screen.dart
+│    │    ├── upload_photo_screen.dart
+│    │    └── terms_and_conditions_screen.dart
+│    │
+│    ├── >widgets/
+│    │    ├── >appbars/
+│    │    │    ├── appbar_custom.dart
+│    │    │    └── appbar_sliver_profile.dart
+│    │    │
+│    │    ├── >buttons/
+│    │    │    ├── button_main.dart
+│    │    │    ├── button_favorite.dart
+│    │    │    ├── button_lite.dart
+│    │    │    ├── button_navigation_bar.dart
+│    │    │    ├── button_profile.dart
+│    │    │    └── button_text.dart
+│    │    │
+│    │    ├── >cards/
+│    │    │    ├── card_movie.dart
+│    │    │    ├── card_movie_description.dart
+│    │    │    ├── card_movie_swipeable.dart
+│    │    │    ├── card_profile.dart
+│    │    │    ├── card_reward.dart
+│    │    │    └── card_token.dart
+│    │    │
+│    │    ├── >lotties/
+│    │    │    ├── lottie_like_animation.dart
+│    │    │    ├── lottie_loading_animation.dart
+│    │    │    └── lottie_splash_animation.dart
+│    │    │
+│    │    ├── >sections/
+│    │    │    ├── section_card_tokens.dart
+│    │    │    ├── section_rewards.dart
+│    │    │    ├── section_settings_panel.dart
+│    │    │    ├── section_social_login.dart
+│    │    │    └── section_title_subtitle.dart
+│    │    │
+│    │    ├─── switch_cupertino_custom.dart
+│    │    ├─── scaffold_with_nav_bar.dart
+│    │    ├─── text_custom.dart
+│    │    └─── textfield_custom.dart
+│    │
+│    └── >navigation/
+│         ├─── navigation_service.dart
+│         ├─── navigation_redirect_service.dart
+│         └─── k_routes.dart
 │
 ├── >core/
-│   ├── >constants/
-│   │   ├── k_app_constants.dart
-│   │   ├── k_app_strings.dart
-│   │   ├── k_app_themes.dart
-│   │   ├── k_app_visuals.dart
-│   │   ├── k_api_endpoints.dart
-│   │   ├── k_color_palette.dart
-│   │   └── k_text_themes.dart
-│   │
-│   ├── >extensions/
-│   │   ├── k_color_extensions.dart
-│   │   └── k_extensions.dart
-│   │
-│   └── >utilities/
-│       └── utilities_library_imports.dart
-│
+│    ├── >constants/
+│    │    ├── k_app_constants.dart
+│    │    ├── k_app_strings.dart
+│    │    ├── k_app_themes.dart
+│    │    ├── k_app_visuals.dart
+│    │    ├── k_api_endpoints.dart
+│    │    ├── k_color_palette.dart
+│    │    └── k_text_themes.dart
+│    │ 
+│    ├── >extensions/
+│    │    ├── k_color_extensions.dart
+│    │    └── k_extensions.dart
+│    │
+│    └── >utilities/
+│         └── utilities_library_imports.dart
+│ 
 ├── >di/
-│   └── dependency_injection_service.dart
+│    └── dependency_injection_service.dart
 │
 ├── >assets/
-│   ├── >fonts/
-│   ├── >icons/
-│   ├── >images/
-│   ├── >translations/
-│   └── >lotties/
+│    ├── >fonts/
+│    ├── >icons/
+│    ├── >images/
+│    ├── >translations/
+│    └── >lotties/
 │
 ├── .env
 ├── pubspec.yaml
