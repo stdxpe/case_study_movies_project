@@ -594,7 +594,7 @@ class CardMovie extends StatelessWidget {
   }
 ```
 
-## Extension | Utility Classes Example
+## Extensions | Utility Classes Example
 ```dart
 /// [EASY ACCESS to THEME DATA in UI]
 /// Usage example:  `context.theme` --instead of `Theme.of(context)`
@@ -607,15 +607,55 @@ extension ColorPaletteExtension on BuildContext {
   AppColorsThemeExtension get colorPalette => Theme.of(this).colorPalette;
 }
 
+/// Fix for the broken links from the API
 extension EnforceHttps on String {
   String get withHttps => replaceFirst(RegExp(r'^https?:\/\/'), 'https://');
 }
 ...
 ```
 
-## Color Palette | AppVisuals | AppStrings | AppConstants | Utility Classes Example
+## Color Palette | [Utilities]
 ```dart
+/// [COLOR PALETTE] [APP WIDE GLOBAL VARIABLE] 
+/// Implemented into Flutter's Theming System through Extensions 
+/// Usage example:  `context.colorPalette.scaffoldBacground`
+abstract class ColorPalette {
+  /// [DARK MODE THEME COLOR PALETTE]
+  static const Color scaffoldBackground = Color(0xFF090909);
+  static const Color buttonMainBackground = Color(0xFFE50914);
+  static const Color buttonMainForeground = Color(0xFFFFFFFF); ...
+```
 
+### AppVisuals | [Utilities]
+```dart
+/// [APP VISUALS] [APP WIDE GLOBAL VARIABLE] 
+/// Usage example:  `AppVisuals.lottieLike`
+abstract class AppVisuals {
+  static const String lottieLike = "assets/lottie/like.json";
+  static const String lottieLoading = "assets/lottie/loading.json"; ...
+```
+
+## AppStrings | [Utilities]
+```dart
+/// [APP STRINGS] [APP WIDE GLOBAL VARIABLE] 
+/// Implemented into Language Localization System through JSON's
+/// Usage example:  `AppStrings.errors.photoServerUploadFail` ...
+abstract class AppStrings {
+  String get loginFailedNoToken => 'loginFailedNoToken'.tr();
+  String get photoServerUploadFail => 'photoServerUploadFail'.tr(); ...
+```
+
+## AppConstants | [Utilities]
+```dart
+/// Usage example:  `AppVisuals.padding.screen`
+abstract class AppConstants {
+  final double screen = 39;
+  final double textFieldHorizontal = 30; ...
+```
+
+
+## Color Palette | AppVisuals | AppStrings | AppConstants | [Utilities]
+```dart
 /// [COLOR PALETTE] [APP WIDE GLOBAL VARIABLE] 
 /// Implemented into Flutter's Theming System through Extensions 
 /// Usage example:  `context.colorPalette.scaffoldBacground`
