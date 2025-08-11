@@ -6,9 +6,18 @@ Clean structured Flutter showcase project, with **BLoC** State Management, **Get
 <!-- ![Movies App Preview](assets/images/dummy_movie_pic.png) -->
 ![](https://github.com/stdxpe/ecommerce_shopping_project/blob/dev/readme_doc/dark_mode.jpg)
 ## Project Structure
+`This project strictly follows **CLEAN ARCHITECTURE** dependency principles, but uses a different folder structure.`
+`This project strictly follows CLEAN ARCHITECTURE dependency principles, but uses a different folder structure.`
+```rust
+❗ This project strictly follows CLEAN ARCHITECTURE dependency principles, but uses a different folder structure.
+```
+```rust
+❗ this project strictly follows CLEAN ARCHITECTURE dependency principles, but uses a different folder structure.
+```
 ```rust
 This project strictly follows CLEAN ARCHITECTURE dependency principles, but uses a different folder structure.
 ```
+
 ```bash
 lib/
 ├── *models/
