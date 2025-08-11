@@ -6,6 +6,7 @@ class Routes {
   static const signIn = '/signin';
   static const signUp = '/signup';
   static const uploadPhotos = '/upload_photos';
+  static const forgotPassword = '/forgotPassword';
 
   // BottomNavigationBar Tabs
   static const home = '/home';
