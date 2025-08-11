@@ -3,6 +3,8 @@
 
 Clean Architecture Flutter case study project, showcasing BLoC State Management, GetIt Dependency Injection, GoRouter Navigation, secure JWT Authentication, Language Localization, Custom Theming, Firebase Crashlytics & Analytics, and modular UI with Lottie.
 
+Clean Architecture Flutter case study project, showcasing BLoC State Management, Firebase Crashlytics & Analytics, GetIt Dependency Injection, GoRouter Navigation, secure JWT Authentication, localization, theming and modular UI with Lottie.
+
 Fully functional showcase project, using Flutter, BLoC State Management, Firebase Crashlytics and Analytics, GetIt Dependency Injection, GoRouter Navigation, secure JWT Authentication, and custom UI with Lottie.
 
 Fully functional showcase project, using Flutter, BLoC State Management, Firebase Crashlytics and Analytics, GetIt Dependency Injection, GoRouter Navigation, secure JWT Authentication, localization, theming, and custom UI with Lottie.
