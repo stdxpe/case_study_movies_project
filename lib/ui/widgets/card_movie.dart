@@ -1,3 +1,4 @@
+import 'package:case_study_movies_project/models/movie_model.dart';
 import 'package:flutter/material.dart';
 
 import 'package:case_study_movies_project/ui/widgets/lottie_loading_animation.dart';
@@ -5,16 +6,9 @@ import 'package:case_study_movies_project/ui/widgets/text_custom.dart';
 import 'package:case_study_movies_project/utilities/utilities_library_imports.dart';
 
 class CardMovie extends StatelessWidget {
-  const CardMovie({
-    super.key,
-    required this.imagePath,
-    required this.movieTitle,
-    required this.movieSubtitle,
-  });
+  const CardMovie({super.key, required this.movie});
 
-  final String imagePath;
-  final String movieTitle;
-  final String movieSubtitle;
+  final MovieModel movie;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +20,7 @@ class CardMovie extends StatelessWidget {
           child: AspectRatio(
             aspectRatio: AppConstants.sizes.movieCardAspectRatio,
             child: Image.network(
-              imagePath,
+              movie.posterUrl,
               fit: BoxFit.cover,
               alignment: Alignment.center,
               height: AppConstants.sizes.movieCardHeight,
@@ -43,14 +37,14 @@ class CardMovie extends StatelessWidget {
         ),
         SizedBox(height: AppConstants.spacings.space16),
         TextCustom(
-          text: movieTitle,
+          text: movie.title,
           textStyle: context.textTheme.infoLight,
           fontWeightCustom: FontWeight.w500,
           alignment: Alignment.centerLeft,
           color: context.colorPalette.text,
         ),
         TextCustom(
-          text: movieSubtitle,
+          text: movie.description,
           textStyle: context.textTheme.infoLight,
           alignment: Alignment.centerLeft,
           color: context.colorPalette.textFaded05,

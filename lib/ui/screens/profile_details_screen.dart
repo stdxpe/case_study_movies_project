@@ -94,10 +94,8 @@ class ProfileDetailsScreen extends StatelessWidget {
                           ),
                           itemBuilder: (context, index) {
                             return CardMovie(
-                                movieTitle: movies[index].title,
-                                movieSubtitle:
-                                    movies[index].description.firstWords(2),
-                                imagePath: movies[index].posterUrl);
+                              movie: movies[index],
+                            );
                           },
                         );
                       default:
