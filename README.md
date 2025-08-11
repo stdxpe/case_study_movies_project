@@ -1,7 +1,7 @@
 
 # Case Study: Movies Project
 
-Clean structured Flutter showcase project, with **BLoC** State Management, **GetIt** Dependency Injection, **GoRouter** Navigation, **JWT** Authentication, **Firebase Crashlytics & Analytics**, localization, theming and modular UI with **Lottie**.
+Clean structured Flutter showcase project, with **BLoC** State Management, **GetIt** Dependency Injection, **GoRouter** Navigation, JWT Authentication, Firebase Crashlytics & Analytics, localization, theming and modular UI with Lottie.
 
 <!-- ![Movies App Preview](assets/images/dummy_movie_pic.png) -->
 ![](https://github.com/stdxpe/ecommerce_shopping_project/blob/dev/readme_doc/dark_mode.jpg)
@@ -135,17 +135,233 @@ lib/
 
 ```
 ### ✨ Clean Architecture Structure Scheme
+```yaml
+lib:                        # 📂 Root
+  domain:                   # 🔴 Domain Layer
+    - models/               # 🔵 Data Models
+    - repositories/         # 🟠 Abstract Repositories
+    - services/             # 🟢 Domain Services
+  data:                     # 🟢 Data Layer
+    datasources:            # 🔵 Data Sources
+      - remote/             # 🔵 Remote API Layer
+    - repositories/         # 🟠 Repository Implementations
+    - models/               # 🔵 DTOs & Response Models
+    - services/             # 🟢 Data Services (e.g. Image Processing)
+  presentation:             # 🔵 Presentation Layer
+    - blocs/                # 🟠 State Management (BLoCs)
+    - cubits/               # 🟠 Cubits (Lightweight BLoCs)
+    - pages/                # 🟢 UI Pages
+    - widgets/              # 🟢 UI Widgets
+    - navigation/           # 🟠 Navigation Logic (Router, Redirects)
+  core:                     # 🟡 Core Utilities & Constants
+    - constants/
+    - extensions/
+    - utilities/
+    - env/
+  di:                       # 🟠 Dependency Injection Setup
+  assets:                   # 🟢 Static Resources
+    - fonts/
+    - icons/
+    - images/
+    - translations/
+    - lotties/
+  main                      # 🟠 Entry Point
+  pubspec                   # 🟠 Project Manifest
+```
+
+`kod`
+> Alıntı
 ```bash
 > lib
-  ├── core
-  ├── data
   ├── domain
-  └── presentation
+  ├── data
+  ├── presentation
+  └── core
 ```
+```bash
+lib
+│
+├─ domain
+│  ├─ models
+│  ├─ repositories
+│  └─ services
+│
+├─ data
+│  ├─ datasources
+│  │  └─ remote
+│  ├─ repositories
+│  ├─ models
+│  └─ services
+│
+├─ presentation
+│  ├─ blocs
+│  ├─ cubits
+│  ├─ pages
+│  ├─ widgets
+│  └─ navigation
+│
+├─ core
+│  ├─ constants
+│  ├─ extensions
+│  ├─ utilities
+│  └─ env
+│
+├─ di
+│
+├─ assets
+│
+├─ main
+│
+└─ pubspec
+```
+
 <details>
 <summary>🔽  <b>Click to view the detailed Clean Architecture folder structure</b>  🔽</summary>
 
-```plaintext
+```bash
+lib/
+├── domain/
+│   ├── models/
+│   │   ├── auth_model.dart
+│   │   ├── user_model.dart
+│   │   ├── movie_model.dart
+│   │   └── token_model.dart
+│   │
+│   ├── repositories/   [ABSTRACT]
+│   │   ├── i_auth_service.dart
+│   │   ├── i_user_service.dart
+│   │   └── i_movie_service.dart
+│   │
+│   └── services/   (abstract)
+│       ├── i_logger_service.dart
+│       └── i_token_storage_service.dart.dart
+│
+├── data/
+│   ├── datasources/
+│   │   └── remote/
+│   │       ├── api_client.dart
+│   │       └── auth_interceptor.dart
+│   │
+│   ├── repositories/   (concrete)
+│   │   ├── nodelabs_auth_service.dart
+│   │   ├── nodelabs_user_service.dart
+│   │   └── nodelabs_movie_service.dart
+│   │
+│   ├── models/
+│   │   ├── auth_response_model.dart
+│   │   ├── user_response_model.dart
+│   │   └── movie_response_model.dart
+│   │
+│   └── services/   [CONCRETE]
+│       ├── image_handler_service.dart
+│       ├── token_storage_service.dart
+│       └── firebase_logger_service.dart
+│
+├── presentation/
+│   ├── blocs/
+│   │   ├── auth_bloc.dart
+│   │   ├── auth_event.dart
+│   │   ├── auth_state.dart
+│   │   ├── user_bloc.dart
+│   │   ├── user_event.dart
+│   │   ├── user_state.dart
+│   │   ├── movie_bloc.dart
+│   │   ├── movie_event.dart
+│   │   └── movie_state.dart
+│   │
+│   ├── cubits/
+│   │   ├── auth_form_cubit.dart
+│   │   ├── lottie_animation_cubit.dart
+│   │   ├── navigation_bar_cubit.dart
+│   │   └── theme_cubit.dart
+│   │
+│   ├── pages/
+│   │   ├── home_screen.dart
+│   │   ├── profile_details_screen.dart
+│   │   ├── limited_offer_screen.dart
+│   │   ├── signin_screen.dart
+│   │   ├── signup_screen.dart
+│   │   ├── splash_screen.dart
+│   │   └── upload_photo_screen.dart
+│   │   ├── terms_and_conditions_screen.dart
+│   │
+│   ├── widgets/
+│   │   ├── appbars/
+│   │   │   ├── appbar_custom.dart
+│   │   │   └── appbar_sliver_profile.dart
+│   │   │
+│   │   ├── buttons/
+│   │   │   ├── button_main.dart
+│   │   │   ├── button_favorite.dart
+│   │   │   ├── button_lite.dart
+│   │   │   ├── button_navigation_bar.dart
+│   │   │   ├── button_profile.dart
+│   │   │   └── button_text.dart
+│   │   │
+│   │   ├── cards/
+│   │   │   ├── card_movie.dart
+│   │   │   ├── card_movie_description.dart
+│   │   │   ├── card_movie_swipeable.dart
+│   │   │   ├── card_profile.dart
+│   │   │   ├── card_reward.dart
+│   │   │   └── card_token.dart
+│   │   │
+│   │   ├── lotties/
+│   │   │   ├── lottie_like_animation.dart
+│   │   │   ├── lottie_loading_animation.dart
+│   │   │   └── lottie_splash_animation.dart
+│   │   │
+│   │   ├── sections/
+│   │   │   ├── section_card_tokens.dart
+│   │   │   ├── section_rewards.dart
+│   │   │   ├── section_settings_panel.dart
+│   │   │   ├── section_social_login.dart
+│   │   │   └── section_title_subtitle.dart
+│   │   │
+│   │   ├── switch_cupertino_custom.dart
+│   │   ├── scaffold_with_nav_bar.dart
+│   │   ├── text_custom.dart
+│   │   └── textfield_custom.dart
+│   │
+│   └── navigation/
+│       ├── navigation_service.dart
+│       ├── navigation_redirect_service.dart
+│       └── k_routes.dart
+│
+├── core/
+│   ├── constants/
+│   │   ├── k_app_constants.dart
+│   │   ├── k_app_strings.dart
+│   │   ├── k_app_themes.dart
+│   │   ├── k_app_visuals.dart
+│   │   ├── k_api_endpoints.dart
+│   │   ├── k_color_palette.dart
+│   │   └── k_text_themes.dart
+│   │
+│   ├── extensions/
+│   │   ├── k_color_extensions.dart
+│   │   └── k_extensions.dart
+│   │
+│   └── utilities/
+│       └── utilities_library_imports.dart
+│
+├── di/
+│   └── dependency_injection_service.dart
+│
+├── assets/
+│   ├── fonts/
+│   ├── icons/
+│   ├── images/
+│   ├── translations/
+│   └── lotties/
+│
+├── .env
+├── pubspec.yaml
+└── main.dart
+
+```
+
+```bash
 lib/
 ├── core/
 │   ├── constants/
