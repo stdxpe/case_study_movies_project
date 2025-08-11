@@ -32,6 +32,8 @@ lib/
 │   │   ├── api_client.dart
 │   │   ├── navigation_service.dart
 │   │   ├── navigation_redirect_service.dart
+│   │   ├── firebase_logger_service.dart
+│   │   ├── token_storage_service.dart
 │   │   └── dependency_injection_service.dart
 │   │
 │   └── *abstract_classes/
@@ -41,8 +43,6 @@ lib/
 │   │   ├── i_logger_service.dart
 │   │   └── i_token_storage_service.dart
 │   │
-│   ├── firebase_logger_service.dart
-│   ├── token_storage_service.dart
 │   ├── image_handler_service.dart
 │   ├── nodelabs_auth_service.dart
 │   ├── nodelabs_user_service.dart
@@ -229,7 +229,7 @@ lib/
   go_router: ^16.1.0                          # Advanced Navigation & Routing System
   dio: ^5.8.0+1                               # HTTP Networking Service
   flutter_secure_storage: ^9.2.4              # Secure Token Management Service
-  image_picker: ^1.1.2                        # Upload from Device Gallery Functionality
+  image_picker: ^1.1.2                        # Upload from Gallery Functionality
   easy_localization: ^3.0.8                   # Language Localization Service
 
   firebase_core: ^4.0.0                       # Firebase Services | Root
@@ -255,21 +255,19 @@ WidgetsFlutterBinding.ensureInitialized();
   /// DotEnv Implemented as Environment Variable Solution
   await dotenv.load(fileName: AppConstants.envPath);
 
-  /// Firebase Implemented as Cloud Solution
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  /// Firebase Crashlytics Implemented as Remote Logger Service
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);  
+  FlutterError.onError = (errorDetails) =>
+  FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);  
 
-  /// GetIt Implemented as Dependency Injection Solution
+  /// GetIt Implemented as Dependency Injection Service
   initializeDependencyInjectionService();
 
   /// EasyLocalization Implemented as Localization Service
-  await EasyLocalization.ensureInitialized();
-
-  /// Firebase Crashlytics Implemented as Remote Logger Service
-  FlutterError.onError = (errorDetails) =>
-      FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);  ...
+  await EasyLocalization.ensureInitialized();  ...            
 
   /// Bloc Implemented as State Management Solution
-  return MultiBlocProvider(
+  MultiBlocProvider(
     providers: [
       BlocProvider<AuthBloc>(
         create: (_) => locator<AuthBloc>()..add(CheckAuthStatusEvent());  ...
@@ -314,8 +312,7 @@ class MovieModel {
         "posterUrl": posterUrl,
       };
 
-  factory MovieModel.fromJson(String str) =>
-      MovieModel.fromMap(json.decode(str));
+  factory MovieModel.fromJson(String str) => MovieModel.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
@@ -360,7 +357,7 @@ locator.registerLazySingleton<IUserService>(() => NodeLabsUserService());
 /// Movie Service (Data Access Layer)
 locator.registerLazySingleton<IMovieService>(() => NodeLabsMovieService());
 
-/// All Bloc's Registered with Service Class Constructors via GetIt DI
+/// All Blocs Registered with Service Class Constructors via GetIt DI
 locator.registerSingleton<AuthBloc>( => AuthBloc(authService: locator));
 locator.registerFactory<UserBloc>(() => UserBloc(userService: locator));
 locator.registerFactory<MovieBloc>(() => MovieBloc(movieService: locator));
@@ -472,6 +469,7 @@ class CardMovie extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+
         ClipRRect(
           borderRadius: BorderRadius.circular(AppConstants.radius.movieCard),
 
@@ -594,6 +592,58 @@ class CardMovie extends StatelessWidget {
       ),
     );
   }
+```
+
+## Extension | Utility Classes Example
+```dart
+/// [EASY ACCESS to THEME DATA in UI]
+/// Usage example:  `context.theme` --instead of `Theme.of(context)`
+extension ThemeAccessExtension on BuildContext {
+  ThemeData get theme => Theme.of(this);
+}
+
+/// Usage example:  `context.colorPalette`
+extension ColorPaletteExtension on BuildContext {
+  AppColorsThemeExtension get colorPalette => Theme.of(this).colorPalette;
+}
+
+extension EnforceHttps on String {
+  String get withHttps => replaceFirst(RegExp(r'^https?:\/\/'), 'https://');
+}
+...
+```
+
+## Color Palette | AppVisuals | AppStrings | AppConstants | Utility Classes Example
+```dart
+
+/// [COLOR PALETTE] [APP WIDE GLOBAL VARIABLE] 
+/// Implemented into Flutter's Theming System through Extensions 
+/// Usage example:  `context.colorPalette.scaffoldBacground`
+abstract class ColorPalette {
+  /// [DARK MODE THEME COLOR PALETTE]
+  static const Color scaffoldBackground = Color(0xFF090909);
+  static const Color buttonMainBackground = Color(0xFFE50914);
+  static const Color buttonMainForeground = Color(0xFFFFFFFF); ...
+
+/// [APP VISUALS] [APP WIDE GLOBAL VARIABLE] 
+/// Usage example:  `AppVisuals.lottieLike`
+abstract class AppVisuals {
+  static const String lottieLike = "assets/lottie/like.json";
+  static const String lottieLoading = "assets/lottie/loading.json"; ...
+
+/// [APP STRINGS] [APP WIDE GLOBAL VARIABLE] 
+/// Implemented into Language Localization System through JSON's
+/// Usage example:  `AppStrings.errors.photoServerUploadFail` ...
+abstract class AppStrings {
+  String get loginFailedNoToken => 'loginFailedNoToken'.tr();
+  String get photoServerUploadFail => 'photoServerUploadFail'.tr(); ...
+
+/// [APP CONSTANTS] [APP WIDE GLOBAL VARIABLE] 
+/// Usage example:  `AppVisuals.padding.screen`
+abstract class AppConstants {
+  final double screen = 39;
+  final double textFieldHorizontal = 30; ...
+  ...
 ```
 
 ## 📌 Completed Development Milestones
