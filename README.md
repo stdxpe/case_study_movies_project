@@ -1,13 +1,14 @@
 
 # Case Study: Movies Project
 
-Clean structured Flutter showcase project, with BLoC State Management, GetIt Dependency Injection, GoRouter Navigation, JWT Authentication, Firebase Crashlytics & Analytics, localization, theming and modular UI with Lottie.
+Clean structured Flutter showcase project, with **BLoC** State Management, **GetIt** Dependency Injection, **GoRouter** Navigation, **JWT** Authentication, **Firebase Crashlytics & Analytics**, localization, theming and modular UI with **Lottie**.
 
 <!-- ![Movies App Preview](assets/images/dummy_movie_pic.png) -->
 ![](https://github.com/stdxpe/ecommerce_shopping_project/blob/dev/readme_doc/dark_mode.jpg)
-
 ## Project Structure
-
+```rust
+This project strictly follows CLEAN ARCHITECTURE dependency principles, but uses a different folder structure.
+```
 ```bash
 lib/
 ├── *models/
@@ -133,11 +134,16 @@ lib/
 └── main.dart
 
 ```
-
-TEST
-
+### ✨ Clean Architecture Structure Scheme
+```bash
+> lib
+  ├── core
+  ├── data
+  ├── domain
+  └── presentation
+```
 <details>
-<summary>Click to view</summary>
+<summary>🔽  <b>Click to view the detailed Clean Architecture folder structure</b>  🔽</summary>
 
 ```plaintext
 lib/
