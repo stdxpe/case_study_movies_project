@@ -1,10 +1,19 @@
 
 # Case Study: Movies Project
 
-<!-- A feature-rich Flutter application demonstrating clean architecture principles, BLoC state management, and modern Flutter development best practices. -->
-Fully functional showcase project, using Flutter, BLoC State Management, Firebase Crashlytics and Analytics, GetIt Dependency Injection, GoRouter Navigation, JWT Authentication with secure token management, Dio API Client, and custom UI with modular, reusable design with Lottie animations.
-<!-- Fully functional e-commerce application for portfolio, using Flutter, Riverpod, Firebase, Hive and Stripe. -->
+A feature-rich Flutter application demonstrating clean architecture principles, BLoC state management, and modern Flutter development best practices.
 
+Fully functional showcase project, using Flutter, BLoC State Management, Firebase Crashlytics and Analytics, GetIt Dependency Injection, GoRouter Navigation, JWT Authentication with secure token management, Dio API Client, and custom UI with modular, reusable design with Lottie animations.
+
+Fully functional e-commerce application for portfolio, using Flutter, Riverpod, Firebase, Hive and Stripe.
+
+Cleanly architected Flutter app with BLoC pattern, Firebase services, JWT-based authentication, and modular UI design.
+
+Clean Architecture Flutter case study project, showcasing BLoC, GoRouter, GetIt, secure JWT Auth, Firebase Crashlytics & Analytics, and modular UI with Lottie.
+
+Flutter application built with BLoC architecture, GetIt DI pattern, GoRouter integration, JWT-secured communication, animated Lottie elements, and Firebase’s full suite of Crashlytics & Analytics.
+
+Flutter project with BLoC state logic, GoRouter page routing, JWT-secured access, service injection through GetIt, animated feedback with Lottie, and Firebase tools for crash and user analytics.
 ---
 
 <!-- ![Movies App Preview](assets/images/dummy_movie_pic.png) -->
@@ -614,11 +623,11 @@ extension EnforceHttps on String {
 ...
 ```
 
-### Color Palette | [Utilities]
+### Color Palette | Utility Classes Sample
 ```dart
-/// [COLOR PALETTE] [APP WIDE GLOBAL VARIABLE] 
+/// [COLOR PALETTE] [APP-WIDE GLOBAL VARIABLE] 
 /// Implemented into Flutter's Theming System through Extensions 
-/// Usage example:  `context.colorPalette.scaffoldBacground`
+/// Usage example:  `context.colorPalette.scaffoldBackground`
 abstract class ColorPalette {
   /// [DARK MODE THEME COLOR PALETTE]
   static const Color scaffoldBackground = Color(0xFF090909);
@@ -626,18 +635,18 @@ abstract class ColorPalette {
   static const Color buttonMainForeground = Color(0xFFFFFFFF); ...
 ```
 
-### AppVisuals | [Utilities]
+### AppVisuals | Utility Classes Sample
 ```dart
-/// [APP VISUALS] [APP WIDE GLOBAL VARIABLE] 
+/// [APP VISUALS] [APP-WIDE-GLOBAL VARIABLE] 
 /// Usage example:  `AppVisuals.lottieLike`
 abstract class AppVisuals {
   static const String lottieLike = "assets/lottie/like.json";
   static const String lottieLoading = "assets/lottie/loading.json"; ...
 ```
 
-### AppStrings | [Utilities]
+### AppStrings | Utility Classes Sample
 ```dart
-/// [APP STRINGS] [APP WIDE GLOBAL VARIABLE] 
+/// [APP STRINGS] [APP-WIDE GLOBAL VARIABLE] 
 /// Implemented into Language Localization System through JSON's
 /// Usage example:  `AppStrings.errors.photoServerUploadFail` ...
 abstract class AppStrings {
@@ -645,46 +654,13 @@ abstract class AppStrings {
   String get photoServerUploadFail => 'photoServerUploadFail'.tr(); ...
 ```
 
-#### AppConstants | [Utilities]
+### AppConstants | Utility Classes Sample
 ```dart
-/// [APP CONSTANTS] [APP WIDE GLOBAL VARIABLE] 
+/// [APP CONSTANTS] [APP-WIDE GLOBAL VARIABLE] 
 /// Usage example:  `AppConstants.paddings.screen`
 abstract class AppConstants {
   final double screen = 39;
   final double textFieldHorizontal = 30; ...
-```
-
-
-### Color Palette | AppVisuals | AppStrings | AppConstants | Utility Classes Example
-```dart
-/// [COLOR PALETTE] [APP WIDE GLOBAL VARIABLE] 
-/// Implemented into Flutter's Theming System through Extensions 
-/// Usage example:  `context.colorPalette.scaffoldBacground`
-abstract class ColorPalette {
-  /// [DARK MODE THEME COLOR PALETTE]
-  static const Color scaffoldBackground = Color(0xFF090909);
-  static const Color buttonMainBackground = Color(0xFFE50914);
-  static const Color buttonMainForeground = Color(0xFFFFFFFF); ...
-
-/// [APP VISUALS] [APP WIDE GLOBAL VARIABLE] 
-/// Usage example:  `AppVisuals.lottieLike`
-abstract class AppVisuals {
-  static const String lottieLike = "assets/lottie/like.json";
-  static const String lottieLoading = "assets/lottie/loading.json"; ...
-
-/// [APP STRINGS] [APP WIDE GLOBAL VARIABLE] 
-/// Implemented into Language Localization System through JSON's
-/// Usage example:  `AppStrings.errors.photoServerUploadFail` ...
-abstract class AppStrings {
-  String get loginFailedNoToken => 'loginFailedNoToken'.tr();
-  String get photoServerUploadFail => 'photoServerUploadFail'.tr(); ...
-
-/// [APP CONSTANTS] [APP WIDE GLOBAL VARIABLE] 
-/// Usage example:  `AppConstants.paddings.screen`
-abstract class AppConstants {
-  final double screen = 39;
-  final double textFieldHorizontal = 30; ...
-  ...
 ```
 
 ## 📌 Completed Development Milestones
