@@ -136,7 +136,9 @@ lib/
 
 TEST
 
-<details> <summary>### Click to view alternative Clean Architecture foldering structure </summary>
+<details>
+<summary>Click to view</summary>
+
 ```plaintext
 lib/
 ├── core/
@@ -188,8 +190,8 @@ lib/
 │       └── profile_avatar.dart
 │
 └── main.dart
-
 ```
+
 </details>
 
 
