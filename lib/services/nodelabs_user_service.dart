@@ -6,17 +6,14 @@ import 'package:case_study_movies_project/models/user_response_model.dart';
 import 'package:case_study_movies_project/utilities/utilities_library_imports.dart';
 import 'package:case_study_movies_project/services/abstract_classes/i_user_service.dart';
 import 'package:case_study_movies_project/services/abstract_classes/i_logger_service.dart';
-import 'package:case_study_movies_project/services/abstract_classes/i_token_storage_service.dart';
 
 class NodeLabsUserService extends IUserService {
   final Dio client;
   final ILoggerService logger;
-  final ITokenStorageService tokenStorage;
 
   NodeLabsUserService({
     required this.client,
     required this.logger,
-    required this.tokenStorage,
   });
 
   @override

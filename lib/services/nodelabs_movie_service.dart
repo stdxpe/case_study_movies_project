@@ -6,17 +6,14 @@ import 'package:case_study_movies_project/models/movie_response_model.dart';
 import 'package:case_study_movies_project/utilities/utilities_library_imports.dart';
 import 'package:case_study_movies_project/services/abstract_classes/i_movie_service.dart';
 import 'package:case_study_movies_project/services/abstract_classes/i_logger_service.dart';
-import 'package:case_study_movies_project/services/abstract_classes/i_token_storage_service.dart';
 
 class NodeLabsMovieService extends IMovieService {
   final Dio client;
   final ILoggerService logger;
-  final ITokenStorageService tokenStorage;
 
   NodeLabsMovieService({
     required this.client,
     required this.logger,
-    required this.tokenStorage,
   });
 
   @override
