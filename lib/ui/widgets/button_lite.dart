@@ -58,7 +58,7 @@ class ButtonLite extends StatelessWidget {
           ),
           child: Center(
             child: loading
-                ? const SpinKitRing(color: ColorPalette.permaWhite, size: 40)
+                ? SpinKitRing(color: context.colorPalette.text, size: 40)
                 : SizedBox(
                     height: iconSize,
                     width: iconSize,
