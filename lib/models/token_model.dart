@@ -2,8 +2,8 @@ import 'dart:convert';
 
 class TokenModel {
   final int id;
-  final int tokenCount;
-  final int formerTokenCount;
+  final double tokenCount;
+  final double formerTokenCount;
   final double price;
   final String currency;
   final double discountPercent;
@@ -46,8 +46,8 @@ class TokenModel {
 
   TokenModel copyWith({
     int? id,
-    int? tokenCount,
-    int? formerTokenCount,
+    double? tokenCount,
+    double? formerTokenCount,
     double? price,
     String? currency,
     double? discountPercent,

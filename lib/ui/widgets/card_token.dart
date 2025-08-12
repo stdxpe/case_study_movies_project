@@ -49,7 +49,7 @@ class CardToken extends StatelessWidget {
                     fit: BoxFit.contain,
                   ),
                   TextCustom(
-                    text: '+${token.discountPercent}%',
+                    text: '+${token.discountPercent.toStringAsFixed(0)}%',
                     color: ColorPalette.permaWhite,
                     textStyle: context.textTheme.infoLight,
                   ),
