@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 
 import 'package:case_study_movies_project/models/user_model.dart';
+import 'package:case_study_movies_project/utilities/k_endpoints.dart';
 import 'package:case_study_movies_project/models/user_response_model.dart';
 import 'package:case_study_movies_project/services/abstract_classes/i_logger_service.dart';
 import 'package:case_study_movies_project/services/abstract_classes/i_user_service.dart';
@@ -13,71 +14,71 @@ class NodeLabsUserService extends IUserService {
 
   @override
   Future<UserModel> getProfile() async {
-    const String endPoint = '/user/profile';
+    const String endpoint = ApiEndpoints.profile;
 
     try {
-      _logger.logInfo('GET $endPoint → Fetching profile');
-      final response = await _dio.get(endPoint);
+      _logger.logInfo('GET $endpoint → Fetching profile');
+      final response = await _dio.get(endpoint);
 
       if (response.statusCode == 200) {
-        _logger.logInfo('Successfully fetched profile from $endPoint');
+        _logger.logInfo('Successfully fetched profile from $endpoint');
 
         final profileResponse = UserProfileResponseModel.fromMap(response.data);
         return profileResponse.user;
       } else if (response.statusCode == 401) {
         _logger.logError(
-            'GET $endPoint → ${AppStrings.errors.unauthorized401}: ${response.statusCode}');
+            'GET $endpoint → ${AppStrings.errors.unauthorized401}: ${response.statusCode}');
         throw Exception(
             '${AppStrings.errors.unauthorized401}: ${response.statusCode}');
       } else {
         _logger.logError(
-            'GET $endPoint → ${AppStrings.errors.unknown}: ${response.statusCode}');
+            'GET $endpoint → ${AppStrings.errors.unknown}: ${response.statusCode}');
 
         throw Exception(
             '${AppStrings.errors.profileFail}: ${response.statusCode}');
       }
     } on DioException catch (error, stacktrace) {
-      _logger.logError('GET $endPoint → Exception: $error $stacktrace');
+      _logger.logError('GET $endpoint → Exception: $error $stacktrace');
       rethrow;
     }
   }
 
   @override
   Future<String> uploadPhoto(String filePath) async {
-    const String endPoint = '/user/upload_photo';
+    const String endpoint = ApiEndpoints.uploadPhoto;
 
     try {
       final file = await MultipartFile.fromFile(filePath);
       final formData = FormData.fromMap({'file': file});
 
-      _logger.logInfo('Uploading photo to $endPoint');
-      final response = await _dio.post(endPoint, data: formData);
+      _logger.logInfo('Uploading photo to $endpoint');
+      final response = await _dio.post(endpoint, data: formData);
 
       if (response.statusCode == 200) {
         final uploadResponse =
             UploadPhotoResponseModel.fromMap(response.data['data']);
         _logger.logInfo(
-            'Successfully uploaded ${uploadResponse.photoUrl} to $endPoint');
+            'Successfully uploaded ${uploadResponse.photoUrl} to $endpoint');
         return uploadResponse.photoUrl;
       } else if (response.statusCode == 400) {
         _logger.logWarning(
-            'POST $endPoint → ${AppStrings.errors.uploadPhotoInvalidFormat}: ${response.statusCode}');
+            'POST $endpoint → ${AppStrings.errors.uploadPhotoInvalidFormat}: ${response.statusCode}');
         throw Exception(
             '${AppStrings.errors.uploadPhotoInvalidFormat}: ${response.statusCode}');
       } else if (response.statusCode == 401) {
         _logger.logError(
-            'POST $endPoint → ${AppStrings.errors.unauthorized401}: ${response.statusCode}');
+            'POST $endpoint → ${AppStrings.errors.unauthorized401}: ${response.statusCode}');
         throw Exception(
             '${AppStrings.errors.unauthorized401}: ${response.statusCode}');
       } else {
         _logger.logError(
-            'POST $endPoint → ${AppStrings.errors.unknown}: ${response.statusCode}');
+            'POST $endpoint → ${AppStrings.errors.unknown}: ${response.statusCode}');
 
         throw Exception(
             '${AppStrings.errors.photoServerUploadFail}: ${response.statusCode}');
       }
     } on DioException catch (error, stacktrace) {
-      _logger.logError('GET $endPoint → Exception: $error $stacktrace');
+      _logger.logError('GET $endpoint → Exception: $error $stacktrace');
       rethrow;
     }
   }
