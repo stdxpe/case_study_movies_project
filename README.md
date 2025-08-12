@@ -10,7 +10,7 @@ Clean structured Flutter showcase project, with **BLoC** State Management, **Get
 
 ## Project Structure
 ```rust
-❗ This project strictly follows CLEAN ARCHITECTURE dependency principles, but uses a different folder structure.
+❗ This project strictly follows CLEAN ARCHITECTURE dependency principles, but uses an alternative folder structure.
 ```
 
 ```bash
@@ -147,11 +147,12 @@ lib/
   └── core
 ```
 <details>
-<summary>🔽  <b>Click to view the detailed Clean Architecture folder structure</b>  🔽</summary>
+<summary>🔽🔽  <b>Click to view the detailed Clean Architecture folder structure</b>  🔽🔽</summary>
 
 &nbsp;
 
 > Some files and classes might differ from Clean Architecture standard naming conventions, due to my background in C# and .NET traditions (and Uncle Tom of course ^^)
+> Some files and classes might differ from Clean Architecture standard naming conventions (MovieRepository -> IMovieService), due to my background in C# and .NET traditions (and Uncle Tom of course ^^)
 
 ```bash
 
@@ -300,7 +301,7 @@ lib/
 
 
 
-## ✨ Key Features & Highlights
+## 🔥✨✅ Key Features & Highlights
 
 * **State Management:** BLoC for complex flows, Cubit for localized UI states (e.g., text field validation, animations, theme toggling).
 * **Architecture:** MVVM-inspired with near-complete adherence to Clean Architecture principles.
@@ -315,7 +316,8 @@ lib/
 * **Animations:** Smooth transitions controlled via Cubits.
 * **Extensibility:** Utilities for constants, colors, extensions, and asset management.
 
-
+🔥 :fire:
+✅ :white:
 ## 📌 Completed Development Milestones
 
 * Authentication Service – Login & Register.
@@ -391,7 +393,10 @@ WidgetsFlutterBinding.ensureInitialized();
   MultiBlocProvider(
     providers: [
       BlocProvider<AuthBloc>(
-        create: (_) => locator<AuthBloc>()..add(CheckAuthStatusEvent());  ...
+        create: (_) => locator<AuthBloc>()..add(CheckAuthStatusEvent());
+      BlocProvider<UserBloc>(
+        create: (_) => locator<UserBloc>()..add(GetUserProfileEvent());
+      BlocProvider<ThemeCubit>(create: (_) => locator<ThemeCubit>()),  ...
 
   /// Go_Router Implemented as Advanced Navigation Solution
   routerConfig: AppRouter.router,
@@ -403,7 +408,7 @@ WidgetsFlutterBinding.ensureInitialized();
   darkTheme: AppThemes.dark,  ...
 ```
 
-## Model Class Example
+## Model/Entity Class Example
 ```dart
 class MovieModel {
   final String id;
@@ -470,53 +475,63 @@ abstract class IMovieService {
 ## Dependency Injection Example
 ```dart
 /// Auth Service (Data Access Layer)
-locator.registerLazySingleton<IAuthService>(() => NodeLabsAuthService());
+locator.registerLazySingleton<IAuthService>(() => 
+  NodeLabsAuthService(client: locator(), logger: locator(), tokenStorage: locator()));
 
 /// User Service (Data Access Layer)
-locator.registerLazySingleton<IUserService>(() => NodeLabsUserService());
+locator.registerLazySingleton<IUserService>(() => 
+    NodeLabsUserService(client: locator(), logger: locator()));
 
 /// Movie Service (Data Access Layer)
-locator.registerLazySingleton<IMovieService>(() => NodeLabsMovieService());
+locator.registerLazySingleton<IMovieService>(() => 
+    NodeLabsMovieService(client: locator(), logger: locator()));
 
-/// All Blocs Registered with Service Class Constructors via GetIt DI
-locator.registerSingleton<AuthBloc>( => AuthBloc(authService: locator));
-locator.registerFactory<UserBloc>(() => UserBloc(userService: locator));
-locator.registerFactory<MovieBloc>(() => MovieBloc(movieService: locator));
+/// All Bloc's Registered with Service Class Constructors via GetIt DI
+locator.registerSingleton<AuthBloc>(() => 
+    MovieBloc(authService: locator(), logger: locator()));
+
+locator.registerFactory<UserBloc>(() => 
+    UserBloc(userService: locator(), logger: locator(), imageService: locator()));
+
+locator.registerFactory<MovieBloc>(() => 
+    MovieBloc(movieService: locator(), logger: locator()));
 ...
 ```
-
+/// TODO: dependencies injected through constructors
 ## Service Class Example
 
 ```dart
 class NodeLabsMovieService extends IMovieService {
-  final _dio = locator<Dio>();
-  final _logger = locator<ILoggerService>();
+  final ApiClient client;
+  final ILoggerService logger;
+
+  NodeLabsMovieService({required this.client, required this.logger});
 
   @override
   Future<List<MovieModel>> getFavoriteMovies() async {
-    const String endPoint = '/movie/favorites';
+    const String endpoint = ApiEndpoints.favorites;
 
     try {
-      _logger.logInfo('GET $endPoint → Fetching items');
-      final response = await _dio.get(endPoint);
+      logger.logInfo('GET $endPoint → Fetching items');
+      final response = await client.get(endpoint);
 
       if (response.statusCode == 200) {
         final favMoviesResponse = FavoriteMoviesResponseModel.fromMap(response.data);
-        _logger.logInfo('Successfully fetched ${favMoviesResponse.movies.length} items from $endPoint');
+        logger.logInfo('Successfully fetched ${favMoviesResponse.movies.length} items from $endpoint');
 
         return favMoviesResponse.movies;
 
       } else if (response.statusCode == 401) {
-        _logger.logError('GET $endPoint → ${AppStrings.errors.unauthorized401}: ${response.statusCode}');
+        logger.logError('GET $endpoint → ${AppStrings.errors.unauthorized401}: ${response.statusCode}');
         throw Exception('${AppStrings.errors.unauthorized401}: ${response.statusCode}');
 
       } else {
-        _logger.logError('GET $endPoint → ${AppStrings.errors.unknown}: ${response.statusCode}');
+        logger.logError('GET $endpoint → ${AppStrings.errors.unknown}: ${response.statusCode}');
         throw Exception('${AppStrings.errors.unknown}: ${response.statusCode}');
       }
 
     } on DioException catch (error, stacktrace) {
-      _logger.logError('GET $endPoint → Exception: $error $stacktrace');
+      logger.logError('GET $endpoint → Exception: $error $stacktrace');
       rethrow; 
     }
   }
@@ -531,16 +546,16 @@ class NodeLabsMovieService extends IMovieService {
 class MovieBloc extends Bloc<MovieEvent, MovieState> {
 
   final IMovieService movieService;
-  final logger = locator<ILoggerService>();
+  final ILoggerService logger;
 
-  MovieBloc({required this.movieService}) : super(MovieState.initial()) {
+  MovieBloc({required this.movieService, required this.logger}) : super(MovieState.initial()) {
     on<GetFavoriteMoviesEvent>(_onGetFavoriteMovies); ... }
 
 ...
 Future<void> _onGetFavoriteMovies(event, emit) async {
 
     emit(state.copyWith(status: MovieStatus.loading));
-    _logger.logInfo( ...
+    logger.logInfo( ...
 
     try {
 
@@ -554,8 +569,6 @@ Future<void> _onGetFavoriteMovies(event, emit) async {
       emit(state.copyWith( status: MovieStatus.error, errorMessage: e.toString()));
       logger.logError(  ...
 ```
-Note: Three Different Bloc Writing Alternative Implemented
-
 
 ## UI BLoC Implementation Example
 ```dart
@@ -602,11 +615,8 @@ class CardMovie extends StatelessWidget {
               fit: BoxFit.cover,
               height: AppConstants.sizes.movieCardHeight,
               loadingBuilder: (context, child, loadingProgress) {
-                  return const LottieLoadingAnimation();
-              },
-            ),
-          ),
-        ),
+                  return const LottieLoadingAnimation();   ...
+
         SizedBox(height: AppConstants.spacings.space16),
 
         TextCustom(
@@ -705,14 +715,7 @@ class CardMovie extends StatelessWidget {
 
                     SizedBox(height: AppConstants.paddings.screen),
                   ],
-                ),
-              ),
-            ),
-          );
-        },
-      ),
-    );
-  }
+                ),   ...
 ```
 
 ## Extensions | Utility Classes Sample
@@ -729,7 +732,7 @@ extension ColorPaletteExtension on BuildContext {
 }
 
 /// Fix for the broken links from the API
-extension EnforceHttps on String {
+extension EnforceHttpsExtension on String {
   String get withHttps => replaceFirst(RegExp(r'^https?:\/\/'), 'https://');
 }
 ...
@@ -764,6 +767,7 @@ abstract class AppVisuals {
 abstract class AppStrings {
   String get loginFailedNoToken => 'loginFailedNoToken'.tr();
   String get photoServerUploadFail => 'photoServerUploadFail'.tr(); ...
+  /// en.json → {.. "photoServerUploadFail": "Failed to upload photo to server", ..}
 ```
 
 ### AppConstants | Utility Classes Sample
