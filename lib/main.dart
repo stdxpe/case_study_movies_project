@@ -14,6 +14,7 @@ import 'package:case_study_movies_project/ui/bloc/auth_event.dart';
 import 'package:case_study_movies_project/ui/bloc/movie_bloc.dart';
 import 'package:case_study_movies_project/ui/bloc/movie_event.dart';
 import 'package:case_study_movies_project/ui/bloc/theme_cubit.dart';
+import 'package:case_study_movies_project/ui/bloc/auth_form_cubit.dart';
 import 'package:case_study_movies_project/ui/bloc/lottie_animation_cubit.dart';
 import 'package:case_study_movies_project/utilities/utilities_library_imports.dart';
 import 'package:case_study_movies_project/services/global_services/dependency_injection_service.dart';
@@ -69,13 +70,15 @@ class RootApp extends StatelessWidget {
         BlocProvider<UserBloc>(
           create: (_) => locator<UserBloc>()..add(GetUserProfileEvent()),
         ),
-        BlocProvider(create: (_) => LottieAnimationCubit()),
-        BlocProvider<ThemeCubit>(create: (_) => ThemeCubit()),
         BlocProvider<MovieBloc>(
           create: (_) => locator<MovieBloc>()
             ..add(GetMoviesEvent(page: 1))
             ..add(GetFavoriteMoviesEvent()),
         ),
+        BlocProvider<AuthFormCubit>(create: (_) => locator<AuthFormCubit>()),
+        BlocProvider<ThemeCubit>(create: (_) => locator<ThemeCubit>()),
+        BlocProvider<LottieAnimationCubit>(
+            create: (_) => locator<LottieAnimationCubit>()),
       ],
       child: BlocBuilder<ThemeCubit, ThemeMode>(builder: (context, themeMode) {
         return MaterialApp.router(
