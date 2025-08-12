@@ -3,17 +3,22 @@ import 'package:dio/dio.dart';
 import 'package:case_study_movies_project/models/auth_model.dart';
 import 'package:case_study_movies_project/utilities/k_endpoints.dart';
 import 'package:case_study_movies_project/models/auth_error_response.model.dart';
+import 'package:case_study_movies_project/utilities/utilities_library_imports.dart';
 import 'package:case_study_movies_project/services/abstract_classes/i_auth_service.dart';
 import 'package:case_study_movies_project/services/abstract_classes/i_logger_service.dart';
 import 'package:case_study_movies_project/services/abstract_classes/i_token_storage_service.dart';
-import 'package:case_study_movies_project/services/global_services/dependency_injection_service.dart';
-import 'package:case_study_movies_project/utilities/utilities_library_imports.dart';
 // ignore_for_file: unnecessary_null_comparison
 
 class NodeLabsAuthService extends IAuthService {
-  final _dio = locator<Dio>();
-  final _logger = locator<ILoggerService>();
-  final _tokenStorage = locator<ITokenStorageService>();
+  final Dio client;
+  final ILoggerService logger;
+  final ITokenStorageService tokenStorage;
+
+  NodeLabsAuthService({
+    required this.client,
+    required this.logger,
+    required this.tokenStorage,
+  });
 
   @override
   Future<AuthModel> login(
@@ -22,36 +27,36 @@ class NodeLabsAuthService extends IAuthService {
     final data = {'email': email, 'password': password};
 
     try {
-      _logger.logInfo('POST $endpoint → Signing in with $email');
-      final response = await _dio.post(endpoint, data: data);
+      logger.logInfo('POST $endpoint → Signing in with $email');
+      final response = await client.post(endpoint, data: data);
 
       if (response.statusCode == 200) {
-        _logger.logInfo('Successfully signed in $endpoint with $email');
+        logger.logInfo('Successfully signed in $endpoint with $email');
         final authModel = AuthModel.fromMap(response.data);
         final token = authModel.token;
 
         if (token != null && token.isNotEmpty) {
-          await _tokenStorage.saveToken(token);
+          await tokenStorage.saveToken(token);
         } else {
-          _logger.logError(
+          logger.logError(
               'POST $endpoint → ${AppStrings.errors.loginFailedWithCode} for $email: ${response.statusCode}');
           throw Exception(AppStrings.errors.loginFailedWithCode);
         }
         return authModel;
       } else if (response.statusCode == 400) {
-        _logger.logError(
+        logger.logError(
             'POST $endpoint → ${AppStrings.errors.invalidCredentials400} for $email ${response.statusCode}');
 
         throw Exception(
             '${AppStrings.errors.invalidCredentials400}: ${response.statusCode}');
       } else if (response.statusCode == 401) {
-        _logger.logError(
+        logger.logError(
             'POST $endpoint → ${AppStrings.errors.unauthorized401} for $email ${response.statusCode}');
 
         throw Exception(
             '${AppStrings.errors.unauthorized401}: ${response.statusCode}');
       } else {
-        _logger.logError(
+        logger.logError(
             'POST $endpoint → ${AppStrings.errors.unknown} for $email: ${response.statusCode}');
         throw Exception(
             '${AppStrings.errors.loginFailedWithCode}: ${response.statusCode}');
@@ -59,10 +64,10 @@ class NodeLabsAuthService extends IAuthService {
     } on DioException catch (error, stacktrace) {
       if (error.response?.data != null) {
         final errorModel = AuthErrorResponseModel.fromMap(error.response!.data);
-        _logger.logError(
+        logger.logError(
             'POST $endpoint → Login Failed with ${error.message} Backend response: $errorModel');
       } else {
-        _logger.logError('POST $endpoint → Exception: $error $stacktrace');
+        logger.logError('POST $endpoint → Exception: $error $stacktrace');
       }
       rethrow;
     }
@@ -78,36 +83,36 @@ class NodeLabsAuthService extends IAuthService {
     final data = {'email': email, 'name': name, 'password': password};
 
     try {
-      _logger.logInfo('POST $endpoint → Registering in with $email');
-      final response = await _dio.post(endpoint, data: data);
+      logger.logInfo('POST $endpoint → Registering in with $email');
+      final response = await client.post(endpoint, data: data);
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         final authModel = AuthModel.fromMap(response.data);
         final token = authModel.token;
 
         if (token != null && token.isNotEmpty) {
-          await _tokenStorage.saveToken(token);
-          _logger.logError('POST $endpoint → Token saved from register');
+          await tokenStorage.saveToken(token);
+          logger.logError('POST $endpoint → Token saved from register');
         } else {
-          _logger.logError(
+          logger.logError(
               'POST $endpoint → ${AppStrings.errors.registerSuccessNoToken} for $email: ${response.statusCode}');
           throw Exception(AppStrings.errors.registerSuccessNoToken);
         }
 
         return authModel;
       } else if (response.statusCode == 400) {
-        _logger.logError(
+        logger.logError(
             'POST $endpoint → ${AppStrings.errors.invalidCredentials400} for $email ${response.statusCode}');
         throw Exception(
             '${AppStrings.errors.invalidCredentials400}: ${response.statusCode}');
       } else if (response.statusCode == 401) {
-        _logger.logError(
+        logger.logError(
             'POST $endpoint → ${AppStrings.errors.unauthorized401} for $email ${response.statusCode}');
 
         throw Exception(
             '${AppStrings.errors.unauthorized401}: ${response.statusCode}');
       } else {
-        _logger.logError(
+        logger.logError(
             'POST $endpoint → ${AppStrings.errors.unknown} for $email: ${response.statusCode}');
 
         throw Exception(
@@ -116,10 +121,10 @@ class NodeLabsAuthService extends IAuthService {
     } on DioException catch (error, stacktrace) {
       if (error.response?.data != null) {
         final errorModel = AuthErrorResponseModel.fromMap(error.response!.data);
-        _logger.logError(
+        logger.logError(
             'POST $endpoint → Register Failed with ${error.message} Backend response: $errorModel');
       } else {
-        _logger.logError('POST $endpoint → Exception: $error $stacktrace');
+        logger.logError('POST $endpoint → Exception: $error $stacktrace');
       }
       rethrow;
     }
@@ -127,19 +132,19 @@ class NodeLabsAuthService extends IAuthService {
 
   @override
   Future<void> signOut() async {
-    final hasToken = await _tokenStorage.hasToken();
+    final hasToken = await tokenStorage.hasToken();
 
     if (hasToken) {
-      await _tokenStorage.deleteToken();
-      _logger.logInfo('User signed out, token deleted.');
+      await tokenStorage.deleteToken();
+      logger.logInfo('User signed out, token deleted.');
     } else {
-      _logger.logInfo('SignOut called but no token found.');
+      logger.logInfo('SignOut called but no token found.');
     }
   }
 
   @override
   Future<bool> isAuthenticated() async {
-    final token = await _tokenStorage.getToken();
+    final token = await tokenStorage.getToken();
     return token != null && token.isNotEmpty;
   }
 }
