@@ -34,6 +34,7 @@ void main() async {
 
   /// EasyLocalization Implemented as Localization Service
   await EasyLocalization.ensureInitialized();
+  EasyLocalization.logger.enableBuildModes = [];
 
   /// Firebase Crashlytics Implemented as Remote Logger Service
   FlutterError.onError = (errorDetails) =>
