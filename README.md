@@ -322,7 +322,7 @@ lib/
 
 - **Animations:** Utilized `Lottie` and `flutter_animate` to deliver interactive and dynamic screens.
 
-- **Utilities:** App-wide globals handled elegantly under separate utility classes. (e.g. Constants, Extensions, Visuals, Routes..)
+- **Utilities:** App-wide globals handled elegantly under separate utility classes. (e.g. Constants, Extensions, Visuals, ColorPalettes, Themes, TextThemes, Routes..)
 
 - **Theming:** Integrated `dark/light` themes with embedded custom `color palettes` and `typography` styles.
 
@@ -394,9 +394,9 @@ WidgetsFlutterBinding.ensureInitialized();
 ```
 
 > [!NOTE]
-> Useful information that users should know, even when skimming content.
+> Following section demonstrates the app flow for the Movie model/entity class, MovieService, MovieBloc, and UI; including abstract class and dependency injection implementations.
 
-## Model/Entity Class Example
+### Model/Entity Class Example
 ```dart
 class MovieModel {
   final String id;
@@ -452,7 +452,7 @@ class MovieModel {
 
 > Clean structured Flutter showcase project, with **BLoC** State Management, **GetIt** Dependency Injection, **GoRouter** Navigation, JWT Authentication, Firebase Crashlytics & Analytics, localization, theming and modular UI with Lottie.
 
-## Abstract Class Example
+### Abstract Class Example
 ```dart
 abstract class IMovieService {
   
@@ -462,7 +462,7 @@ abstract class IMovieService {
 }
 ```
 
-## Dependency Injection Example
+### Dependency Injection Example
 ```dart
 /// Auth Service (Data Access Layer)
 locator.registerLazySingleton<IAuthService>(() => 
@@ -488,7 +488,7 @@ locator.registerFactory<MovieBloc>(() =>
 ...
 ```
 
-## Service Class Example
+### Service Class Example
 ```dart
 class NodeLabsMovieService extends IMovieService {
   final ApiClient client;
@@ -528,7 +528,7 @@ class NodeLabsMovieService extends IMovieService {
 ```
 
 
-## BLoC Example
+### BLoC Example
 ```dart
 class MovieBloc extends Bloc<MovieEvent, MovieState> {
 
@@ -557,7 +557,7 @@ Future<void> _onGetFavoriteMovies(event, emit) async {
       logger.logError(  ...
 ```
 
-## UI BLoC Implementation Example
+### UI BLoC Implementation Example
 ```dart
 BlocBuilder<MovieBloc, MovieState> (builder: (context, state) {
 switch (state.status) {
@@ -579,7 +579,7 @@ switch (state.status) {
 ...
 ```
 
-## UI Widget Example
+### UI Widget Example
 ```dart
 class CardMovie extends StatelessWidget {
   const CardMovie({super.key, required this.movie});
@@ -620,7 +620,7 @@ class CardMovie extends StatelessWidget {
 ...
 ```
 
-## UI General Example
+### UI General Example
 ```dart
  @override
   Widget build(BuildContext context) {
@@ -705,7 +705,7 @@ class CardMovie extends StatelessWidget {
                 ),   ...
 ```
 
-## Extensions | Utility Classes Sample
+### Extensions | Utility Classes Sample
 ```dart
 /// [EASY ACCESS to THEME DATA in UI]
 /// Usage example:  `context.theme` --instead of `Theme.of(context)`
