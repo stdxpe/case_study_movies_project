@@ -300,13 +300,13 @@ lib/
 
 ## ✅ Technical Features
 
-- **State Management:** Implemented `BLoC` for complex state flows and `Cubit` for local UI states (theme toggling, textfield validation, animation control).
+- **State Management:** Implemented `BLoC` for complex state flows and `Cubit` for local UI states (theme toggling, textfield validation, animation control..).
 
 - **Architecture:** Followed `Clean Architecture` principles with an alternative foldering structure.
 
-- **Dependency Injection:** Registered all objects and abstractions via `GetIt` for centralized control.
+- **Dependency Injection:** Registered all objects and abstract classes via `GetIt` for centralized control.
 
-- **Navigation:** Integrated `GoRouter` as advanced navigation system with an automated redirect service.
+- **Navigation:** Integrated `GoRouter` as advanced navigation system with automated `redirect` service.
 
 - **Storage & Security:** Secured `JWT` tokens with `FlutterSecureStorage` and encrypted local storage.
 
@@ -322,7 +322,7 @@ lib/
 
 - **Animations:** Utilized `Lottie` and `flutter_animate` to deliver interactive and dynamic screens.
 
-- **Utilities:** App-wide globals handled elegantly under separate utility classes.
+- **Utilities:** App-wide globals handled elegantly under separate utility classes. (e.g. Constants, Extensions, Visuals, Routes..)
 
 - **Theming:** Integrated `dark/light` themes with embedded custom `color palettes` and `typography` styles.
 
