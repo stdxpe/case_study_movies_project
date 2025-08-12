@@ -11,8 +11,6 @@ abstract class AppConstants {
 
   static String get appTitle => "SinFlix";
   static String get envPath => ".env";
-
-  static const baseUrl = "https://caseapi.servicelabs.tech/";
 }
 
 class _AppPaddings {
