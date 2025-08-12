@@ -335,13 +335,13 @@ Use `status` to list all new or modified files that haven't yet been committed.
 
 ## Features
 
-> - **State Management:** Implemented `BLoC` for complex state flows and `Cubit` for local UI states (theme toggle, textfield validation, animation control).
+- **State Management:** Implemented `BLoC` for complex state flows and `Cubit` for local UI states (theme toggle, textfield validation, animation control).
 
-- **Architecture:** Followed `clean architecture` principles with an alternative foldering structure.
+- **Architecture:** Followed `Clean Architecture` principles with an alternative foldering structure.
 
 - **Dependency Injection:** Registered all objects and abstractions via `GetIt` for centralized control.
 
-- **Navigation:** Integrated `GoRouter` as an advanced navigation system with an automated redirect service.
+- **Navigation:** Integrated `GoRouter` as advanced navigation system with an automated redirect service.
 
 - **Storage & Security:** Secured `JWT` tokens with `FlutterSecureStorage` and encrypted local storage.
 
@@ -360,6 +360,37 @@ Use `status` to list all new or modified files that haven't yet been committed.
 - **Theming:** Integrated `dark/light` themes with embedded custom `color palettes` and `typography` styles.
 
 - **Utilities:** App-wide globals handled elegantly under separate utility classes.
+
+## ✅ Features & Milestones
+
+> - **State Management:** Implemented `BLoC` for complex state flows and `Cubit` for local UI states (theme toggle, textfield validation, animation control).
+> 
+> - **Architecture:** Followed `Clean Architecture` principles with an alternative foldering structure.
+> 
+> - **Dependency Injection:** Registered all objects and abstractions via `GetIt` for centralized control.
+> 
+> - **Navigation:** Integrated `GoRouter` as advanced navigation system with an automated redirect service.
+> 
+> - **Storage & Security:** Secured `JWT` tokens with `FlutterSecureStorage` and encrypted local storage.
+> 
+> - **Networking:** Implemented `Dio` as the main HTTP client with automated auth interceptors.
+> 
+> - **Pagination:** Created infinite scrolls with `pull-to-refresh`, using API-driven lists with lazy loading.
+> 
+> - **Logging:** Connected a centralized logger service with `Firebase Crashlytics & Analytics`.
+> 
+> - **Localization:** Implemented `multi-language` support with dynamic JSON-based translation files.
+> 
+> - **Splash & Icons:** Implemented splash screens and platform-optimized icons for iOS and Android.
+> 
+> - **Animations:** Utilized `Lottie` and `flutter_animate` to deliver interactive and dynamic screens.
+> 
+> - **Theming:** Integrated `dark/light` themes with embedded custom `color palettes` and `typography` styles.
+> 
+> - **Utilities:** App-wide globals handled elegantly under separate utility classes.
+
+
+
 
 
 ## ✅ Features & Milestones
