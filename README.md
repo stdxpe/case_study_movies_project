@@ -336,6 +336,19 @@ Use `git status` to list all new or modified files that haven't yet been committ
 
 ## ✅ Features
 
+- [x] **State Management:**  ’BLoC’ implemented for complex state flows, and ’Cubit’ for localized UI state states (theme toggle, textfield validations, animations..)
+- [x] **Dependency Injection:**  ’GetIt’ implemented for centralized dependency control
+- [x] **Navigation:**  ’GoRouter’ implemented for advanced navigation system
+- [x] **Theming:**  ’Dark’ and ’Light’ mode theme switch created for different color palettes
+- [x] **Animations:**  ’Lottie’ animations used all over the app, and ’animate’ package utilized
+- [x] **Logging:**  ’Firebase Crashlytics & Analytics’ integrated for iOS and Android
+- [x] **Secure Storage:**  ’FlutterSecureStorage’ implemented for ’JWT’ token management
+- [x] **HTTP Client:**  ’Dio’ package utilized with automated auth interceptors
+- [x] **Utilities:**  App-wide constants handled elegantly under abstact classes with const parameters
+- [x] **Animations:**  ’Lottie’
+- [x] **Animations:**  ’Lottie’
+
+
 * **State Management:** BLoC for complex flows, Cubit for localized UI states (e.g., text field validation, animations, theme toggling).
 * **Architecture:** MVVM-inspired with near-complete adherence to Clean Architecture principles.
 * **Dependency Injection:** Implemented with GetIt for a decoupled service layer.
