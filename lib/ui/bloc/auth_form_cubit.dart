@@ -74,7 +74,7 @@ class AuthFormCubit extends Cubit<AuthFormState> {
   AuthFormCubit({required this.authBloc}) : super(const AuthFormState()) {
     _authSubscription = authBloc.stream.listen((authState) {
       if (authState is AuthError) {
-        final backendMessage = authState.message;
+        final backendMessage = authState.message.toFriendlyErrorMessage();
 
         emit(state.copyWith(
           isSubmitting: false,

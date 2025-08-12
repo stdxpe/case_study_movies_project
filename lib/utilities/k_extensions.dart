@@ -60,6 +60,17 @@ extension FirstWordsExtension on String {
   }
 }
 
+extension BackendErrorMessageExtension on String {
+  String toFriendlyErrorMessage() {
+    final withSpaces = replaceAll('_', ' ').toLowerCase();
+    final capitalizedWords = withSpaces.split(' ').map((word) {
+      if (word.isEmpty) return word;
+      return word[0].toUpperCase() + word.substring(1);
+    }).join(' ');
+    return capitalizedWords.tr();
+  }
+}
+
 extension MovieCardHeightExtension on BuildContext {
   double get movieCardTotalHeight {
     final screenWidth = mediaQuery.size.width;
