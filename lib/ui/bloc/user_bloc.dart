@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:case_study_movies_project/ui/bloc/user_event.dart';
@@ -20,6 +21,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     on<GetUserProfileEvent>(_onGetUserProfileEvent);
     on<UploadUserPhotoEvent>(_onUploadUserPhotoEvent);
     on<ShowPhotoWarningMessageEvent>(_onShowPhotoWarningMessageEvent);
+    on<ResetUserPhotoStateEvent>(_onResetUserPhotoStateEvent);
   }
 
   Future<void> _onGetUserProfileEvent(
@@ -89,5 +91,10 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   Future<void> _onShowPhotoWarningMessageEvent(
       ShowPhotoWarningMessageEvent event, Emitter<UserState> emit) async {
     emit(state.copyWith(errorMessage: AppStrings.errors.photoUploadWarning));
+  }
+
+  FutureOr<void> _onResetUserPhotoStateEvent(
+      ResetUserPhotoStateEvent event, Emitter<UserState> emit) {
+    emit(state.copyWith(errorMessage: '', resetSelectedPhotoPath: true));
   }
 }

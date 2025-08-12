@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import 'package:case_study_movies_project/ui/bloc/user_bloc.dart';
+import 'package:case_study_movies_project/ui/bloc/user_event.dart';
 import 'package:case_study_movies_project/models/user_model.dart';
 import 'package:case_study_movies_project/ui/widgets/button_profile.dart';
 import 'package:case_study_movies_project/ui/widgets/text_custom.dart';
@@ -66,6 +69,7 @@ class CardProfile extends StatelessWidget {
             paddingHorizontal: AppConstants.paddings.addPhotoHorizontal,
             paddingVertical: AppConstants.paddings.addPhotoVertical,
             onPressed: () {
+              context.read<UserBloc>().add(ResetUserPhotoStateEvent());
               context.push(Routes.uploadPhotos);
             },
           ).animate().fadeIn(delay: 600.ms, duration: 300.ms),

@@ -5,3 +5,5 @@ class GetUserProfileEvent extends UserEvent {}
 class UploadUserPhotoEvent extends UserEvent {}
 
 class ShowPhotoWarningMessageEvent extends UserEvent {}
+
+class ResetUserPhotoStateEvent extends UserEvent {}

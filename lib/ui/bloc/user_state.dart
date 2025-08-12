@@ -18,12 +18,15 @@ class UserState {
     bool? isLoading,
     String? errorMessage,
     String? selectedPhotoPath,
+    bool resetSelectedPhotoPath = false,
   }) {
     return UserState(
       user: user ?? this.user,
       isLoading: isLoading ?? this.isLoading,
       errorMessage: errorMessage ?? this.errorMessage,
-      selectedPhotoPath: selectedPhotoPath ?? this.selectedPhotoPath,
+      selectedPhotoPath: resetSelectedPhotoPath
+          ? null
+          : (selectedPhotoPath ?? this.selectedPhotoPath),
     );
   }
 
