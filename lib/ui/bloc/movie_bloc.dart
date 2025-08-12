@@ -4,13 +4,13 @@ import 'package:case_study_movies_project/ui/bloc/movie_event.dart';
 import 'package:case_study_movies_project/ui/bloc/movie_state.dart';
 import 'package:case_study_movies_project/services/abstract_classes/i_logger_service.dart';
 import 'package:case_study_movies_project/services/abstract_classes/i_movie_service.dart';
-import 'package:case_study_movies_project/services/global_services/dependency_injection_service.dart';
 
 class MovieBloc extends Bloc<MovieEvent, MovieState> {
   final IMovieService movieService;
-  final _logger = locator<ILoggerService>();
+  final ILoggerService logger;
 
-  MovieBloc({required this.movieService}) : super(MovieState.initial()) {
+  MovieBloc({required this.movieService, required this.logger})
+      : super(MovieState.initial()) {
     on<GetMoviesEvent>(_onGetMovies);
     on<GetFavoriteMoviesEvent>(_onGetFavoriteMovies);
     on<ToggleFavoriteMovieEvent>(_onToggleFavoriteMovie);
@@ -18,7 +18,7 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
 
   Future<void> _onGetMovies(
       GetMoviesEvent event, Emitter<MovieState> emit) async {
-    _logger.logInfo('GetMovies started, page: ${event.page}');
+    logger.logInfo('GetMovies started, page: ${event.page}');
     if (event.page == 1) {
       emit(state.copyWith(
           status: MovieStatus.loading, allMovies: [], currentPage: 1));
@@ -38,14 +38,14 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
         allMovies: combinedMovies,
         currentPage: event.page,
       ));
-      _logger.logInfo(
+      logger.logInfo(
           'GetMovies successful, page: ${event.page}, new items: ${newMovies.length}');
     } catch (e, stack) {
       emit(state.copyWith(
         status: MovieStatus.error,
         errorMessage: e.toString(),
       ));
-      _logger.logError('GetMovies failed, page: ${event.page}',
+      logger.logError('GetMovies failed, page: ${event.page}',
           error: e is Exception ? e : Exception(e.toString()), stack: stack);
     }
   }
@@ -54,19 +54,19 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
     GetFavoriteMoviesEvent event,
     Emitter<MovieState> emit,
   ) async {
-    _logger.logInfo('GetFavoriteMovies started');
+    logger.logInfo('GetFavoriteMovies started');
     emit(state.copyWith(status: MovieStatus.loading));
 
     try {
       final favorites = await movieService.getFavoriteMovies();
       emit(state.copyWith(
           status: MovieStatus.loaded, favoriteMovies: favorites));
-      _logger
+      logger
           .logInfo('GetFavoriteMovies successful, count: ${favorites.length}');
     } catch (e, stack) {
       emit(state.copyWith(
           status: MovieStatus.error, errorMessage: e.toString()));
-      _logger.logError('GetFavoriteMovies failed',
+      logger.logError('GetFavoriteMovies failed',
           error: e is Exception ? e : Exception(e.toString()), stack: stack);
     }
   }
@@ -75,8 +75,7 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
     ToggleFavoriteMovieEvent event,
     Emitter<MovieState> emit,
   ) async {
-    _logger
-        .logInfo('ToggleFavoriteMovie started for movieId: ${event.movieId}');
+    logger.logInfo('ToggleFavoriteMovie started for movieId: ${event.movieId}');
     try {
       final success = await movieService.toggleFavorite(event.movieId);
 
@@ -88,14 +87,14 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
           favoriteMovies: updatedFavorites,
           allMovies: state.allMovies,
         ));
-        _logger.logInfo(
+        logger.logInfo(
             'ToggleFavoriteMovie succeeded for movieId: ${event.movieId}');
       } else {
         emit(state.copyWith(
           status: MovieStatus.error,
           errorMessage: 'Failed to toggle favorite',
         ));
-        _logger.logWarning(
+        logger.logWarning(
             'ToggleFavoriteMovie failed for movieId: ${event.movieId}');
       }
     } catch (e, stack) {
@@ -103,10 +102,8 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
         status: MovieStatus.error,
         errorMessage: e.toString(),
       ));
-      _logger.logError(
-          'ToggleFavoriteMovie error for movieId: ${event.movieId}',
-          error: e is Exception ? e : Exception(e.toString()),
-          stack: stack);
+      logger.logError('ToggleFavoriteMovie error for movieId: ${event.movieId}',
+          error: e is Exception ? e : Exception(e.toString()), stack: stack);
     }
   }
 }
