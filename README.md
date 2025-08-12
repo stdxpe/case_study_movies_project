@@ -332,158 +332,66 @@ Use `status` to list all new or modified files that haven't yet been committed.
 > [!NOTE]
 > Useful information that users should know, even when skimming content.
 
-## ✅ Features & Milestones
 
-> This project integrates a robust state management system with `BLoC` for complex state flows; and `Cubit` for localized UI states like theme switching, form validations, and animations. It employs `GetIt` for dependency injection, `GoRouter` for navigation, and `Dio` with auth interceptors for HTTP requests. Security is ensured with `FlutterSecureStorage` for `JWT` token handling, while `Firebase Crashlytics & Analytics` provide logging and performance analysis. Both `Dark` and `Light` modes are supported with separate color palettes, and the UI is enhanced through `Lottie` animations and `flutter_animate`. Additional features include infinite scrolling with pagination and pull-to-refresh, multi-language localization via JSON files, and custom splash screen & icons... 
+## Features
 
-Completed development milestones include:  
-- Authentication Service – Login & Register & Validation
-- User Service – Profile retrieval and photo upload.
-- Movie Service (fetch, list, favorites)  
-- Secure token storage and validation  
-- Centralized API client and logging  
-- Modular and reusable UI components  
-- Real-time theme switching  
-- Pull-to-refresh with lazy loading  
-- Custom launch assets for a polished app experience  
+> - **State Management:** Implemented `BLoC` for complex state flows and `Cubit` for local UI states (theme toggle, textfield validation, animation control).
 
-- Authentication and User Services (login, register, profile, photo upload)  
+- **Architecture:** Followed `clean architecture` principles with an alternative foldering structure.
 
+- **Dependency Injection:** Registered all objects and abstractions via `GetIt` for centralized control.
 
-## ✅ Features
+- **Navigation:** Integrated `GoRouter` as an advanced navigation system with an automated redirect service.
 
-- **State Management:** Implemented `BLoC` for predictable state handling and separation of business logic from the UI layer.
+- **Storage & Security:** Secured `JWT` tokens with `FlutterSecureStorage` and encrypted local storage.
 
-- **Architecture:** Followed "Clean Architecture" principles to ensure a scalable, maintainable, and testable codebase.
+- **Networking:** Implemented `Dio` as the main HTTP client with automated auth interceptors.
 
-- **Dependency Injection:** Integrated `get_it` for centralized and decoupled dependency management.
+- **Pagination:** Created infinite scrolls with `pull-to-refresh`, using API-driven lists with lazy loading.
 
-- **Navigation:** Implemented `go_router` for declarative, URL-based navigation and deep linking.
+- **Logging:** Connected a centralized logger service with `Firebase Crashlytics & Analytics`.
 
-- **Storage & Security:** Integrated `flutter_secure_storage` for sensitive data encryption and local secure storage.
-
-- **Networking:** Implemented `Dio` as HTTP client with "JWT" authentication and automatic token refresh.
-
-- **Pagination:** Developed infinite scroll with "pull-to-refresh" and lazy loading for seamless data fetching.
-
-- **Logging:** Integrated centralized logger service with `Firebase Crashlytics & Analytics`.
-
-- **Localization:** Implemented "multi-language" support with dynamic JSON-based translation files.
+- **Localization:** Implemented `multi-language` support with dynamic JSON-based translation files.
 
 - **Splash & Icons:** Implemented splash screens and platform-optimized icons for iOS and Android.
 
 - **Animations:** Utilized `Lottie` and `flutter_animate` to deliver interactive and dynamic screens.
 
-- **Theming:** Created dark/light themes with embedded custom "color palettes" and "typography" styles.
+- **Theming:** Integrated `dark/light` themes with embedded custom `color palettes` and `typography` styles.
 
 - **Utilities:** App-wide globals handled elegantly under separate utility classes.
 
 
-* **State Management:** Implemented `BLoC` for predictable state handling and separation of business logic from the UI layer.
-* **Architecture:** Followed "Clean Architecture" principles to ensure a scalable, maintainable, and testable codebase.
-* **Dependency Injection:** Integrated `get_it` for centralized and decoupled dependency management.
-* **Navigation:** Implemented `go_router` for declarative, URL-based navigation and deep linking.
-* **Storage & Security:** Integrated `flutter_secure_storage` for sensitive data encryption and local secure storage.
-* **Networking:** Implemented `Dio` as HTTP client with "JWT" authentication and automatic token refresh.
-* **Pagination:** Developed infinite scroll with "pull-to-refresh" and lazy loading for seamless data fetching.
-* **Logging:** Integrated centralized logger service with `Firebase Crashlytics & Analytics`.
-* **Localization:** Implemented "multi-language" support with dynamic JSON-based translation files.
-* **Splash & Icons:** Implemented splash screens and platform-optimized icons for iOS and Android.
-* **Animations:** Utilized `Lottie` and `flutter_animate` to deliver interactive and dynamic screens.
-* **Theming:** Created dark/light themes with embedded custom "color palettes" and "typography" styles.
-* **Utilities:** App-wide globals handled elegantly under separate utility classes.
+## ✅ Features & Milestones
+
+- [x] **State Management:**  `BLoC` implemented for complex state flows and `Cubit` for local UI states (theme toggle, textfield validation, animation control).
+
+- [x] **Architecture:**  "Clean architecture" principles followed with an alternative foldering structure.
+
+- [x] **Dependency Injection:**  All objects and abstractions registered via `GetIt` for centralized control.
+
+- [x] **Navigation:**  `GoRouter` integrated as an advanced navigation system with an automated redirect service.
+
+- [x] **Storage & Security:**  "JWT" tokens secured with `FlutterSecureStorage` and encrypted local storage.
+
+- [x] **Networking:**  `Dio` implemented as the main HTTP client with automated auth interceptors.
+
+- [x] **Pagination:**  Infinite scrolls created with "pull-to-refresh", using API-driven lists with lazy loading.
+
+- [x] **Logging:**  Centralized logger service connected with `Firebase Crashlytics & Analytics`.
+
+- [x] **Localization:**  "Multi-language" support implemented with dynamic JSON-based translation files.
+
+- [x] **Splash & Icons:**  Splash screens and platform-optimized icons implemented for iOS and Android.
+
+- [x] **Animations:**  `Lottie` and `flutter_animate` utilized to deliver interactive and dynamic screens.
+
+- [x] **Theming:**  "Dark/light" themes integrated with embedded custom "color palettes" and typography styles.
+
+- [x] **Utilities:**  App-wide globals handled elegantly under separate utility classes.
 
 
-→ **State Management:** Implemented `BLoC` for predictable state handling and separation of business logic from the UI layer.  
-→ **Architecture:** Followed "Clean Architecture" principles to ensure a scalable, maintainable, and testable codebase.  
-→ **Dependency Injection:** Integrated `get_it` for centralized and decoupled dependency management.  
-→ **Navigation:** Implemented `go_router` for declarative, URL-based navigation and deep linking.  
-→ **Storage & Security:** Integrated `flutter_secure_storage` for sensitive data encryption and local secure storage.  
-→ **Networking:** Implemented `Dio` as HTTP client with "JWT" authentication and automatic token refresh.  
-→ **Pagination:** Developed infinite scroll with "pull-to-refresh" and lazy loading for seamless data fetching.  
-→ **Logging:** Integrated centralized logger service with `Firebase Crashlytics & Analytics`.  
-→ **Localization:** Implemented "multi-language" support with dynamic JSON-based translation files.  
-→ **Splash & Icons:** Implemented splash screens and platform-optimized icons for iOS and Android.  
-→ **Animations:** Utilized `Lottie` and `flutter_animate` to deliver interactive and dynamic screens.  
-→ **Theming:** Created dark/light themes with embedded custom "color palettes" and "typography" styles.  
-→ **Utilities:** App-wide globals handled elegantly under separate utility classes.  
-
-
-▪ **State Management:** Implemented `BLoC` for predictable state handling and separation of business logic from the UI layer.  
-▪ **Architecture:** Followed "Clean Architecture" principles to ensure a scalable, maintainable, and testable codebase.  
-▪ **Dependency Injection:** Integrated `get_it` for centralized and decoupled dependency management.  
-▪ **Navigation:** Implemented `go_router` for declarative, URL-based navigation and deep linking.  
-▪ **Storage & Security:** Integrated `flutter_secure_storage` for sensitive data encryption and local secure storage.  
-▪ **Networking:** Implemented `Dio` as HTTP client with "JWT" authentication and automatic token refresh.  
-▪ **Pagination:** Developed infinite scroll with "pull-to-refresh" and lazy loading for seamless data fetching.  
-▪ **Logging:** Integrated centralized logger service with `Firebase Crashlytics & Analytics`.  
-▪ **Localization:** Implemented "multi-language" support with dynamic JSON-based translation files.  
-▪ **Splash & Icons:** Implemented splash screens and platform-optimized icons for iOS and Android.  
-▪ **Animations:** Utilized `Lottie` and `flutter_animate` to deliver interactive and dynamic screens.  
-▪ **Theming:** Created dark/light themes with embedded custom "color palettes" and "typography" styles.  
-▪ **Utilities:** App-wide globals handled elegantly under separate utility classes.  
-
-
-— **State Management:** Implemented `BLoC` for predictable state handling and separation of business logic from the UI layer.  
-— **Architecture:** Followed "Clean Architecture" principles to ensure a scalable, maintainable, and testable codebase.  
-— **Dependency Injection:** Integrated `get_it` for centralized and decoupled dependency management.  
-— **Navigation:** Implemented `go_router` for declarative, URL-based navigation and deep linking.  
-— **Storage & Security:** Integrated `flutter_secure_storage` for sensitive data encryption and local secure storage.  
-— **Networking:** Implemented `Dio` as HTTP client with "JWT" authentication and automatic token refresh.  
-— **Pagination:** Developed infinite scroll with "pull-to-refresh" and lazy loading for seamless data fetching.  
-— **Logging:** Integrated centralized logger service with `Firebase Crashlytics & Analytics`.  
-— **Localization:** Implemented "multi-language" support with dynamic JSON-based translation files.  
-— **Splash & Icons:** Implemented splash screens and platform-optimized icons for iOS and Android.  
-— **Animations:** Utilized `Lottie` and `flutter_animate` to deliver interactive and dynamic screens.  
-— **Theming:** Created dark/light themes with embedded custom "color palettes" and "typography" styles.  
-— **Utilities:** App-wide globals handled elegantly under separate utility classes.  
-
-
-1️⃣ **State Management:** Implemented `BLoC` for predictable state handling and separation of business logic from the UI layer.  
-2️⃣ **Architecture:** Followed "Clean Architecture" principles to ensure a scalable, maintainable, and testable codebase.  
-3️⃣ **Dependency Injection:** Integrated `get_it` for centralized and decoupled dependency management.  
-4️⃣ **Navigation:** Implemented `go_router` for declarative, URL-based navigation and deep linking.  
-5️⃣ **Storage & Security:** Integrated `flutter_secure_storage` for sensitive data encryption and local secure storage.  
-6️⃣ **Networking:** Implemented `Dio` as HTTP client with "JWT" authentication and automatic token refresh.  
-7️⃣ **Pagination:** Developed infinite scroll with "pull-to-refresh" and lazy loading for seamless data fetching.  
-8️⃣ **Logging:** Integrated centralized logger service with `Firebase Crashlytics & Analytics`.  
-9️⃣ **Localization:** Implemented "multi-language" support with dynamic JSON-based translation files.  
-🔟 **Splash & Icons:** Implemented splash screens and platform-optimized icons for iOS and Android.  
-1️⃣1️⃣ **Animations:** Utilized `Lottie` and `flutter_animate` to deliver interactive and dynamic screens.  
-1️⃣2️⃣ **Theming:** Created dark/light themes with embedded custom "color palettes" and "typography" styles.  
-1️⃣3️⃣ **Utilities:** App-wide globals handled elegantly under separate utility classes.  
-
-
-(1) **State Management:** Implemented `BLoC` for predictable state handling and separation of business logic from the UI layer.  
-(2) **Architecture:** Followed "Clean Architecture" principles to ensure a scalable, maintainable, and testable codebase.  
-(3) **Dependency Injection:** Integrated `get_it` for centralized and decoupled dependency management.  
-(4) **Navigation:** Implemented `go_router` for declarative, URL-based navigation and deep linking.  
-(5) **Storage & Security:** Integrated `flutter_secure_storage` for sensitive data encryption and local secure storage.  
-(6) **Networking:** Implemented `Dio` as HTTP client with "JWT" authentication and automatic token refresh.  
-(7) **Pagination:** Developed infinite scroll with "pull-to-refresh" and lazy loading for seamless data fetching.  
-(8) **Logging:** Integrated centralized logger service with `Firebase Crashlytics & Analytics`.  
-(9) **Localization:** Implemented "multi-language" support with dynamic JSON-based translation files.  
-(10) **Splash & Icons:** Implemented splash screens and platform-optimized icons for iOS and Android.  
-(11) **Animations:** Utilized `Lottie` and `flutter_animate` to deliver interactive and dynamic screens.  
-(12) **Theming:** Created dark/light themes with embedded custom "color palettes" and "typography" styles.  
-(13) **Utilities:** App-wide globals handled elegantly under separate utility classes.  
-
-1. **State Management:** Implemented `BLoC` for predictable state handling and separation of business logic from the UI layer.  
-2. **Architecture:** Followed "Clean Architecture" principles to ensure a scalable, maintainable, and testable codebase.  
-   - Ensures clear separation of domain, data, and presentation layers.  
-3. **Dependency Injection:** Integrated `get_it` for centralized and decoupled dependency management.  
-4. **Navigation:** Implemented `go_router` for declarative, URL-based navigation and deep linking.  
-5. **Storage & Security:** Integrated `flutter_secure_storage` for sensitive data encryption and local secure storage.  
-6. **Networking:** Implemented `Dio` as HTTP client with "JWT" authentication and automatic token refresh.  
-7. **Pagination:** Developed infinite scroll with "pull-to-refresh" and lazy loading for seamless data fetching.  
-8. **Logging:** Integrated centralized logger service with `Firebase Crashlytics & Analytics`.  
-9. **Localization:** Implemented "multi-language" support with dynamic JSON-based translation files.  
-10. **Splash & Icons:** Implemented splash screens and platform-optimized icons for iOS and Android.  
-11. **Animations:** Utilized `Lottie` and `flutter_animate` to deliver interactive and dynamic screens.  
-12. **Theming:** Created dark/light themes with embedded custom "color palettes" and "typography" styles.  
-13. **Utilities:** App-wide globals handled elegantly under separate utility classes.  
-
-
+## ✅ Features & Milestones
 
 - [x] **State Management:**  `BLoC` implemented for complex state flows, and `Cubit` for localized UI states (theme toggling, textfield validations, animations..)
 - [x] **Dependency Injection:**  `GetIt` implemented for centralized dependency control
@@ -499,41 +407,6 @@ Completed development milestones include:
 - [x] **Localization:**  Multiple language support implemented through JSON files
 - [x] **Localization:**  Multiple language support implemented through JSON files
 - ✅ **Localization:**  Multiple language support implemented through JSON files
-
-
-## 📌 Completed Development Milestones
-
-* Authentication Service – Login & Register & Validation
-* User Service – Profile retrieval and photo upload.
-* Movie Service – Fetch, list, and toggle favorites.
-* Token Management – Secure storage and token validation.
-* API Client & Interceptors – Centralized request handling.
-* Logger Service – Centralized logging with Firebase Crashlytics & Analytics
-* Firebase Crashlytics & Analytics integration.
-* UI Components – Modular and reusable.
-* Dark/Light Theme – Real-time switching with Cubit
-* Localization for multi-language support.
-* Infinite scrolls with pagination and pull-to-refresh.
-* Splash & Icons – Custom launch assets.
-
-
-
-* **State Management:** BLoC for complex flows, Cubit for localized UI states (e.g., text field validation, animations, theme toggling).
-* **Architecture:** MVVM-inspired with near-complete adherence to Clean Architecture principles.
-* **Dependency Injection:** Implemented with GetIt for a decoupled service layer.
-* **Navigation:** go\_router for type-safe and scalable routing.
-* **Reusable UI Components:** Modular widgets used across screens.
-* **Theming:** Light/dark theme switching with a central manager.
-* **Pagination:** API-driven lists with lazy loading.
-* **Logging:** Custom LoggerService with placeholders for Firebase Crashlytics & Analytics.
-* **Secure Storage:** JWT token management with FlutterSecureStorage.
-* **API Communication:** Dio with auth interceptors.
-* **Animations:** Smooth transitions controlled via Cubits.
-* **Extensibility:** Utilities for constants, colors, extensions, and asset management.
-
-🔥 :fire:
-✅ :white:
-
 
 
 
