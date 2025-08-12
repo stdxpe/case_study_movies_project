@@ -10,10 +10,14 @@ Clean structured Flutter showcase project, with **BLoC** State Management, **Get
 
 ## Project Structure
 ```rust
-❗ This project strictly follows CLEAN ARCHITECTURE dependency principles, \nbut uses an alternative folder structure.
-\nBelow this scheme, you can view the standard version. [Click Here](#-clean-architecture-structure-scheme)
-
+❗ This project strictly follows CLEAN ARCHITECTURE dependency principles,
+but uses an alternative folder structure.
 ```
+❗ This project strictly follows CLEAN ARCHITECTURE dependency principles,  
+but uses an alternative folder structure.  
+
+Below this scheme, you can view the standard version. [Click Here](#-clean-architecture-structure-scheme)
+
 
 ```bash
 lib/
