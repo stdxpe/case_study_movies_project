@@ -8,5 +8,5 @@ abstract class ApiEndpoints {
 
   static const String movies = "/movie/list";
   static const String favorites = "/movie/favorites";
-  static const String favoriteWithId = "/movie/favorites/";
+  static const String favoriteWithId = "/movie/favorite/";
 }
