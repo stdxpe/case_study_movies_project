@@ -10,7 +10,7 @@ Clean structured Flutter showcase project, with **BLoC** State Management, **Get
 
 ## Project Structure
 ```rust
-❗ This project strictly follows CLEAN ARCHITECTURE dependency principles, but uses an alternative folder structure. Below this scheme, you can view the standard version. 
+❗ This project strictly follows CLEAN ARCHITECTURE dependency principles, but uses an alternative folder structure. Below this scheme, you can view the standard version.
 ```
 
 ```bash
@@ -151,10 +151,8 @@ lib/
 
 &nbsp;
 
-> Some files and classes might differ from Clean Architecture standard naming conventions, due to my background in C# and .NET traditions (and Uncle Tom of course ^^)
+> Some files and classes might differ from Clean Architecture standard naming conventions, due to my background in C# and .NET traditions (and Uncle Tom of course ^^) (e.g. MovieRepository → IMovieService)
 
-
-> Some files and classes might differ from Clean Architecture standard naming conventions (MovieRepository -> IMovieService), due to my background in C# and .NET traditions (and Uncle Tom of course ^^)
 
 ```bash
 
@@ -323,7 +321,7 @@ Implemented Firestore and Firebase Storage for cloud database solution, and Hive
 - Güvenli
 - Kolay Kullanım
 
-Use `git status` to list all new or modified files that haven't yet been committed.
+Use `status` to list all new or modified files that haven't yet been committed.
 
 - [x] #739
 - [ ] https://github.com/octo-org/octo-repo/issues/740
@@ -336,18 +334,36 @@ Use `git status` to list all new or modified files that haven't yet been committ
 
 ## ✅ Features
 
-- [x] **State Management:**  ’BLoC’ implemented for complex state flows, and ’Cubit’ for localized UI state states (theme toggle, textfield validations, animations..)
-- [x] **Dependency Injection:**  ’GetIt’ implemented for centralized dependency control
-- [x] **Navigation:**  ’GoRouter’ implemented for advanced navigation system
-- [x] **Theming:**  ’Dark’ and ’Light’ mode theme switch created for different color palettes
-- [x] **Animations:**  ’Lottie’ animations used all over the app, and ’animate’ package utilized
-- [x] **Logging:**  ’Firebase Crashlytics & Analytics’ integrated for iOS and Android
-- [x] **Secure Storage:**  ’FlutterSecureStorage’ implemented for ’JWT’ token management
-- [x] **HTTP Client:**  ’Dio’ package utilized with automated auth interceptors
-- [x] **Utilities:**  App-wide constants handled elegantly under abstact classes with const parameters
-- [x] **Animations:**  ’Lottie’
-- [x] **Animations:**  ’Lottie’
+- [x] **State Management:**  `BLoC` implemented for complex state flows, and `Cubit` for localized UI states (theme toggling, textfield validations, animations..)
+- [x] **Dependency Injection:**  `GetIt` implemented for centralized dependency control
+- [x] **Navigation:**  `GoRouter` implemented for advanced navigation system
+- [x] **Theming:**  `Dark` and `Light` mode theme integrated for different color palettes
+- [x] **Animations:**  `Lottie` animations and `flutter_animate` package utilized
+- [x] **Logging:**  `Firebase Crashlytics & Analytics` integrated for iOS and Android
+- [x] **Secure Storage:**  `FlutterSecureStorage` implemented for `JWT` token management
+- [x] **HTTP Client:**  `Dio` package utilized with automated auth interceptors
+- [x] **Utilities:**  App-wide globals handled elegantly under separate utility classes
+- [x] **Pagination:**  `Infinite scrolls` created for API-driven list with lazy loading
+- [x] **Splash & Icons:**  Custom launch assets integrated
+- [x] **Localization:**  Multiple language support implemented through JSON files
+- [x] **Localization:**  Multiple language support implemented through JSON files
+- ✅ **Localization:**  Multiple language support implemented through JSON files
 
+
+## 📌 Completed Development Milestones
+
+* Authentication Service – Login & Register & Validation
+* User Service – Profile retrieval and photo upload.
+* Movie Service – Fetch, list, and toggle favorites.
+* Token Management – Secure storage and token validation.
+* API Client & Interceptors – Centralized request handling.
+* Logger Service – Centralized logging with Firebase Crashlytics & Analytics
+* Firebase Crashlytics & Analytics integration.
+* UI Components – Modular and reusable.
+* Dark/Light Theme – Real-time switching with Cubit
+* Localization for multi-language support.
+* Infinite scrolls with pagination and pull-to-refresh.
+* Splash & Icons – Custom launch assets.
 
 * **State Management:** BLoC for complex flows, Cubit for localized UI states (e.g., text field validation, animations, theme toggling).
 * **Architecture:** MVVM-inspired with near-complete adherence to Clean Architecture principles.
@@ -364,28 +380,7 @@ Use `git status` to list all new or modified files that haven't yet been committ
 
 🔥 :fire:
 ✅ :white:
-## 📌 Completed Development Milestones
 
-* Authentication Service – Login & Register.
-* Token Management – Secure storage and validation.
-* User Service – Profile retrieval and photo upload.
-* Movie Service – Fetch, list, and toggle favorites.
-* API Client & Interceptors – Centralized request handling.
-* Response Models – Strongly typed.
-* Logger Service – Centralized logging.
-* UI Components – Modular and reusable.
-* Dark/Light Theme – Real-time switching.
-* Splash & Icons – Custom launch assets.
-
----
-
-## 📅 Future Enhancements
-
-* Firebase Crashlytics & Analytics integration.
-* Localization for multi-language support.
-* Expanded unit & widget test coverage.
-* Offline Mode with caching.
-* Infinite scrolling pagination.
 
 
 
