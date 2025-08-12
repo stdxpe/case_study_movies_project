@@ -62,15 +62,14 @@ void initializeDependencyInjectionService() {
 
   /// User Service (Data Access Layer)
   locator.registerLazySingleton<IUserService>(() => NodeLabsUserService(
-      client: locator<Dio>(),
-      logger: locator<ILoggerService>(),
-      tokenStorage: locator<ITokenStorageService>()));
+      client: locator<Dio>(), logger: locator<ILoggerService>()));
+
+  locator.registerLazySingleton<IUserService>(
+      () => NodeLabsUserService(client: locator(), logger: locator()));
 
   /// Movie Service (Data Access Layer)
   locator.registerLazySingleton<IMovieService>(() => NodeLabsMovieService(
-      client: locator<Dio>(),
-      logger: locator<ILoggerService>(),
-      tokenStorage: locator<ITokenStorageService>()));
+      client: locator<Dio>(), logger: locator<ILoggerService>()));
 
   /// Image Picker Service (Data Access Layer)
   locator.registerLazySingleton<ImageHandlerService>(() {
