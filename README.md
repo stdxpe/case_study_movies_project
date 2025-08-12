@@ -8,20 +8,10 @@ Clean structured Flutter showcase project, with **BLoC** State Management, **Get
 
 > Clean structured Flutter showcase project, with **BLoC** State Management, **GetIt** Dependency Injection, **GoRouter** Navigation, JWT Authentication, Firebase Crashlytics & Analytics, localization, theming and modular UI with Lottie.
 
-<small>Below this scheme, you can view the standard version. [Click Here](#-clean-architecture-structure-scheme)</small>
-
 ## Project Structure
 ```rust
-❗ This project strictly follows CLEAN ARCHITECTURE dependency principles,
-   but uses an alternative folder structure.
+❗ This project strictly follows CLEAN ARCHITECTURE dependency principles, but uses an alternative folder structure. Below this scheme, you can view the standard version. 
 ```
-##### Below this scheme, you can view the standard version. [Click Here](#-clean-architecture-structure-scheme)
-
-
-
-
-<!-- Below this scheme, you can view the standard version. [Click Here](#-clean-architecture-structure-scheme) -->
-
 
 ```bash
 lib/
@@ -162,6 +152,8 @@ lib/
 &nbsp;
 
 > Some files and classes might differ from Clean Architecture standard naming conventions, due to my background in C# and .NET traditions (and Uncle Tom of course ^^)
+
+
 > Some files and classes might differ from Clean Architecture standard naming conventions (MovieRepository -> IMovieService), due to my background in C# and .NET traditions (and Uncle Tom of course ^^)
 
 ```bash
@@ -309,9 +301,40 @@ lib/
 ```
 </details>
 
+Integrated Stripe API for the secure payment processing, ensuring seamless checkout flows with reliable and real-time transactions
+Utilized Riverpod for State Management, get_it for Dependency Injection, and GoRouter for advanced Navigation/Routing service
+Designed a modern, responsive UI with ScreenUtil and Figma, customized color palettes, dynamic theming, and Lottie animations
+Enabled Google Sign-In and Firebase Auth for real-time user authentication and smooth onboarding experience
+Implemented Firestore and Firebase Storage for cloud database solution, and Hive for local device storage and caching mechanism
 
+> **Özellikler:**
+> - Hızlı yükleme
+> - Basit arayüz
+> - Güvenli bağlantı
 
-## 🔥✨✅ Key Features & Highlights
+* [*] İlk madde
+* [~] İkinci madde
+* [!] Üçüncü madde
+
+- Özellik 1 | Özellik 2 | Özellik 3
+
+### Ana Özellikler
+- Hızlı
+- Güvenli
+- Kolay Kullanım
+
+Use `git status` to list all new or modified files that haven't yet been committed.
+
+- [x] #739
+- [ ] https://github.com/octo-org/octo-repo/issues/740
+- [ ] Add delight to the experience when all tasks are complete :tada:
+
+- [ ] \(Optional) Open a followup issue
+
+> [!NOTE]
+> Useful information that users should know, even when skimming content.
+
+## ✅ Features
 
 * **State Management:** BLoC for complex flows, Cubit for localized UI states (e.g., text field validation, animations, theme toggling).
 * **Architecture:** MVVM-inspired with near-complete adherence to Clean Architecture principles.
