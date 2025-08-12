@@ -6,8 +6,6 @@ Clean structured Flutter showcase project, with **BLoC** State Management, **Get
 <!-- ![Movies App Preview](assets/images/dummy_movie_pic.png) -->
 ![](https://github.com/stdxpe/ecommerce_shopping_project/blob/dev/readme_doc/dark_mode.jpg)
 
-> Clean structured Flutter showcase project, with **BLoC** State Management, **GetIt** Dependency Injection, **GoRouter** Navigation, JWT Authentication, Firebase Crashlytics & Analytics, localization, theming and modular UI with Lottie.
-
 ## Project Structure
 ```rust
 ❗ This project strictly follows CLEAN ARCHITECTURE dependency principles, but uses an alternative folder structure. Below this scheme, you can view the standard version.
@@ -299,43 +297,10 @@ lib/
 ```
 </details>
 
-Integrated Stripe API for the secure payment processing, ensuring seamless checkout flows with reliable and real-time transactions
-Utilized Riverpod for State Management, get_it for Dependency Injection, and GoRouter for advanced Navigation/Routing service
-Designed a modern, responsive UI with ScreenUtil and Figma, customized color palettes, dynamic theming, and Lottie animations
-Enabled Google Sign-In and Firebase Auth for real-time user authentication and smooth onboarding experience
-Implemented Firestore and Firebase Storage for cloud database solution, and Hive for local device storage and caching mechanism
 
-> **Özellikler:**
-> - Hızlı yükleme
-> - Basit arayüz
-> - Güvenli bağlantı
+## ✅ Technical Features
 
-* [*] İlk madde
-* [~] İkinci madde
-* [!] Üçüncü madde
-
-- Özellik 1 | Özellik 2 | Özellik 3
-
-### Ana Özellikler
-- Hızlı
-- Güvenli
-- Kolay Kullanım
-
-Use `status` to list all new or modified files that haven't yet been committed.
-
-- [x] #739
-- [ ] https://github.com/octo-org/octo-repo/issues/740
-- [ ] Add delight to the experience when all tasks are complete :tada:
-
-- [ ] \(Optional) Open a followup issue
-
-> [!NOTE]
-> Useful information that users should know, even when skimming content.
-
-
-## ✅ Technical Features0
-
-- **State Management:** Implemented `BLoC` for complex state flows and `Cubit` for local UI states (theme toggle, textfield validation, animation control).
+- **State Management:** Implemented `BLoC` for complex state flows and `Cubit` for local UI states (theme toggling, textfield validation, animation control).
 
 - **Architecture:** Followed `Clean Architecture` principles with an alternative foldering structure.
 
@@ -357,114 +322,9 @@ Use `status` to list all new or modified files that haven't yet been committed.
 
 - **Animations:** Utilized `Lottie` and `flutter_animate` to deliver interactive and dynamic screens.
 
-- **Theming:** Integrated `dark/light` themes with embedded custom `color palettes` and `typography` styles.
-
 - **Utilities:** App-wide globals handled elegantly under separate utility classes.
 
-## ✅ Technical Features1
-
-> - **State Management:** Implemented `BLoC` for complex state flows and `Cubit` for local UI states (theme toggle, textfield validation, animation control).
-> 
-> - **Architecture:** Followed `Clean Architecture` principles with an alternative foldering structure.
-> 
-> - **Dependency Injection:** Registered all objects and abstractions via `GetIt` for centralized control.
-> 
-> - **Navigation:** Integrated `GoRouter` as advanced navigation system with an automated redirect service.
-> 
-> - **Storage & Security:** Secured `JWT` tokens with `FlutterSecureStorage` and encrypted local storage.
-> 
-> - **Networking:** Implemented `Dio` as the main HTTP client with automated auth interceptors.
-> 
-> - **Pagination:** Created infinite scrolls with `pull-to-refresh`, using API-driven lists with lazy loading.
-> 
-> - **Logging:** Connected a centralized logger service with `Firebase Crashlytics & Analytics`.
-> 
-> - **Localization:** Implemented `multi-language` support with dynamic JSON-based translation files.
-> 
-> - **Splash & Icons:** Implemented splash screens and platform-optimized icons for iOS and Android.
-> 
-> - **Animations:** Utilized `Lottie` and `flutter_animate` to deliver interactive and dynamic screens.
-> 
-> - **Theming:** Integrated `dark/light` themes with embedded custom `color palettes` and `typography` styles.
-> 
-> - **Utilities:** App-wide globals handled elegantly under separate utility classes.
-
-
-## ✅ Technical Features2
-
-- [x] **State Management:**  `BLoC` for complex state flows and `Cubit` for local UI states (theme toggle, textfield validation, animation control).
-
-- [x] **Architecture:**  `Clean Architecture` principles followed with an alternative foldering structure.
-
-- [x] **Dependency Injection:**  Registered all objects and abstractions via `GetIt` for centralized control.
-
-- [x] **Navigation:**  `GoRouter` integrated as advanced navigation system with an automated redirect service.
-
-- [x] **Storage & Security:**  Secured `JWT` tokens with `FlutterSecureStorage` and encrypted local storage.
-
-- [x] **Networking:**  `Dio` implemented as the main HTTP client with automated auth interceptors.
-
-- [x] **Pagination:**  Created infinite scrolls with `pull-to-refresh`, using API-driven lists with lazy loading.
-
-- [x] **Logging:**  Connected a centralized logger service with `Firebase Crashlytics & Analytics`.
-
-- [x] **Localization:**  Implemented `multi-language` support with dynamic JSON-based translation files.
-
-- [x] **Splash & Icons:**  Implemented splash screens and platform-optimized icons for iOS and Android.
-
-- [x] **Animations:**  Utilized `Lottie` and `flutter_animate` to deliver interactive and dynamic screens.
-
-- [x] **Theming:**  Integrated `dark/light` themes with embedded custom `color palettes` and typography styles.
-
-- [x] **Utilities:**  App-wide globals handled elegantly under separate utility classes.
-
-
-## ✅ Technical Features3
-
-- [x] **State Management:**  Implemented BLoC for complex state flows and Cubit for local UI states (theme toggle, textfield validation, animation control).
-
-- [x] **Architecture:**  Followed Clean Architecture principles with an alternative foldering structure.
-
-- [x] **Dependency Injection:**  Registered all objects and abstractions via GetIt for centralized control.
-
-- [x] **Navigation:**  Integrated GoRouter as advanced navigation system with an automated redirect service.
-
-- [x] **Storage & Security:**  Secured JWT tokens with FlutterSecureStorage and encrypted local storage.
-
-- [x] **Networking:**  Implemented Dio as the main HTTP client with automated auth interceptors.
-
-- [x] **Pagination:**  Created infinite scrolls with pull-to-refresh, using API-driven lists with lazy loading.
-
-- [x] **Logging:**  Connected a centralized logger service with Firebase Crashlytics & Analytics.
-
-- [x] **Localization:**  Implemented multi-language support with dynamic JSON-based translation files.
-
-- [x] **Splash & Icons:**  Implemented splash screens and platform-optimized icons for iOS and Android.
-
-- [x] **Animations:**  Utilized Lottie and flutter_animate to deliver interactive and dynamic screens.
-
-- [x] **Theming:**  Integrated dark/light themes with embedded custom color palettes and typography styles.
-
-- [x] **Utilities:**  App-wide globals handled elegantly under separate utility classes.
-
-
-
-## ✅ Technical Features4
-
-- [x] **State Management:**  Implemented BLoC for complex state flows and Cubit for local UI states (theme toggle, textfield validation, animation control).
-- [x] **Architecture:**  Followed Clean Architecture principles with an alternative foldering structure.
-- [x] **Dependency Injection:**  Registered all objects and abstractions via GetIt for centralized control.
-- [x] **Navigation:**  Integrated GoRouter as advanced navigation system with an automated redirect service.
-- [x] **Storage & Security:**  Secured JWT tokens with FlutterSecureStorage and encrypted local storage.
-- [x] **Networking:**  Implemented Dio as the main HTTP client with automated auth interceptors.
-- [x] **Pagination:**  Created infinite scrolls with pull-to-refresh, using API-driven lists with lazy loading.
-- [x] **Logging:**  Connected a centralized logger service with Firebase Crashlytics & Analytics.
-- [x] **Localization:**  Implemented multi-language support with dynamic JSON-based translation files.
-- [x] **Splash & Icons:**  Implemented splash screens and platform-optimized icons for iOS and Android.
-- [x] **Animations:**  Utilized Lottie and flutter_animate to deliver interactive and dynamic screens.
-- [x] **Theming:**  Integrated dark/light themes with embedded custom color palettes and typography styles.
-- [x] **Utilities:**  App-wide globals handled elegantly under separate utility classes.
-
+- **Theming:** Integrated `dark/light` themes with embedded custom `color palettes` and `typography` styles.
 
 
 ## Dependencies (on pubspec.yaml)
@@ -495,6 +355,7 @@ Use `status` to list all new or modified files that haven't yet been committed.
 
 #########################################################################################
 ```
+
 ## main.dart
 ```dart 
 WidgetsFlutterBinding.ensureInitialized();
@@ -531,6 +392,9 @@ WidgetsFlutterBinding.ensureInitialized();
   theme: AppThemes.light,
   darkTheme: AppThemes.dark,  ...
 ```
+
+> [!NOTE]
+> Useful information that users should know, even when skimming content.
 
 ## Model/Entity Class Example
 ```dart
@@ -586,6 +450,8 @@ class MovieModel {
 }
 ```
 
+> Clean structured Flutter showcase project, with **BLoC** State Management, **GetIt** Dependency Injection, **GoRouter** Navigation, JWT Authentication, Firebase Crashlytics & Analytics, localization, theming and modular UI with Lottie.
+
 ## Abstract Class Example
 ```dart
 abstract class IMovieService {
@@ -621,9 +487,8 @@ locator.registerFactory<MovieBloc>(() =>
     MovieBloc(movieService: locator(), logger: locator()));
 ...
 ```
-/// TODO: dependencies injected through constructors
-## Service Class Example
 
+## Service Class Example
 ```dart
 class NodeLabsMovieService extends IMovieService {
   final ApiClient client;
@@ -662,10 +527,8 @@ class NodeLabsMovieService extends IMovieService {
 }
 ```
 
----
 
 ## BLoC Example
-
 ```dart
 class MovieBloc extends Bloc<MovieEvent, MovieState> {
 
