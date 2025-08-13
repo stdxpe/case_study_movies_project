@@ -3,28 +3,8 @@
 
 Clean structured Flutter showcase project, with **BLoC** State Management, **GetIt** Dependency Injection, **GoRouter** Navigation, JWT Authentication, Firebase Crashlytics & Analytics, localization, theming and modular UI with Lottie.
 
-<!-- ![Movies App Preview](assets/images/dummy_movie_pic.png) -->
-<!-- ![](https://github.com/stdxpe/ecommerce_shopping_project/blob/dev/readme_doc/dark_mode.jpg) -->
-
-<!-- MUST! 50 fps 430 full hd -->
-
-
-<!-- ![](assets/readme/home-preset-60fps-360-f.gif) -->
-<!-- ![](assets/readme/home-preset-60fps-360.gif)
-![](assets/readme/home-60fps-440.gif) -->
-![](assets/readme/home_50fps_425_f.gif)
-![](assets/readme/home_50fps_425.gif)
-![](assets/readme/home-50fps-440-f.gif)
-
-<!-- ![](assets/readme/home-preset-60fps-480.gif) -->
-<!-- ![](assets/readme/home-n60fps-500w.gif)
-![](assets/readme/home-n60fps-550.gif)
-![](assets/readme/home-50fps-500.gif) -->
-<!-- [](https://github.com/stdxpe/ecommerce_shopping_project/blob/dev/readme_doc/dark_mode.jpg)
-![Alternate Text](https://github.com/stdxpe/ecommerce_shopping_project/blob/dev/readme_doc/login_60fps.gif) -->
-
-
-
+<!-- MUST! : 50fps : x425 : Non Full HD -->
+![](assets/readme/home_50fps_x425.gif)
 
 ## Project Structure
 ```rust
