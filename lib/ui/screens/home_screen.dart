@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import 'package:case_study_movies_project/ui/bloc/movie_bloc.dart';
 import 'package:case_study_movies_project/ui/bloc/movie_event.dart';
+import 'package:case_study_movies_project/ui/bloc/pagination_cubit.dart';
 import 'package:case_study_movies_project/ui/bloc/movie_state.dart';
 import 'package:case_study_movies_project/ui/widgets/card_movie_swipeable.dart';
-import 'package:case_study_movies_project/ui/widgets/lottie_loading_animation.dart';
+import 'package:case_study_movies_project/utilities/utilities_library_imports.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -19,64 +21,87 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<MovieBloc, MovieState>(
-      listener: (context, state) {
-        if (state.status == MovieStatus.loaded &&
-            state.allMovies.length > _previousMovieCount) {
-          _previousMovieCount = state.allMovies.length;
-          _isLoadingNextPage = false;
-        }
-      },
-      builder: (context, state) {
-        final movies = state.allMovies;
-        final isLoadingMore = state.status == MovieStatus.loadingMore;
+    return Scaffold(
+      body: BlocListener<MovieBloc, MovieState>(
+        listenWhen: (prev, curr) =>
+            prev.allMovies.length != curr.allMovies.length,
+        listener: (context, movieState) {
+          final newCount = movieState.allMovies.length;
 
-        return Scaffold(
-          backgroundColor: Colors.black,
-          body: Stack(
-            children: [
-              PageView.builder(
-                controller: _pageController,
-                scrollDirection: Axis.vertical,
-                physics: const _SnappyScrollPhysics(),
-                itemCount: movies.length + (isLoadingMore ? 1 : 0),
-                itemBuilder: (context, index) {
-                  if (index < movies.length) {
-                    return CardMovieSwipeable(
-                      movie: movies[index],
-                    ).animate().fade(duration: 350.ms);
-                  } else {
-                    return const Center(child: LottieLoadingAnimation());
+          if (newCount > _previousMovieCount) {
+            final currentPageIndex = (_pageController.page ?? 0).round();
+            final oldLastPageIndex = _previousMovieCount - 1;
+
+            if (currentPageIndex == oldLastPageIndex &&
+                _pageController.hasClients) {
+              Future.delayed(
+                const Duration(milliseconds: 1350),
+                () {
+                  if (_pageController.hasClients) {
+                    _pageController.animateToPage(
+                      currentPageIndex + 1,
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeInOut,
+                    );
                   }
                 },
-                onPageChanged: (index) {
-                  final bloc = context.read<MovieBloc>();
-                  final lastPage = state.allMovies.length - 1;
-
-                  if (index == lastPage &&
-                      state.status != MovieStatus.loadingMore &&
-                      state.status != MovieStatus.error &&
-                      !_isLoadingNextPage) {
-                    _isLoadingNextPage = true;
-                    bloc.add(GetMoviesEvent(page: state.currentPage + 1));
-                  }
-                },
-              ),
-            ],
-          ),
-        );
-      },
+              );
+            }
+            _previousMovieCount = newCount;
+          }
+        },
+        child: BlocBuilder<PaginationCubit, bool>(
+          builder: (context, isLoading) {
+            return BlocBuilder<MovieBloc, MovieState>(
+              builder: (context, movieState) {
+                final movies = movieState.allMovies;
+                return NotificationListener<OverscrollNotification>(
+                  onNotification: (notification) {
+                    if (notification.overscroll >= 8 && !isLoading) {
+                      context.read<PaginationCubit>().loadMore((page) async {
+                        context
+                            .read<MovieBloc>()
+                            .add(GetMoviesEvent(page: page));
+                      });
+                      return true;
+                    }
+                    return false;
+                  },
+                  child: Stack(
+                    children: [
+                      PageView.builder(
+                        controller: _pageController,
+                        scrollDirection: Axis.vertical,
+                        physics: const _SnappyScrollPhysics(),
+                        itemCount: movies.length,
+                        itemBuilder: (context, index) {
+                          return CardMovieSwipeable(movie: movies[index]);
+                        },
+                      ),
+                      if (isLoading)
+                        const Positioned(
+                          bottom: 150,
+                          left: 0,
+                          right: 0,
+                          child: SpinKitRing(
+                            color: ColorPalette.permaWhite,
+                            size: 55,
+                            duration: Duration(milliseconds: 850),
+                            lineWidth: 13,
+                          ),
+                        ),
+                    ],
+                  ),
+                );
+              },
+            );
+          },
+        ),
+      ),
     );
   }
 
   int _previousMovieCount = 0;
-  bool _isLoadingNextPage = false;
-
-  @override
-  void dispose() {
-    _pageController.dispose();
-    super.dispose();
-  }
 }
 
 class _SnappyScrollPhysics extends ClampingScrollPhysics {
@@ -88,6 +113,8 @@ class _SnappyScrollPhysics extends ClampingScrollPhysics {
 
   @override
   double applyPhysicsToUserOffset(ScrollMetrics position, double offset) {
-    return offset * 1.4;
+    final normalized = (offset.abs() / 100).clamp(0.0, 1.0);
+    final eased = Curves.easeInCubic.transform(normalized);
+    return eased * 100 * offset.sign;
   }
 }
