@@ -61,6 +61,7 @@ lib/
 │    │         ├── theme_cubit.dart
 │    │         ├── auth_form_cubit.dart
 │    │         ├── lottie_animation_cubit.dart
+│    │         ├── pagination_cubit.dart
 │    │         └── navigation_bar_cubit.dart
 │    │ 
 │    └── >screens/
@@ -208,6 +209,7 @@ lib/
 │    │    ├── auth_form_cubit.dart
 │    │    ├── lottie_animation_cubit.dart
 │    │    ├── navigation_bar_cubit.dart
+│    │    ├── pagination_cubit.dart
 │    │    └── theme_cubit.dart
 │    │
 │    ├── >pages/
@@ -298,6 +300,7 @@ lib/
 </details>
 
 
+
 ## ✅ Technical Features
 
 - [x] **State Management:** Implemented `BLoC` for complex state flows and `Cubit` for local UI states (theme toggling, textfield validation, animation control..).
@@ -326,6 +329,7 @@ lib/
 
 - [x] **Theming:** Integrated `dark/light` themes with embedded custom `color palettes` and `typography` styles.
 
+&nbsp;
 
 ## Dependencies (on pubspec.yaml)
 ```yaml
@@ -360,21 +364,21 @@ lib/
 ```dart 
 WidgetsFlutterBinding.ensureInitialized();
 
-  /// DotEnv Implemented as Environment Variable Solution
+  /// [DotEnv] Implemented as Environment Variable Solution
   await dotenv.load(fileName: AppConstants.envPath);
 
-  /// Firebase Crashlytics Implemented as Remote Logger Service
+  /// [Firebase Crashlytics] Implemented as Remote Logger Service
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);  
   FlutterError.onError = (errorDetails) =>
   FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);  
 
-  /// GetIt Implemented as Dependency Injection Service
+  /// [GetIt] Implemented as Dependency Injection Service
   initializeDependencyInjectionService();
 
-  /// EasyLocalization Implemented as Localization Service
+  /// [EasyLocalization] Implemented as Localization Service
   await EasyLocalization.ensureInitialized();  ...            
 
-  /// Bloc Implemented as State Management Solution
+  /// [Bloc] Implemented as State Management Solution
   MultiBlocProvider(
     providers: [
       BlocProvider<AuthBloc>(
@@ -383,15 +387,17 @@ WidgetsFlutterBinding.ensureInitialized();
         create: (_) => locator<UserBloc>()..add(GetUserProfileEvent());
       BlocProvider<ThemeCubit>(create: (_) => locator<ThemeCubit>()),  ...
 
-  /// Go_Router Implemented as Advanced Navigation Solution
+  /// [GoRouter] Implemented as Advanced Navigation Solution
   routerConfig: AppRouter.router,
   localizationsDelegates: context.localizationDelegates,  ...
 
-  /// Custom Dark/Light Mode Themes Implemented
+  /// Custom [Dark/Light Mode Themes] Implemented
   themeMode: themeMode,
   theme: AppThemes.light,
   darkTheme: AppThemes.dark,  ...
 ```
+
+&nbsp;
 
 > [!NOTE]
 > Following section demonstrates the app flow for the Movie model/entity class, MovieService, MovieBloc, UI; including abstract class and dependency injection implementations.
@@ -464,15 +470,15 @@ abstract class IMovieService {
 
 ## Dependency Injection Example
 ```dart
-/// Auth Service (Data Access Layer)
+/// [Auth Service] (Data Access Layer)
 locator.registerLazySingleton<IAuthService>(() => 
   NodeLabsAuthService(client: locator(), logger: locator(), tokenStorage: locator()));
 
-/// User Service (Data Access Layer)
+/// [User Service] (Data Access Layer)
 locator.registerLazySingleton<IUserService>(() => 
     NodeLabsUserService(client: locator(), logger: locator()));
 
-/// Movie Service (Data Access Layer)
+/// [Movie Service] (Data Access Layer)
 locator.registerLazySingleton<IMovieService>(() => 
     NodeLabsMovieService(client: locator(), logger: locator()));
 
@@ -705,8 +711,8 @@ class CardMovie extends StatelessWidget {
                 ),   ...
 ```
 
-## Extensions | Utility Classes Sample
-```dart
+### Extensions | Utility Classes Sample
+```dart 
 /// [EASY ACCESS to THEME DATA in UI]
 /// Usage example:  `context.theme` --instead of `Theme.of(context)`
 extension ThemeAccessExtension on BuildContext {
@@ -719,6 +725,7 @@ extension ColorPaletteExtension on BuildContext {
 }
 
 /// Fix for the broken links from the API
+/// Usage example:  `brokenLink.withHttps`
 extension EnforceHttpsExtension on String {
   String get withHttps => replaceFirst(RegExp(r'^https?:\/\/'), 'https://');
 }
@@ -742,8 +749,10 @@ abstract class ColorPalette {
 /// [APP VISUALS] [APP-WIDE-GLOBAL VARIABLE] 
 /// Usage example:  `AppVisuals.lottieLike`
 abstract class AppVisuals {
+  static const String diamond = "assets/icons/diamond.svg";
   static const String lottieLike = "assets/lottie/like.json";
   static const String lottieLoading = "assets/lottie/loading.json"; ...
+  ...
 ```
 
 ### AppStrings | Utility Classes Sample
@@ -765,6 +774,18 @@ abstract class AppConstants {
   final double screen = 39;
   final double textFieldHorizontal = 30; ...
 ```
+
+### Routes | Utility Classes Sample
+```dart
+/// [NAVIGATION ROUTES] [APP-WIDE GLOBAL VARIABLE] 
+/// Implemented into Navigation System through GoRouter
+/// Usage example:  `context.go(Routes.home)`
+abstract class Routes {
+  static const home = '/home';
+  static const profile = '/profile';
+  static const splash = '/splash';
+```
+
 
 ---
 ## 📄 License
