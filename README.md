@@ -4,7 +4,15 @@
 Clean structured Flutter showcase project, with **BLoC** State Management, **GetIt** Dependency Injection, **GoRouter** Navigation, JWT Authentication, Firebase Crashlytics & Analytics, localization, theming and modular UI with Lottie.
 
 <!-- ![Movies App Preview](assets/images/dummy_movie_pic.png) -->
-![](https://github.com/stdxpe/ecommerce_shopping_project/blob/dev/readme_doc/dark_mode.jpg)
+<!-- ![](https://github.com/stdxpe/ecommerce_shopping_project/blob/dev/readme_doc/dark_mode.jpg) -->
+[](assets/readme/home-50fps-500.gif)
+[](assets/readme/home-n60fps-500w.gif)
+[](assets/readme/home-n60fps-550.gif)
+[](assets/readme/home-preset-60fps-480.gif)
+[](https://github.com/stdxpe/case_study_movies_project/blob/main/assets/readme/home-preset-60fps-480.gif)
+
+
+
 
 ## Project Structure
 ```rust
@@ -305,7 +313,8 @@ lib/
 ## ✅ Technical Features
 
 ```dart 
-/// [State Management] : Implemented `BLoC` for complex state flows and `Cubit` for local UI states (theme toggling, textfield validation, animation control..).
+
+/// [State Management] : Implemented `BLoC` for complex state flows; and `Cubit` for local UI states (theme toggling, textfield validation, animation control..).
 
 /// [Architecture] : Followed `Clean Architecture` principles with an alternative foldering structure.
 
@@ -330,13 +339,14 @@ lib/
 /// [Utilities] : App-wide globals handled elegantly under separate utility classes. (e.g. Constants, Extensions, Visuals, ColorPalettes, Themes, TextThemes, Routes..)
 
 /// [Theming] : Integrated `dark/light` themes with embedded custom `color palettes` and `typography` styles.
+
 ```
 
 &nbsp;
 
 
 
-- [x] **State Management:** Implemented `BLoC` for complex state flows and `Cubit` for local UI states (theme toggling, textfield validation, animation control..).
+- [x] **State Management:** Implemented `BLoC` for complex state flows; and `Cubit` for local UI states (theme toggling, textfield validation, animation control..).
 
 - [x] **Architecture:** Followed `Clean Architecture` principles with an alternative foldering structure.
 
@@ -489,7 +499,6 @@ class MovieModel {
 }
 ```
 
-> Clean structured Flutter showcase project, with **BLoC** State Management, **GetIt** Dependency Injection, **GoRouter** Navigation, JWT Authentication, Firebase Crashlytics & Analytics, localization, theming and modular UI with Lottie.
 
 ## Abstract Class Example
 ```dart
@@ -500,6 +509,7 @@ abstract class IMovieService {
   Future<bool> toggleFavorite({String favoriteId});
 }
 ```
+
 
 ## Dependency Injection Example
 ```dart
@@ -526,6 +536,7 @@ locator.registerFactory<MovieBloc>(() =>
     MovieBloc(movieService: locator(), logger: locator()));
 ...
 ```
+
 
 ## Service Class Example
 ```dart
