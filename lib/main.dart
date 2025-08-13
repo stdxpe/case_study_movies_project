@@ -16,6 +16,7 @@ import 'package:case_study_movies_project/ui/bloc/movie_event.dart';
 import 'package:case_study_movies_project/ui/bloc/theme_cubit.dart';
 import 'package:case_study_movies_project/ui/bloc/auth_form_cubit.dart';
 import 'package:case_study_movies_project/ui/bloc/lottie_animation_cubit.dart';
+import 'package:case_study_movies_project/ui/bloc/pagination_cubit.dart';
 import 'package:case_study_movies_project/utilities/utilities_library_imports.dart';
 import 'package:case_study_movies_project/services/global_services/dependency_injection_service.dart';
 import 'package:case_study_movies_project/services/global_services/navigation_service.dart';
@@ -78,6 +79,7 @@ class RootApp extends StatelessWidget {
         ),
         BlocProvider<AuthFormCubit>(create: (_) => locator<AuthFormCubit>()),
         BlocProvider<ThemeCubit>(create: (_) => locator<ThemeCubit>()),
+        BlocProvider<PaginationCubit>(create: (_) => PaginationCubit()),
         BlocProvider<LottieAnimationCubit>(
             create: (_) => locator<LottieAnimationCubit>()),
       ],
