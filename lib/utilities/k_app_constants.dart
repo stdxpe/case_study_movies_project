@@ -112,6 +112,7 @@ class _AppSpacings {
   final double space17 = 17.43;
   final double space20 = 20;
   final double space24 = 24;
+  final double space27 = 27;
   final double space30 = 30;
   final double space32 = 32;
   final double space37 = 37;

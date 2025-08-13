@@ -64,7 +64,7 @@ class LimitedOfferScreen extends StatelessWidget {
                     color: context.theme.colorPalette.text,
                     textStyle: context.textTheme.action,
                   ),
-                  SizedBox(height: AppConstants.spacings.space20),
+                  SizedBox(height: AppConstants.spacings.space27),
                   const Flexible(child: SectionCardTokens()),
                   SizedBox(height: AppConstants.spacings.space20),
                   ButtonMain(
