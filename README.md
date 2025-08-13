@@ -339,7 +339,7 @@ lib/
 &nbsp;
 
 
-
+<!-- 
 - [x] **State Management:** Implemented `BLoC` for complex state flows; and `Cubit` for local UI states (theme toggling, textfield validation, animation control..).
 
 - [x] **Architecture:** Followed `Clean Architecture` principles with an alternative foldering structure.
@@ -364,7 +364,7 @@ lib/
 
 - [x] **Utilities:** App-wide globals handled elegantly under separate utility classes. (e.g. Constants, Extensions, Visuals, ColorPalettes, Themes, TextThemes, Routes..)
 
-- [x] **Theming:** Integrated `dark/light` themes with embedded custom `color palettes` and `typography` styles.
+- [x] **Theming:** Integrated `dark/light` themes with embedded custom `color palettes` and `typography` styles. -->
 
 &nbsp;
 
@@ -396,6 +396,10 @@ lib/
 
 #########################################################################################
 ```
+
+&nbsp;
+
+![](assets/readme/validation_50fps_x425.gif)
 
 ## main.dart
 ```dart 
