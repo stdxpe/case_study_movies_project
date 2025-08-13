@@ -1,7 +1,7 @@
 
 # Case Study: Movies Project
 
-Clean structured **Flutter** showcase project, with **BLoC** State Management, **GetIt** Dependency Injection, **GoRouter** Navigation, **JWT** Authentication, **Firebase Crashlytics & Analytics**, localization, theming and modular UI with **Lottie**.
+Clean structured Flutter showcase project, with **BLoC** State Management, **GetIt** Dependency Injection, **GoRouter** Navigation, JWT Authentication, Firebase Crashlytics & Analytics, localization, theming and modular UI with Lottie.
 
 ![](assets/readme/home_50fps_x425.gif)
 <!-- MUST BE! : 50fps : x425 : Non Full HD (80%) -->
