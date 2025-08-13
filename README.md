@@ -336,8 +336,6 @@ lib/
 
 ```
 
-&nbsp;
-
 
 <!-- 
 - [x] **State Management:** Implemented `BLoC` for complex state flows; and `Cubit` for local UI states (theme toggling, textfield validation, animation control..).
@@ -366,7 +364,6 @@ lib/
 
 - [x] **Theming:** Integrated `dark/light` themes with embedded custom `color palettes` and `typography` styles. -->
 
-&nbsp;
 
 ## Dependencies (on pubspec.yaml)
 ```yaml
