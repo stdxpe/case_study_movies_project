@@ -65,14 +65,14 @@ class CardToken extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   TextCustom(
-                    text: '${token.formerTokenCount}',
+                    text: token.formerTokenCount,
                     color: ColorPalette.permaWhite,
                     textStyle: context.textTheme.action,
                     isLineThrough: true,
                   ),
                   SizedBox(height: AppConstants.spacings.space2),
                   TextCustom(
-                    text: '${token.tokenCount}',
+                    text: token.tokenCount,
                     color: ColorPalette.permaWhite,
                     textStyle: context.textTheme.tokenMontserrat,
                   ),

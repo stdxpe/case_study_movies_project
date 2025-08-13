@@ -30,10 +30,6 @@ class CardMovieSwipeable extends StatelessWidget {
             if (loadingProgress == null) return child;
             return const Center(
               child: LottieLoadingAnimation(),
-              // child: CircularProgressIndicator(
-              //   color: Colors.white,
-              //   strokeWidth: 2,
-              // ),
             );
           },
         ),
@@ -78,7 +74,8 @@ class CardMovieSwipeable extends StatelessWidget {
                 BlocBuilder<MovieBloc, MovieState>(builder: (context, state) {
               if (state.status == MovieStatus.loading) {
                 return const Center(child: CircularProgressIndicator());
-              } else if (state.status == MovieStatus.loaded) {
+              } else if (state.status == MovieStatus.loaded ||
+                  state.status == MovieStatus.loadingMore) {
                 return ButtonFavorite(
                   isLiked: context.read<MovieBloc>().state.isLiked(movie.id),
                   onPressed: () {
@@ -92,7 +89,7 @@ class CardMovieSwipeable extends StatelessWidget {
                           showAnimation: true,
                         );
                   },
-                );
+                ).animate().fadeIn(duration: 500.ms);
               } else if (state.status == MovieStatus.error) {
                 return Center(child: Text('Error: ${state.errorMessage}'));
               }

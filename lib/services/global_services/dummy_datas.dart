@@ -16,8 +16,8 @@ final dummyUser = UserModel(
 List<TokenModel> dummyTokenList = [
   TokenModel(
     id: 1,
-    tokenCount: 330,
-    formerTokenCount: 200,
+    tokenCount: "330",
+    formerTokenCount: "200",
     price: 99.99,
     currency: "₺",
     discountPercent: 10,
@@ -25,8 +25,8 @@ List<TokenModel> dummyTokenList = [
   ),
   TokenModel(
     id: 2,
-    tokenCount: 3.375,
-    formerTokenCount: 2.000,
+    tokenCount: "3.375",
+    formerTokenCount: "2.000",
     price: 799.99,
     currency: "₺",
     discountPercent: 70,
@@ -34,8 +34,8 @@ List<TokenModel> dummyTokenList = [
   ),
   TokenModel(
     id: 3,
-    tokenCount: 1.350,
-    formerTokenCount: 1.000,
+    tokenCount: "1.350",
+    formerTokenCount: "1.000",
     price: 399.99,
     currency: "₺",
     discountPercent: 35,
