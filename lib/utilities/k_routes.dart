@@ -1,6 +1,6 @@
 part of 'utilities_library_imports.dart';
 
-class Routes {
+abstract class Routes {
   /// Screens
   static const splash = '/splash';
   static const signIn = '/signin';
