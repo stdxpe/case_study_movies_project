@@ -300,8 +300,41 @@ lib/
 </details>
 
 
+&nbsp;
 
 ## ✅ Technical Features
+
+```dart 
+/// [State Management] : Implemented `BLoC` for complex state flows and `Cubit` for local UI states (theme toggling, textfield validation, animation control..).
+
+/// [Architecture] : Followed `Clean Architecture` principles with an alternative foldering structure.
+
+/// [Dependency Injection] : Registered all objects and abstract classes via `GetIt` for centralized control.
+
+/// [Navigation] : Integrated `GoRouter` as advanced navigation system with automated `redirect` service.
+
+/// [Storage & Security] : Secured `JWT` tokens with `FlutterSecureStorage` and encrypted local storage.
+
+/// [Networking] : Implemented `Dio` as the main HTTP client with automated auth interceptors for API calls.
+
+/// [Pagination] : Created infinite scrolls with `pull-to-refresh`, using API-driven lists with lazy loading.
+
+/// [Logging] : Connected a centralized logger service with `Firebase Crashlytics & Analytics`.
+
+/// [Localization] : Implemented `multi-language` support with dynamic JSON-based translation files.
+
+/// [Splash & Icons] : Implemented splash screens and platform-optimized icons for iOS and Android.
+
+/// [Animations] : Utilized `Lottie` and `flutter_animate` to deliver interactive and dynamic screens.
+
+/// [Utilities] : App-wide globals handled elegantly under separate utility classes. (e.g. Constants, Extensions, Visuals, ColorPalettes, Themes, TextThemes, Routes..)
+
+/// [Theming] : Integrated `dark/light` themes with embedded custom `color palettes` and `typography` styles.
+```
+
+&nbsp;
+
+
 
 - [x] **State Management:** Implemented `BLoC` for complex state flows and `Cubit` for local UI states (theme toggling, textfield validation, animation control..).
 
@@ -313,7 +346,7 @@ lib/
 
 - [x] **Storage & Security:** Secured `JWT` tokens with `FlutterSecureStorage` and encrypted local storage.
 
-- [x] **Networking:** Implemented `Dio` as the main HTTP client with automated auth interceptors.
+- [x] **Networking:** Implemented `Dio` as the main HTTP client with automated auth interceptors for API calls.
 
 - [x] **Pagination:** Created infinite scrolls with `pull-to-refresh`, using API-driven lists with lazy loading.
 
