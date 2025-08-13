@@ -1,7 +1,7 @@
 #############################################################################################################
 
 name: case_study_movies_project
-description: "Showcase project using Flutter, Bloc state management, API integration, authentication and custom UI with modular, reusable design."
+description: "Clean structured Flutter showcase project, with BLoC State Management, GetIt Dependency Injection, GoRouter Navigation, JWT Authentication, Firebase Crashlytics & Analytics, localization, theming and modular UI with Lottie."
 publish_to: 'none' 
 version: 1.0.0+1
 
