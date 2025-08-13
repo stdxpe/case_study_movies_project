@@ -10,6 +10,7 @@ import 'package:case_study_movies_project/ui/bloc/user_bloc.dart';
 import 'package:case_study_movies_project/ui/bloc/movie_bloc.dart';
 import 'package:case_study_movies_project/ui/bloc/theme_cubit.dart';
 import 'package:case_study_movies_project/ui/bloc/auth_form_cubit.dart';
+import 'package:case_study_movies_project/ui/bloc/pagination_cubit.dart';
 import 'package:case_study_movies_project/ui/bloc/navigation_bar_cubit.dart';
 import 'package:case_study_movies_project/services/image_handler_service.dart';
 import 'package:case_study_movies_project/services/nodelabs_auth_service.dart';
@@ -64,9 +65,6 @@ void initializeDependencyInjectionService() {
   locator.registerLazySingleton<IUserService>(() => NodeLabsUserService(
       client: locator<Dio>(), logger: locator<ILoggerService>()));
 
-  locator.registerLazySingleton<IUserService>(
-      () => NodeLabsUserService(client: locator(), logger: locator()));
-
   /// Movie Service (Data Access Layer)
   locator.registerLazySingleton<IMovieService>(() => NodeLabsMovieService(
       client: locator<Dio>(), logger: locator<ILoggerService>()));
@@ -102,6 +100,7 @@ void initializeDependencyInjectionService() {
   /// All Cubits's Registered with GetIt DI
   locator.registerFactory<LottieAnimationCubit>(() => LottieAnimationCubit());
   locator.registerLazySingleton<ThemeCubit>(() => ThemeCubit());
+  locator.registerLazySingleton<PaginationCubit>(() => PaginationCubit());
   locator.registerFactory<AuthFormCubit>(() {
     return AuthFormCubit(authBloc: locator<AuthBloc>());
   });
