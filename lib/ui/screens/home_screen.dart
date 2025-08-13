@@ -34,18 +34,16 @@ class _HomeScreenState extends State<HomeScreen> {
 
             if (currentPageIndex == oldLastPageIndex &&
                 _pageController.hasClients) {
-              Future.delayed(
-                const Duration(milliseconds: 1350),
-                () {
-                  if (_pageController.hasClients) {
-                    _pageController.animateToPage(
-                      currentPageIndex + 1,
-                      duration: const Duration(milliseconds: 300),
-                      curve: Curves.easeInOut,
-                    );
-                  }
-                },
-              );
+              WidgetsBinding.instance.addPostFrameCallback((_) async {
+                await Future.delayed(const Duration(milliseconds: 1350));
+                if (_pageController.hasClients) {
+                  _pageController.animateToPage(
+                    currentPageIndex + 1,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeInOut,
+                  );
+                }
+              });
             }
             _previousMovieCount = newCount;
           }
