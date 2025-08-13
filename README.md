@@ -6,6 +6,7 @@ Clean structured Flutter showcase project, with **BLoC** State Management, **Get
 <!-- MUST! : 50fps : x425 : Non Full HD -->
 ![](assets/readme/home_50fps_x425.gif)
 
+
 ## Project Structure
 ```rust
 ❗ This project strictly follows CLEAN ARCHITECTURE dependency principles, but uses an alternative folder structure. Below this scheme, you can view the standard version.
@@ -299,8 +300,9 @@ lib/
 ```
 </details>
 
-
 &nbsp;
+
+![](assets/readme/profile_50fps_x425.gif)
 
 ## ✅ Technical Features
 
