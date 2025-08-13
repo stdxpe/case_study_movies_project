@@ -6,12 +6,15 @@ Clean structured Flutter showcase project, with **BLoC** State Management, **Get
 <!-- ![Movies App Preview](assets/images/dummy_movie_pic.png) -->
 <!-- ![](https://github.com/stdxpe/ecommerce_shopping_project/blob/dev/readme_doc/dark_mode.jpg) -->
 
-![](assets/readme/home-preset-60fps-360-f.gif)
+<!-- ![](assets/readme/home-preset-60fps-360-f.gif) -->
+
 ![](assets/readme/home-preset-60fps-360.gif)
+![](assets/readme/home-60fps-440.gif)
+![](assets/readme/home-50fps-440-f.gif)
 ![](assets/readme/home-preset-60fps-480.gif)
-![](assets/readme/home-n60fps-500w.gif)
+<!-- ![](assets/readme/home-n60fps-500w.gif)
 ![](assets/readme/home-n60fps-550.gif)
-![](assets/readme/home-50fps-500.gif)
+![](assets/readme/home-50fps-500.gif) -->
 <!-- [](https://github.com/stdxpe/ecommerce_shopping_project/blob/dev/readme_doc/dark_mode.jpg)
 ![Alternate Text](https://github.com/stdxpe/ecommerce_shopping_project/blob/dev/readme_doc/login_60fps.gif) -->
 
